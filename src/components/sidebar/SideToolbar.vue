@@ -51,13 +51,22 @@
       </div>
     </div>
     <HelpCenterPopups :is-small="isSmall" />
+    <component :is="NightlySurveyController" v-if="NightlySurveyController" />
   </nav>
 </template>
 
 <script setup lang="ts">
 import { useResizeObserver } from '@vueuse/core'
 import { debounce } from 'es-toolkit/compat'
-import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import {
+  computed,
+  defineAsyncComponent,
+  nextTick,
+  onBeforeUnmount,
+  onMounted,
+  ref,
+  watch
+} from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import HelpCenterPopups from '@/components/helpcenter/HelpCenterPopups.vue'
@@ -67,7 +76,7 @@ import SidebarBottomPanelToggleButton from '@/components/sidebar/SidebarBottomPa
 import SidebarSettingsButton from '@/components/sidebar/SidebarSettingsButton.vue'
 import SidebarShortcutsToggleButton from '@/components/sidebar/SidebarShortcutsToggleButton.vue'
 import { useFeatureFlags } from '@/composables/useFeatureFlags'
-import { isCloud } from '@/platform/distribution/types'
+import { isCloud, isDesktop, isNightly } from '@/platform/distribution/types'
 import { useSettingStore } from '@/platform/settings/settingStore'
 import { useTelemetry } from '@/platform/telemetry'
 import { useCanvasStore } from '@/renderer/core/canvas/canvasStore'
@@ -83,6 +92,13 @@ import SidebarHelpCenterIcon from './SidebarHelpCenterIcon.vue'
 import SidebarIcon from './SidebarIcon.vue'
 import SidebarLogoutIcon from './SidebarLogoutIcon.vue'
 import SidebarTemplatesButton from './SidebarTemplatesButton.vue'
+
+const NightlySurveyController =
+  isNightly && !isCloud && !isDesktop
+    ? defineAsyncComponent(
+        () => import('@/platform/surveys/NightlySurveyController.vue')
+      )
+    : undefined
 
 const { t } = useI18n()
 const workspaceStore = useWorkspaceStore()
