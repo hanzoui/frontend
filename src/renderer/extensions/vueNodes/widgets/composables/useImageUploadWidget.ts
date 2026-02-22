@@ -95,10 +95,10 @@ export const useImageUploadWidget = () => {
       'image',
       () => openFileSelection(),
       {
-        serialize: false,
         canvasOnly: true
       }
     )
+    uploadWidget.serialize = false
     uploadWidget.label = t('g.choose_file_to_upload')
 
     // Add our own callback to the combo widget to render an image when it changes

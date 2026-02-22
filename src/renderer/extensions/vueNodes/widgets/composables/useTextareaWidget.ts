@@ -1,5 +1,8 @@
 import type { LGraphNode } from '@/lib/litegraph/src/litegraph'
-import type { ITextareaWidget } from '@/lib/litegraph/src/types/widgets'
+import type {
+  ITextareaWidget,
+  IWidgetOptions
+} from '@/lib/litegraph/src/types/widgets'
 import type {
   InputSpec as InputSpecV2,
   TextareaInputSpec
@@ -16,12 +19,12 @@ export const useTextareaWidget = (): ComfyWidgetConstructorV2 => {
       options.default || '',
       () => {},
       {
-        serialize: true,
         rows: options.rows || 5,
         cols: options.cols || 50,
         ...options
-      }
+      } as IWidgetOptions
     ) as ITextareaWidget
+    widget.serialize = true
 
     return widget
   }

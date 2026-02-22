@@ -593,7 +593,7 @@ describe('useRemoteWidget', () => {
   describe('auto-refresh on task completion', () => {
     it('should add auto-refresh toggle widget', () => {
       const mockNode = createMockLGraphNode({
-        addWidget: vi.fn(),
+        addWidget: vi.fn(() => createMockWidget()),
         widgets: []
       })
       const mockWidget = createMockWidget({
@@ -612,10 +612,7 @@ describe('useRemoteWidget', () => {
         'toggle',
         'Auto-refresh after generation',
         false,
-        expect.any(Function),
-        {
-          serialize: false
-        }
+        expect.any(Function)
       )
     })
 
@@ -623,7 +620,7 @@ describe('useRemoteWidget', () => {
       const addEventListenerSpy = vi.spyOn(api, 'addEventListener')
 
       const mockNode = createMockLGraphNode({
-        addWidget: vi.fn(),
+        addWidget: vi.fn(() => createMockWidget()),
         widgets: []
       })
       const mockWidget = createMockWidget({
@@ -654,7 +651,7 @@ describe('useRemoteWidget', () => {
       })
 
       const mockNode = createMockLGraphNode({
-        addWidget: vi.fn(),
+        addWidget: vi.fn(() => createMockWidget()),
         widgets: []
       })
       const mockWidget = createMockWidget({})
@@ -692,7 +689,7 @@ describe('useRemoteWidget', () => {
       })
 
       const mockNode = createMockLGraphNode({
-        addWidget: vi.fn(),
+        addWidget: vi.fn(() => createMockWidget()),
         widgets: []
       })
       const mockWidget = createMockWidget({})
@@ -726,7 +723,7 @@ describe('useRemoteWidget', () => {
       const removeEventListenerSpy = vi.spyOn(api, 'removeEventListener')
 
       const mockNode = createMockLGraphNode({
-        addWidget: vi.fn(),
+        addWidget: vi.fn(() => createMockWidget()),
         widgets: [],
         onRemoved: undefined
       })

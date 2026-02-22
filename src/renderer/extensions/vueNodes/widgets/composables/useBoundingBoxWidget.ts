@@ -55,10 +55,10 @@ export const useBoundingBoxWidget = (): ComfyWidgetConstructorV2 => {
         }
       },
       {
-        serialize: true,
         canvasOnly: false
       }
     )
+    rawWidget.serialize = true
 
     if (!isBoundingBoxLikeWidget(rawWidget)) {
       throw new Error(`Unexpected widget type: ${rawWidget.type}`)
@@ -82,10 +82,10 @@ export const useBoundingBoxWidget = (): ComfyWidgetConstructorV2 => {
           step: 10,
           step2: 1,
           precision: 0,
-          serialize: false,
           canvasOnly: true
         }
       )
+      subWidget.serialize = false
 
       if (!isNumericWidget(subWidget)) {
         throw new Error(`Unexpected widget type: ${subWidget.type}`)

@@ -244,8 +244,9 @@ app.registerExtension({
           inputName,
           '',
           openFileSelection,
-          { serialize: false, canvasOnly: true }
+          { canvasOnly: true }
         )
+        uploadWidget.serialize = false
         uploadWidget.label = t('g.choose_file_to_upload')
 
         useNodeDragAndDrop(node, {
@@ -401,8 +402,9 @@ app.registerExtension({
               mediaRecorder.stop()
             }
           },
-          { serialize: false, canvasOnly: false }
+          { canvasOnly: false }
         )
+        recordWidget.serialize = false
 
         recordWidget.label = t('g.startRecording')
         // Override the type for Vue rendering while keeping 'button' for LiteGraph

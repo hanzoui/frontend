@@ -1,5 +1,8 @@
 import type { LGraphNode } from '@/lib/litegraph/src/litegraph'
-import type { IGalleriaWidget } from '@/lib/litegraph/src/types/widgets'
+import type {
+  IGalleriaWidget,
+  IWidgetOptions
+} from '@/lib/litegraph/src/types/widgets'
 import type {
   GalleriaInputSpec,
   InputSpec as InputSpecV2
@@ -15,11 +18,9 @@ export const useGalleriaWidget = (): ComfyWidgetConstructorV2 => {
       name,
       options.images || [],
       () => {},
-      {
-        serialize: true,
-        ...options
-      }
+      { ...options } as IWidgetOptions
     ) as IGalleriaWidget
+    widget.serialize = true
 
     return widget
   }

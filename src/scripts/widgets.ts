@@ -131,10 +131,10 @@ export function addValueControlWidgets(
     function () {},
     {
       values: ['fixed', 'increment', 'decrement', 'randomize'],
-      serialize: false, // Don't include this in prompt.
       canvasOnly: true
     }
   ) as IComboWidget
+  valueControl.serialize = false // Don't include this in prompt.
 
   valueControl.tooltip =
     'Allows the linked widget to be changed automatically, for example randomizing the noise seed.'
@@ -156,11 +156,9 @@ export function addValueControlWidgets(
       'string',
       getName('control_filter_list', 'controlFilterListName'),
       '',
-      function () {},
-      {
-        serialize: false // Don't include this in prompt.
-      }
+      function () {}
     ) as IStringWidget
+    comboFilter.serialize = false // Don't include this in prompt.
     updateControlWidgetLabel(comboFilter)
     comboFilter.tooltip =
       "Allows for filtering the list of values when changing the value via the control generate mode. Allows for RegEx matches in the format /abc/ to only filter to values containing 'abc'."
