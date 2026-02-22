@@ -10,13 +10,13 @@ export const useImageCompareWidget = (): ComfyWidgetConstructorV2 => {
   return (node: LGraphNode, inputSpec: InputSpecV2): IImageCompareWidget => {
     const { name, options = {} } = inputSpec as ImageCompareInputSpec
 
-    const widget = node.addWidget('imagecompare', name, ['', ''], () => {}, {
-      serialize: true,
-      ...options
-    }) as IImageCompareWidget
-
-    // widget.serialize controls workflow persistence; widget.options.serialize
-    // controls prompt (API) serialization — only disable the former.
+    const widget = node.addWidget(
+      'imagecompare',
+      name,
+      ['', ''],
+      () => {},
+      options
+    ) as IImageCompareWidget
     widget.serialize = false
 
     return widget

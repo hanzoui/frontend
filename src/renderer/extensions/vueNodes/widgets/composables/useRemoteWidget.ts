@@ -266,11 +266,9 @@ export function useRemoteWidget<
       false,
       (value: boolean) => {
         autoRefreshEnabled = value
-      },
-      {
-        serialize: false
       }
     )
+    autoRefreshWidget.serialize = false
 
     // Register event listener
     api.addEventListener('execution_success', handleExecutionSuccess)

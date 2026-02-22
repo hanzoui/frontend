@@ -368,7 +368,6 @@ export const useImagePreviewWidget = () => {
   ) => {
     return node.addCustomWidget(
       new ImagePreviewWidget(node, inputSpec.name, {
-        serialize: false,
         canvasOnly: true
       })
     )
