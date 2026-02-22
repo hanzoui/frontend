@@ -1,6 +1,5 @@
 import { isPromotedWidgetView } from '@/core/graph/subgraph/promotedWidgetTypes'
 import type { LGraphNode } from '@/lib/litegraph/src/litegraph'
-import type { SubgraphNode } from '@/lib/litegraph/src/subgraph/SubgraphNode'
 import type { IBaseWidget } from '@/lib/litegraph/src/types/widgets'
 
 export interface ResolvedPromotedWidgetSource {
@@ -15,9 +14,7 @@ export function resolvePromotedWidgetSource(
   if (!isPromotedWidgetView(widget)) return undefined
   if (!hostNode.isSubgraphNode()) return undefined
 
-  const sourceNode = (hostNode as SubgraphNode).subgraph.getNodeById(
-    widget.sourceNodeId
-  )
+  const sourceNode = hostNode.subgraph.getNodeById(widget.sourceNodeId)
   if (!sourceNode) return undefined
 
   const sourceWidget = sourceNode.widgets?.find(
