@@ -20,7 +20,8 @@ export function resolveWidgetFromHostNode(
   const sourceWidget = resolvePromotedWidgetSource(hostNode, widget)
   if (sourceWidget) return sourceWidget
 
-  if (isPromotedWidgetView(widget) && hostNode.isSubgraphNode()) return undefined
+  if (isPromotedWidgetView(widget) && hostNode.isSubgraphNode())
+    return undefined
 
   return {
     node: hostNode,
