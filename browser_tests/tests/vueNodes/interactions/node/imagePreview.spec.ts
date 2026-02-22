@@ -3,9 +3,9 @@ import { expect } from '@playwright/test'
 import type { ComfyPage } from '../../../../fixtures/ComfyPage'
 import { comfyPageFixture as test } from '../../../../fixtures/ComfyPage'
 import {
-  getNodeWidgetCountByName,
-  getProxyWidgetNames
-} from '../../../../helpers/proxyWidgets'
+  getPromotedWidgetNames,
+  getPromotedWidgetCountByName
+} from '../../../../helpers/promotedWidgets'
 
 test.describe('Vue Nodes Image Preview', () => {
   test.beforeEach(async ({ comfyPage }) => {
@@ -81,19 +81,27 @@ test.describe('Vue Nodes Image Preview', () => {
       await expect(firstSubgraphNode).toBeVisible()
       await expect(secondSubgraphNode).toBeVisible()
 
-      const firstProxyWidgets = await getProxyWidgetNames(comfyPage, '7')
-      const secondProxyWidgets = await getProxyWidgetNames(comfyPage, '8')
-      expect(firstProxyWidgets).toEqual([
+      const firstPromotedWidgets = await getPromotedWidgetNames(comfyPage, '7')
+      const secondPromotedWidgets = await getPromotedWidgetNames(comfyPage, '8')
+      expect(firstPromotedWidgets).toEqual([
         '$$canvas-image-preview',
         '$$canvas-image-preview'
       ])
-      expect(secondProxyWidgets).toEqual(['$$canvas-image-preview'])
+      expect(secondPromotedWidgets).toEqual(['$$canvas-image-preview'])
 
       expect(
-        await getNodeWidgetCountByName(comfyPage, '7', '$$canvas-image-preview')
+        await getPromotedWidgetCountByName(
+          comfyPage,
+          '7',
+          '$$canvas-image-preview'
+        )
       ).toBe(2)
       expect(
-        await getNodeWidgetCountByName(comfyPage, '8', '$$canvas-image-preview')
+        await getPromotedWidgetCountByName(
+          comfyPage,
+          '8',
+          '$$canvas-image-preview'
+        )
       ).toBe(1)
 
       await expect(

@@ -7,10 +7,10 @@ import { comfyPageFixture as test } from '../fixtures/ComfyPage'
 import { TestIds } from '../fixtures/selectors'
 import { fitToViewInstant } from '../helpers/fitToView'
 import {
-  getNodeWidgetCount,
-  getProxyWidgetNames,
-  getProxyWidgets
-} from '../helpers/proxyWidgets'
+  getPromotedWidgetNames,
+  getPromotedWidgetCount,
+  getPromotedWidgets
+} from '../helpers/promotedWidgets'
 
 /**
  * Check whether we're currently in a subgraph.
@@ -54,11 +54,11 @@ test.describe(
         // The KSampler has a "seed" widget which is in the recommended list.
         // The promotion store should have at least the seed widget promoted.
         const nodeId = String(subgraphNode.id)
-        const promotedNames = await getProxyWidgetNames(comfyPage, nodeId)
+        const promotedNames = await getPromotedWidgetNames(comfyPage, nodeId)
         expect(promotedNames).toContain('seed')
 
         // SubgraphNode should have widgets (promoted views)
-        const widgetCount = await getNodeWidgetCount(comfyPage, nodeId)
+        const widgetCount = await getPromotedWidgetCount(comfyPage, nodeId)
         expect(widgetCount).toBeGreaterThan(0)
       })
 
@@ -74,7 +74,7 @@ test.describe(
         await comfyPage.nextFrame()
 
         const nodeId = String(subgraphNode.id)
-        const promotedNames = await getProxyWidgetNames(comfyPage, nodeId)
+        const promotedNames = await getPromotedWidgetNames(comfyPage, nodeId)
         expect(promotedNames.length).toBeGreaterThan(0)
 
         // CLIPTextEncode is in the recommendedNodes list, so its text widget
@@ -94,7 +94,7 @@ test.describe(
         const subgraphNode = await saveNode.convertToSubgraph()
         await comfyPage.nextFrame()
 
-        const promotedNames = await getProxyWidgetNames(
+        const promotedNames = await getPromotedWidgetNames(
           comfyPage,
           String(subgraphNode.id)
         )
@@ -334,7 +334,7 @@ test.describe(
         await exitSubgraphViaBreadcrumb(comfyPage)
 
         // SubgraphNode should now have the promoted widget
-        const widgetCount = await getNodeWidgetCount(comfyPage, '2')
+        const widgetCount = await getPromotedWidgetCount(comfyPage, '2')
         expect(widgetCount).toBeGreaterThan(0)
       })
 
@@ -370,7 +370,7 @@ test.describe(
         await fitToViewInstant(comfyPage)
         await comfyPage.nextFrame()
 
-        const initialWidgetCount = await getNodeWidgetCount(comfyPage, '2')
+        const initialWidgetCount = await getPromotedWidgetCount(comfyPage, '2')
         expect(initialWidgetCount).toBeGreaterThan(0)
 
         // Navigate back in and un-promote
@@ -400,7 +400,7 @@ test.describe(
         await exitSubgraphViaBreadcrumb(comfyPage)
 
         // SubgraphNode should have fewer widgets
-        const finalWidgetCount = await getNodeWidgetCount(comfyPage, '2')
+        const finalWidgetCount = await getPromotedWidgetCount(comfyPage, '2')
         expect(finalWidgetCount).toBeLessThan(initialWidgetCount)
       })
     })
@@ -416,7 +416,7 @@ test.describe(
 
         // The SaveImage node is in the recommendedNodes list, so its
         // filename_prefix widget should be auto-promoted
-        const promotedNames = await getProxyWidgetNames(comfyPage, '5')
+        const promotedNames = await getPromotedWidgetNames(comfyPage, '5')
         expect(promotedNames.length).toBeGreaterThan(0)
         expect(promotedNames).toContain('filename_prefix')
       })
@@ -435,10 +435,10 @@ test.describe(
 
         // SaveImage is a recommended node, so filename_prefix should be promoted
         const nodeId = String(subgraphNode.id)
-        const promotedNames = await getProxyWidgetNames(comfyPage, nodeId)
+        const promotedNames = await getPromotedWidgetNames(comfyPage, nodeId)
         expect(promotedNames.length).toBeGreaterThan(0)
 
-        const widgetCount = await getNodeWidgetCount(comfyPage, nodeId)
+        const widgetCount = await getPromotedWidgetCount(comfyPage, nodeId)
         expect(widgetCount).toBeGreaterThan(0)
       })
     })
@@ -452,13 +452,13 @@ test.describe(
         )
         await comfyPage.nextFrame()
 
-        const proxyWidgets = await getProxyWidgets(comfyPage, '2')
-        expect(proxyWidgets.length).toBeGreaterThan(0)
+        const promotedWidgets = await getPromotedWidgets(comfyPage, '2')
+        expect(promotedWidgets.length).toBeGreaterThan(0)
         expect(
-          proxyWidgets.some(([interiorNodeId]) => interiorNodeId === '-1')
+          promotedWidgets.some(([interiorNodeId]) => interiorNodeId === '-1')
         ).toBe(false)
         expect(
-          proxyWidgets.some(
+          promotedWidgets.some(
             ([interiorNodeId, widgetName]) =>
               interiorNodeId !== '-1' && widgetName === 'batch_size'
           )
@@ -473,7 +473,7 @@ test.describe(
         )
         await comfyPage.nextFrame()
 
-        const beforePromoted = await getProxyWidgetNames(comfyPage, '11')
+        const beforePromoted = await getPromotedWidgetNames(comfyPage, '11')
         expect(beforePromoted).toContain('text')
 
         const serialized = await comfyPage.page.evaluate(() => {
@@ -485,10 +485,10 @@ test.describe(
         }, serialized as ComfyWorkflowJSON)
         await comfyPage.nextFrame()
 
-        const afterPromoted = await getProxyWidgetNames(comfyPage, '11')
+        const afterPromoted = await getPromotedWidgetNames(comfyPage, '11')
         expect(afterPromoted).toContain('text')
 
-        const widgetCount = await getNodeWidgetCount(comfyPage, '11')
+        const widgetCount = await getPromotedWidgetCount(comfyPage, '11')
         expect(widgetCount).toBeGreaterThan(0)
       })
 
@@ -524,10 +524,10 @@ test.describe(
 
         expect(subgraphNodeIds.length).toBeGreaterThan(1)
         for (const nodeId of subgraphNodeIds) {
-          const proxyWidgets = await getProxyWidgets(comfyPage, nodeId)
-          expect(proxyWidgets.length).toBeGreaterThan(0)
+          const promotedWidgets = await getPromotedWidgets(comfyPage, nodeId)
+          expect(promotedWidgets.length).toBeGreaterThan(0)
           expect(
-            proxyWidgets.some(([, widgetName]) => widgetName === 'text')
+            promotedWidgets.some(([, widgetName]) => widgetName === 'text')
           ).toBe(true)
         }
       })
@@ -565,7 +565,7 @@ test.describe(
         await comfyPage.nextFrame()
 
         // Verify promotions exist
-        const namesBefore = await getProxyWidgetNames(comfyPage, '11')
+        const namesBefore = await getPromotedWidgetNames(comfyPage, '11')
         expect(namesBefore.length).toBeGreaterThan(0)
 
         // Delete the subgraph node
@@ -590,7 +590,7 @@ test.describe(
           'subgraphs/subgraph-with-promoted-text-widget'
         )
 
-        const initialWidgetCount = await getNodeWidgetCount(comfyPage, '11')
+        const initialWidgetCount = await getPromotedWidgetCount(comfyPage, '11')
         expect(initialWidgetCount).toBeGreaterThan(0)
 
         // Navigate into subgraph
@@ -614,7 +614,7 @@ test.describe(
         await comfyPage.nextFrame()
 
         // Widget count should be reduced
-        const finalWidgetCount = await getNodeWidgetCount(comfyPage, '11')
+        const finalWidgetCount = await getPromotedWidgetCount(comfyPage, '11')
         expect(finalWidgetCount).toBeLessThan(initialWidgetCount)
       })
     })
