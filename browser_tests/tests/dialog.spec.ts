@@ -405,7 +405,7 @@ test.describe('Signin dialog', () => {
   test('Paste content to signin dialog should not paste node on canvas', async ({
     comfyPage
   }) => {
-    const nodeNum = (await comfyPage.nodeOps.getNodes()).length
+    const nodeNum = await comfyPage.nodeOps.getNodeCount()
     await comfyPage.canvas.click({
       position: DefaultGraphPositions.emptyLatentWidgetClick
     })
@@ -428,6 +428,6 @@ test.describe('Signin dialog', () => {
     await input.press('Control+v')
     await expect(input).toHaveValue('test_password')
 
-    expect(await comfyPage.nodeOps.getNodes()).toHaveLength(nodeNum)
+    expect(await comfyPage.nodeOps.getNodeCount()).toBe(nodeNum)
   })
 })
