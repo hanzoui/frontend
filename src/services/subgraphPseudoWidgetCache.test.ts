@@ -2,13 +2,13 @@ import { describe, expect, it, vi } from 'vitest'
 
 import { resolveSubgraphPseudoWidgetCache } from '@/services/subgraphPseudoWidgetCache'
 import type {
+  SubgraphPseudoWidget,
   SubgraphPseudoWidgetCache,
   SubgraphPseudoWidgetNode,
   SubgraphPromotionEntry
 } from '@/services/subgraphPseudoWidgetCache'
 
-interface TestWidget {
-  name: string
+interface TestWidget extends SubgraphPseudoWidget {
   isPseudo?: boolean
 }
 

@@ -1,13 +1,9 @@
 import { describe, expect, test } from 'vitest'
 
 import { PromotedWidgetViewManager } from '@/lib/litegraph/src/subgraph/PromotedWidgetViewManager'
+import type { SubgraphPromotionEntry } from '@/services/subgraphPseudoWidgetCache'
 
-type TestEntry = {
-  interiorNodeId: string
-  widgetName: string
-}
-
-function makeView(entry: TestEntry) {
+function makeView(entry: SubgraphPromotionEntry) {
   return {
     key: `${entry.interiorNodeId}:${entry.widgetName}`
   }
