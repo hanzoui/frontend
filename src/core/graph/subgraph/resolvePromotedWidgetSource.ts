@@ -2,7 +2,7 @@ import { isPromotedWidgetView } from '@/core/graph/subgraph/promotedWidgetTypes'
 import type { LGraphNode } from '@/lib/litegraph/src/litegraph'
 import type { IBaseWidget } from '@/lib/litegraph/src/types/widgets'
 
-export interface ResolvedPromotedWidgetSource {
+interface ResolvedPromotedWidgetSource {
   node: LGraphNode
   widget: IBaseWidget
 }
