@@ -1,8 +1,8 @@
 import type { LGraphNode } from '@/lib/litegraph/src/litegraph'
+import { resolveNodeRootGraphId } from '@/lib/litegraph/src/litegraph'
 import { useSettingStore } from '@/platform/settings/settingStore'
 import { isStringInputSpec } from '@/schemas/nodeDef/nodeDefSchemaV2'
 import type { InputSpec } from '@/schemas/nodeDef/nodeDefSchemaV2'
-import { resolveWidgetGraphId } from '@/renderer/extensions/vueNodes/widgets/composables/resolveWidgetGraphId'
 import { app } from '@/scripts/app'
 import type { ComfyWidgetConstructorV2 } from '@/scripts/widgets'
 import { useWidgetValueStore } from '@/stores/widgetValueStore'
@@ -26,14 +26,14 @@ function addMultilineWidget(
 
   const widget = node.addDOMWidget(name, 'customtext', inputEl, {
     getValue(): string {
-      const graphId = resolveWidgetGraphId(node)
+      const graphId = resolveNodeRootGraphId(node, app.rootGraph.id)
       const widgetState = widgetStore.getWidget(graphId, node.id, name)
 
       return (widgetState?.value as string) ?? inputEl.value
     },
     setValue(v: string) {
       inputEl.value = v
-      const graphId = resolveWidgetGraphId(node)
+      const graphId = resolveNodeRootGraphId(node, app.rootGraph.id)
       const widgetState = widgetStore.getWidget(graphId, node.id, name)
       if (widgetState) widgetState.value = v
     }
