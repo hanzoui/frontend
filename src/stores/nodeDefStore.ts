@@ -5,6 +5,7 @@ import { computed, ref, watchEffect } from 'vue'
 
 import { t } from '@/i18n'
 import { isPromotedWidgetView } from '@/core/graph/subgraph/promotedWidgetTypes'
+import { resolvePromotedWidgetSource } from '@/core/graph/subgraph/resolvePromotedWidgetSource'
 import { LiteGraph } from '@/lib/litegraph/src/litegraph'
 import type { LGraphNode } from '@/lib/litegraph/src/litegraph'
 import { transformNodeDefV1ToV2 } from '@/schemas/nodeDef/migration'
@@ -431,10 +432,10 @@ export const useNodeDefStore = defineStore('nodeDef', () => {
     const widget = node.widgets?.find((w) => w.name === widgetName)
     if (!widget || !isPromotedWidgetView(widget)) return undefined
 
-    const subNode = node.subgraph.getNodeById(widget.sourceNodeId)
-    if (!subNode) return undefined
+    const sourceWidget = resolvePromotedWidgetSource(node, widget)
+    if (!sourceWidget) return undefined
 
-    return getInputSpecForWidget(subNode, widget.sourceWidgetName)
+    return getInputSpecForWidget(sourceWidget.node, sourceWidget.widget.name)
   }
 
   /**

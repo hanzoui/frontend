@@ -1,42 +1,26 @@
 import { isPromotedWidgetView } from '@/core/graph/subgraph/promotedWidgetTypes'
+import { resolvePromotedWidgetSource } from '@/core/graph/subgraph/resolvePromotedWidgetSource'
+import type { LGraphNode } from '@/lib/litegraph/src/litegraph'
 import type { IBaseWidget } from '@/lib/litegraph/src/types/widgets'
 
-export type WidgetNodeLike<TNode> = {
-  widgets?: IBaseWidget[]
-  isSubgraphNode: () => boolean
-  subgraph?: {
-    getNodeById: (nodeId: string) => TNode | null | undefined
-  }
-}
-
-type ResolvedWidget<TNode> = {
-  node: TNode
+type ResolvedWidget = {
+  node: LGraphNode
   widget: IBaseWidget
 }
 
-export function resolveWidgetFromHostNode<TNode extends WidgetNodeLike<TNode>>(
-  hostNode: TNode | undefined,
+export function resolveWidgetFromHostNode(
+  hostNode: LGraphNode | undefined,
   widgetName: string
-): ResolvedWidget<TNode> | undefined {
+): ResolvedWidget | undefined {
   if (!hostNode) return undefined
 
   const widget = hostNode.widgets?.find((entry) => entry.name === widgetName)
   if (!widget) return undefined
 
-  if (isPromotedWidgetView(widget) && hostNode.isSubgraphNode()) {
-    const innerNode = hostNode.subgraph?.getNodeById(widget.sourceNodeId)
-    if (!innerNode) return undefined
+  const sourceWidget = resolvePromotedWidgetSource(hostNode, widget)
+  if (sourceWidget) return sourceWidget
 
-    const innerWidget = innerNode.widgets?.find(
-      (entry) => entry.name === widget.sourceWidgetName
-    )
-    if (!innerWidget) return undefined
-
-    return {
-      node: innerNode,
-      widget: innerWidget
-    }
-  }
+  if (isPromotedWidgetView(widget) && hostNode.isSubgraphNode()) return undefined
 
   return {
     node: hostNode,

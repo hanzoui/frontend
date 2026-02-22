@@ -7,6 +7,7 @@ import { reactive, shallowReactive } from 'vue'
 
 import { useChainCallback } from '@/composables/functional/useChainCallback'
 import { isPromotedWidgetView } from '@/core/graph/subgraph/promotedWidgetTypes'
+import { resolvePromotedWidgetSource } from '@/core/graph/subgraph/resolvePromotedWidgetSource'
 import type {
   INodeInputSlot,
   INodeOutputSlot
@@ -110,13 +111,10 @@ export interface GraphNodeManager {
 
 function isPromotedDOMWidget(widget: IBaseWidget): boolean {
   if (!isPromotedWidgetView(widget)) return false
-  if (!widget.node.isSubgraphNode()) return false
-  const innerNode = widget.node.subgraph.getNodeById(widget.sourceNodeId)
-  if (!innerNode) return false
-  const innerWidget = innerNode.widgets?.find(
-    (iw) => iw.name === widget.sourceWidgetName
-  )
-  if (!innerWidget) return false
+  const sourceWidget = resolvePromotedWidgetSource(widget.node, widget)
+  if (!sourceWidget) return false
+
+  const innerWidget = sourceWidget.widget
   return (
     ('element' in innerWidget && !!innerWidget.element) ||
     ('component' in innerWidget && !!innerWidget.component)
