@@ -7,9 +7,9 @@ import TiptapTableRow from '@tiptap/extension-table-row'
 import TiptapStarterKit from '@tiptap/starter-kit'
 import { Markdown as TiptapMarkdown } from 'tiptap-markdown'
 
+import { resolveNodeRootGraphId } from '@/lib/litegraph/src/litegraph'
 import type { LGraphNode } from '@/lib/litegraph/src/litegraph'
 import type { InputSpec } from '@/schemas/nodeDef/nodeDefSchemaV2'
-import { resolveWidgetGraphId } from '@/renderer/extensions/vueNodes/widgets/composables/resolveWidgetGraphId'
 import { app } from '@/scripts/app'
 import type { ComfyWidgetConstructorV2 } from '@/scripts/widgets'
 import { useWidgetValueStore } from '@/stores/widgetValueStore'
@@ -49,14 +49,14 @@ function addMarkdownWidget(
 
   const widget = node.addDOMWidget(name, 'MARKDOWN', inputEl, {
     getValue(): string {
-      const graphId = resolveWidgetGraphId(node)
+      const graphId = resolveNodeRootGraphId(node, app.rootGraph.id)
       const storedValue = widgetStore.getWidget(graphId, node.id, name)?.value
       return typeof storedValue === 'string' ? storedValue : textarea.value
     },
     setValue(v: string) {
       textarea.value = v
       editor.commands.setContent(v)
-      const graphId = resolveWidgetGraphId(node)
+      const graphId = resolveNodeRootGraphId(node, app.rootGraph.id)
       const widgetState = widgetStore.getWidget(graphId, node.id, name)
       if (widgetState) widgetState.value = v
     }
