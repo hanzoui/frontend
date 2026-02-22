@@ -1,8 +1,10 @@
 import type { ComfyPage } from '../fixtures/ComfyPage'
 
-export type ProxyWidgetEntry = [string, string]
+export type PromotedWidgetEntry = [string, string]
 
-export function isProxyWidgetEntry(entry: unknown): entry is ProxyWidgetEntry {
+export function isPromotedWidgetEntry(
+  entry: unknown
+): entry is PromotedWidgetEntry {
   return (
     Array.isArray(entry) &&
     entry.length === 2 &&
@@ -11,32 +13,34 @@ export function isProxyWidgetEntry(entry: unknown): entry is ProxyWidgetEntry {
   )
 }
 
-export function normalizeProxyWidgets(value: unknown): ProxyWidgetEntry[] {
+export function normalizePromotedWidgets(
+  value: unknown
+): PromotedWidgetEntry[] {
   if (!Array.isArray(value)) return []
-  return value.filter(isProxyWidgetEntry)
+  return value.filter(isPromotedWidgetEntry)
 }
 
-export async function getProxyWidgets(
+export async function getPromotedWidgets(
   comfyPage: ComfyPage,
   nodeId: string
-): Promise<ProxyWidgetEntry[]> {
+): Promise<PromotedWidgetEntry[]> {
   const raw = await comfyPage.page.evaluate((id) => {
     const node = window.app!.canvas.graph!.getNodeById(id)
     return node?.properties?.proxyWidgets ?? []
   }, nodeId)
 
-  return normalizeProxyWidgets(raw)
+  return normalizePromotedWidgets(raw)
 }
 
-export async function getProxyWidgetNames(
+export async function getPromotedWidgetNames(
   comfyPage: ComfyPage,
   nodeId: string
 ): Promise<string[]> {
-  const proxyWidgets = await getProxyWidgets(comfyPage, nodeId)
-  return proxyWidgets.map(([, widgetName]) => widgetName)
+  const promotedWidgets = await getPromotedWidgets(comfyPage, nodeId)
+  return promotedWidgets.map(([, widgetName]) => widgetName)
 }
 
-export async function getNodeWidgetCount(
+export async function getPromotedWidgetCount(
   comfyPage: ComfyPage,
   nodeId: string
 ): Promise<number> {
@@ -46,7 +50,7 @@ export async function getNodeWidgetCount(
   }, nodeId)
 }
 
-export async function getNodeWidgetCountByName(
+export async function getPromotedWidgetCountByName(
   comfyPage: ComfyPage,
   nodeId: string,
   widgetName: string
