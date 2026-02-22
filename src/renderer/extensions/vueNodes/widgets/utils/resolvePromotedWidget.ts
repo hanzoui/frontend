@@ -1,7 +1,7 @@
 import { isPromotedWidgetView } from '@/core/graph/subgraph/promotedWidgetTypes'
 import type { IBaseWidget } from '@/lib/litegraph/src/types/widgets'
 
-type WidgetNodeLike<TNode> = {
+export type WidgetNodeLike<TNode> = {
   widgets?: IBaseWidget[]
   isSubgraphNode: () => boolean
   subgraph?: {

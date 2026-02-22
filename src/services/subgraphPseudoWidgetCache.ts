@@ -3,7 +3,7 @@ export interface SubgraphPromotionEntry {
   widgetName: string
 }
 
-interface SubgraphPseudoWidget {
+export interface SubgraphPseudoWidget {
   name: string
 }
 

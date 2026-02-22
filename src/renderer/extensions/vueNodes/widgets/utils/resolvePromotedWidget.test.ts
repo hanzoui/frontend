@@ -1,20 +1,14 @@
 import { describe, expect, it } from 'vitest'
 
+import type { PromotedWidgetView } from '@/core/graph/subgraph/promotedWidgetTypes'
 import type { IBaseWidget } from '@/lib/litegraph/src/types/widgets'
+import type { WidgetNodeLike } from '@/renderer/extensions/vueNodes/widgets/utils/resolvePromotedWidget'
 import { resolveWidgetFromHostNode } from '@/renderer/extensions/vueNodes/widgets/utils/resolvePromotedWidget'
 
-type TestNode = {
-  widgets?: IBaseWidget[]
-  isSubgraphNode: () => boolean
-  subgraph?: {
-    getNodeById: (nodeId: string) => TestNode | null | undefined
-  }
-}
+interface TestNode extends WidgetNodeLike<TestNode> {}
 
-type TestPromotedWidget = IBaseWidget & {
-  sourceNodeId: string
-  sourceWidgetName: string
-}
+type TestPromotedWidget = IBaseWidget &
+  Pick<PromotedWidgetView, 'sourceNodeId' | 'sourceWidgetName'>
 
 function createWidget(name: string): IBaseWidget {
   return {
