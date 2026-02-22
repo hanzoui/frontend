@@ -641,7 +641,7 @@ export class SubgraphNode extends LGraphNode implements BaseLGraph {
       'id' in interiorWidget &&
       ('element' in interiorWidget || 'component' in interiorWidget)
     ) {
-      useDomWidgetStore().clearPositionOverride(interiorWidget.id as string)
+      useDomWidgetStore().clearPositionOverride(String(interiorWidget.id))
     }
   }
 
