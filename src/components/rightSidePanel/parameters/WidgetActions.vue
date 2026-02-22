@@ -6,6 +6,7 @@ import { useI18n } from 'vue-i18n'
 import MoreButton from '@/components/button/MoreButton.vue'
 import Button from '@/components/ui/button/Button.vue'
 import { isPromotedWidgetView } from '@/core/graph/subgraph/promotedWidgetTypes'
+import { resolvePromotedWidgetSource } from '@/core/graph/subgraph/resolvePromotedWidgetSource'
 import {
   demoteWidget,
   promoteWidget
@@ -81,24 +82,13 @@ function handleHideInput() {
   if (!parents?.length) return
 
   if (isPromotedWidgetView(widget)) {
-    const subgraph = parents[0].subgraph
-    const interiorNode = subgraph.getNodeById(widget.sourceNodeId)
-
-    if (!interiorNode) {
-      console.error('Could not find interior node for promoted widget')
+    const sourceWidget = resolvePromotedWidgetSource(node, widget)
+    if (!sourceWidget) {
+      console.error('Could not resolve source widget for promoted widget')
       return
     }
 
-    const originalWidget = interiorNode.widgets?.find(
-      (w) => w.name === widget.sourceWidgetName
-    )
-
-    if (!originalWidget) {
-      console.error('Could not find original widget for promoted widget')
-      return
-    }
-
-    demoteWidget(interiorNode, originalWidget, parents)
+    demoteWidget(sourceWidget.node, sourceWidget.widget, parents)
   } else {
     // For regular widgets (not yet promoted), use them directly
     demoteWidget(node, widget, parents)

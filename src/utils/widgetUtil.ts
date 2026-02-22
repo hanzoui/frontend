@@ -1,4 +1,5 @@
 import { isPromotedWidgetView } from '@/core/graph/subgraph/promotedWidgetTypes'
+import { resolvePromotedWidgetSource } from '@/core/graph/subgraph/resolvePromotedWidgetSource'
 import type { LGraphNode } from '@/lib/litegraph/src/LGraphNode'
 import type { SubgraphNode } from '@/lib/litegraph/src/subgraph/SubgraphNode'
 import type { IBaseWidget } from '@/lib/litegraph/src/types/widgets'
@@ -46,32 +47,19 @@ export function renameWidget(
   parents?: SubgraphNode[]
 ): boolean {
   if (isPromotedWidgetView(widget) && parents?.length) {
-    const view = widget
-    const subgraph = parents[0].subgraph
-    if (!subgraph) {
-      console.error('Could not find subgraph for promoted widget')
-      return false
-    }
-    const interiorNode = subgraph.getNodeById(view.sourceNodeId)
-
-    if (!interiorNode) {
-      console.error('Could not find interior node for promoted widget')
+    const sourceWidget = resolvePromotedWidgetSource(node, widget)
+    if (!sourceWidget) {
+      console.error('Could not resolve source widget for promoted widget')
       return false
     }
 
-    const originalWidget = interiorNode.widgets?.find(
-      (w) => w.name === view.sourceWidgetName
-    )
-
-    if (!originalWidget) {
-      console.error('Could not find original widget for promoted widget')
-      return false
-    }
+    const originalWidget = sourceWidget.widget
+    const interiorNode = sourceWidget.node
 
     originalWidget.label = newLabel || undefined
 
     const interiorInput = interiorNode.inputs?.find(
-      (inp) => inp.widget?.name === view.sourceWidgetName
+      (inp) => inp.widget?.name === originalWidget.name
     )
     if (interiorInput) {
       interiorInput.label = newLabel || undefined

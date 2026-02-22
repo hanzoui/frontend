@@ -1,11 +1,35 @@
 import { describe, expect, it } from 'vitest'
 
 import type { PromotedWidgetView } from '@/core/graph/subgraph/promotedWidgetTypes'
+import { LGraphNode } from '@/lib/litegraph/src/litegraph'
+import type { SubgraphNode } from '@/lib/litegraph/src/subgraph/SubgraphNode'
 import type { IBaseWidget } from '@/lib/litegraph/src/types/widgets'
-import type { WidgetNodeLike } from '@/renderer/extensions/vueNodes/widgets/utils/resolvePromotedWidget'
 import { resolveWidgetFromHostNode } from '@/renderer/extensions/vueNodes/widgets/utils/resolvePromotedWidget'
 
-interface TestNode extends WidgetNodeLike<TestNode> {}
+class TestNode extends LGraphNode {
+  constructor(widgets: IBaseWidget[]) {
+    super('TestNode')
+    this.widgets = widgets
+  }
+}
+
+class TestSubgraphNode extends TestNode {
+  constructor(
+    widgets: IBaseWidget[],
+    innerNodesById: Record<string, LGraphNode> = {}
+  ) {
+    super(widgets)
+    this.subgraph = {
+      getNodeById: (nodeId: string) => innerNodesById[nodeId]
+    } as SubgraphNode['subgraph']
+  }
+
+  override isSubgraphNode(): this is SubgraphNode {
+    return true
+  }
+
+  readonly subgraph: SubgraphNode['subgraph']
+}
 
 type TestPromotedWidget = IBaseWidget &
   Pick<PromotedWidgetView, 'sourceNodeId' | 'sourceWidgetName'>
@@ -35,17 +59,13 @@ function createHostNode(
   widgets: IBaseWidget[],
   options: {
     isSubgraphNode?: boolean
-    innerNodesById?: Record<string, TestNode>
+    innerNodesById?: Record<string, LGraphNode>
   } = {}
-): TestNode {
+): LGraphNode {
   const { isSubgraphNode = false, innerNodesById = {} } = options
-  return {
-    widgets,
-    isSubgraphNode: () => isSubgraphNode,
-    subgraph: {
-      getNodeById: (nodeId: string) => innerNodesById[nodeId]
-    }
-  }
+  return isSubgraphNode
+    ? new TestSubgraphNode(widgets, innerNodesById)
+    : new TestNode(widgets)
 }
 
 describe('resolveWidgetFromHostNode', () => {
