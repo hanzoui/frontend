@@ -123,6 +123,7 @@ export type IWidget =
   | IAssetWidget
   | IImageCropWidget
   | IBoundingBoxWidget
+  | ICurveWidget
 
 export interface IBooleanWidget extends IBaseWidget<boolean, 'toggle'> {
   type: 'toggle'
@@ -313,6 +314,13 @@ export interface IImageCropWidget extends IBaseWidget<Bounds, 'imagecrop'> {
 export interface IBoundingBoxWidget extends IBaseWidget<Bounds, 'boundingbox'> {
   type: 'boundingbox'
   value: Bounds
+}
+
+export type CurvePoint = [x: number, y: number]
+
+export interface ICurveWidget extends IBaseWidget<CurvePoint[], 'curve'> {
+  type: 'curve'
+  value: CurvePoint[]
 }
 
 /**
