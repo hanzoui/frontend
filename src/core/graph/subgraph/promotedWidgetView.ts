@@ -43,7 +43,7 @@ type LegacyMouseWidget = IBaseWidget & {
 }
 
 function hasLegacyMouse(widget: IBaseWidget): widget is LegacyMouseWidget {
-  return typeof (widget as Partial<LegacyMouseWidget>).mouse === 'function'
+  return 'mouse' in widget && typeof widget.mouse === 'function'
 }
 
 export function createPromotedWidgetView(
@@ -88,7 +88,7 @@ class PromotedWidgetViewImpl implements PromotedWidgetView {
     this.sourceNodeId = nodeId
     this.sourceWidgetName = widgetName
     this.graphId = subgraphNode.rootGraph.id
-    this.bareNodeId = stripGraphPrefix(nodeId as NodeId)
+    this.bareNodeId = stripGraphPrefix(nodeId)
   }
 
   get node(): SubgraphNode {
@@ -165,14 +165,16 @@ class PromotedWidgetViewImpl implements PromotedWidgetView {
 
   get computeLayoutSize(): IBaseWidget['computeLayoutSize'] {
     const resolved = this.resolve()
-    if (!resolved?.widget.computeLayoutSize) return undefined
-    return (node: LGraphNode) => resolved.widget.computeLayoutSize!(node)
+    const computeLayoutSize = resolved?.widget.computeLayoutSize
+    if (!computeLayoutSize) return undefined
+    return (node: LGraphNode) => computeLayoutSize.call(resolved.widget, node)
   }
 
   get computeSize(): IBaseWidget['computeSize'] {
     const resolved = this.resolve()
-    if (!resolved?.widget.computeSize) return undefined
-    return (width?: number) => resolved.widget.computeSize!(width)
+    const computeSize = resolved?.widget.computeSize
+    if (!computeSize) return undefined
+    return (width?: number) => computeSize.call(resolved.widget, width)
   }
 
   draw(
@@ -288,9 +290,12 @@ class PromotedWidgetViewImpl implements PromotedWidgetView {
     canvas: LGraphCanvas,
     concrete: BaseWidget
   ): boolean {
+    const downEvent = pointer.eDown
+    if (!downEvent) return false
+
     pointer.onClick = () =>
       concrete.onClick({
-        e: pointer.eDown!,
+        e: downEvent,
         node: this.subgraphNode,
         canvas
       })

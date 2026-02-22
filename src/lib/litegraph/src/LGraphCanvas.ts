@@ -8899,6 +8899,6 @@ export function remapClipboardSubgraphNodeIds(
 
   for (const nodeInfo of allNodeInfo) {
     if (typeof nodeInfo.type !== 'string') continue
-    remapProxyWidgets(nodeInfo, subgraphNodeIdMap.get(nodeInfo.type as UUID))
+    remapProxyWidgets(nodeInfo, subgraphNodeIdMap.get(nodeInfo.type))
   }
 }

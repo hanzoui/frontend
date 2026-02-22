@@ -50,10 +50,8 @@ function addMarkdownWidget(
   const widget = node.addDOMWidget(name, 'MARKDOWN', inputEl, {
     getValue(): string {
       const graphId = resolveWidgetGraphId(node)
-      return (
-        (widgetStore.getWidget(graphId, node.id, name)?.value as string) ??
-        textarea.value
-      )
+      const storedValue = widgetStore.getWidget(graphId, node.id, name)?.value
+      return typeof storedValue === 'string' ? storedValue : textarea.value
     },
     setValue(v: string) {
       textarea.value = v
