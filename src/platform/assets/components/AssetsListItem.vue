@@ -57,7 +57,11 @@
             class="size-full object-cover"
           />
         </div>
-        <div v-else class="flex size-full items-center justify-center">
+        <div
+          v-else
+          class="flex size-full items-center justify-center"
+          @click="emit('preview-click')"
+        >
           <i
             aria-hidden="true"
             :class="
