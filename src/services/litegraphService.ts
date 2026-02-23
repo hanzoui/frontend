@@ -9,7 +9,7 @@ import { useNodeImage, useNodeVideo } from '@/composables/node/useNodeImage'
 import {
   addWidgetPromotionOptions,
   isPreviewPseudoWidget
-} from '@/core/graph/subgraph/proxyWidgetUtils'
+} from '@/core/graph/subgraph/promotionUtils'
 import { applyDynamicInputs } from '@/core/graph/widgets/dynamicWidgets'
 import { st, t } from '@/i18n'
 import {

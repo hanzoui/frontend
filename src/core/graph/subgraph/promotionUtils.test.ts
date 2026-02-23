@@ -21,7 +21,7 @@ import {
   isPreviewPseudoWidget,
   promoteRecommendedWidgets,
   pruneDisconnected
-} from './proxyWidgetUtils'
+} from './promotionUtils'
 
 function widget(
   overrides: Partial<

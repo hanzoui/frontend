@@ -11,7 +11,7 @@ import type {
   LGraphNode,
   SubgraphNode
 } from '@/lib/litegraph/src/litegraph'
-import { promoteRecommendedWidgets } from '@/core/graph/subgraph/proxyWidgetUtils'
+import { promoteRecommendedWidgets } from '@/core/graph/subgraph/promotionUtils'
 import { app } from '@/scripts/app'
 import { isLGraphGroup, isLGraphNode, isReroute } from '@/utils/litegraphUtil'
 

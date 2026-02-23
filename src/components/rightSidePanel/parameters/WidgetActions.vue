@@ -10,7 +10,7 @@ import { resolvePromotedWidgetSource } from '@/core/graph/subgraph/resolvePromot
 import {
   demoteWidget,
   promoteWidget
-} from '@/core/graph/subgraph/proxyWidgetUtils'
+} from '@/core/graph/subgraph/promotionUtils'
 import type { LGraphNode } from '@/lib/litegraph/src/litegraph'
 import type { SubgraphNode } from '@/lib/litegraph/src/subgraph/SubgraphNode'
 import type { IBaseWidget } from '@/lib/litegraph/src/types/widgets'
