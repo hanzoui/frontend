@@ -121,7 +121,9 @@ function isPromotedDOMWidget(widget: IBaseWidget): boolean {
   )
 }
 
-function getControlWidget(widget: IBaseWidget): SafeControlWidget | undefined {
+export function getControlWidget(
+  widget: IBaseWidget
+): SafeControlWidget | undefined {
   const cagWidget = widget.linkedWidgets?.find(
     (w) => w.name == 'control_after_generate'
   )
@@ -132,22 +134,12 @@ function getControlWidget(widget: IBaseWidget): SafeControlWidget | undefined {
   }
 }
 
-/**
- * Shared widget enhancements used by both safeWidgetMapper and Right Side Panel
- */
 interface SharedWidgetEnhancements {
-  /** Control widget for seed randomization/increment/decrement */
   controlWidget?: SafeControlWidget
-  /** Input specification from node definition */
   spec?: InputSpec
 }
 
-/**
- * Extracts common widget enhancements shared across different rendering contexts.
- * This function centralizes the logic for extracting metadata from widgets.
- * Note: Value and metadata (label, options, hidden, etc.) are accessed via widgetValueStore.
- */
-export function getSharedWidgetEnhancements(
+function getSharedWidgetEnhancements(
   node: LGraphNode,
   widget: IBaseWidget
 ): SharedWidgetEnhancements {

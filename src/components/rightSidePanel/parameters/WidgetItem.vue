@@ -3,8 +3,8 @@ import { computed, customRef, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import EditableText from '@/components/common/EditableText.vue'
-import { getSharedWidgetEnhancements } from '@/composables/graph/useGraphNodeManager'
-import { isPromotedWidgetView } from '@/core/graph/subgraph/promotedWidgetTypes'
+import { getControlWidget } from '@/composables/graph/useGraphNodeManager'
+import { resolvePromotedWidgetSource } from '@/core/graph/subgraph/resolvePromotedWidgetSource'
 import { st } from '@/i18n'
 import type { LGraphNode } from '@/lib/litegraph/src/litegraph'
 import type { SubgraphNode } from '@/lib/litegraph/src/subgraph/SubgraphNode'
@@ -15,7 +15,13 @@ import {
   getComponent,
   shouldExpand
 } from '@/renderer/extensions/vueNodes/widgets/registry/widgetRegistry'
+import { useNodeDefStore } from '@/stores/nodeDefStore'
+import {
+  useWidgetValueStore,
+  stripGraphPrefix
+} from '@/stores/widgetValueStore'
 import { useFavoritedWidgetsStore } from '@/stores/workspace/favoritedWidgetsStore'
+import type { SimplifiedWidget } from '@/types/simplifiedWidget'
 import { resolveNodeDisplayName } from '@/utils/nodeTitleUtil'
 import { cn } from '@/utils/tailwindUtil'
 import { renameWidget } from '@/utils/widgetUtil'
@@ -49,6 +55,8 @@ const emit = defineEmits<{
 const { t } = useI18n()
 
 const canvasStore = useCanvasStore()
+const nodeDefStore = useNodeDefStore()
+const widgetValueStore = useWidgetValueStore()
 const favoritedWidgetsStore = useFavoritedWidgetsStore()
 const isEditing = ref(false)
 
@@ -57,17 +65,32 @@ const widgetComponent = computed(() => {
   return component || WidgetLegacy
 })
 
-const enhancedWidget = computed(() => {
-  // Get shared enhancements (reactive value, controlWidget, spec, nodeType, etc.)
-  const enhancements = getSharedWidgetEnhancements(node, widget)
-  return { ...widget, ...enhancements }
+function resolveSourceWidget(): { node: LGraphNode; widget: IBaseWidget } {
+  const source = resolvePromotedWidgetSource(node, widget)
+  return source ?? { node, widget }
+}
+
+const simplifiedWidget = computed((): SimplifiedWidget => {
+  const { node: sourceNode, widget: sourceWidget } = resolveSourceWidget()
+  const graphId = node.graph?.rootGraph?.id
+  const bareNodeId = stripGraphPrefix(String(sourceNode.id))
+  const widgetState = graphId
+    ? widgetValueStore.getWidget(graphId, bareNodeId, sourceWidget.name)
+    : undefined
+
+  return {
+    name: widget.name,
+    type: widget.type,
+    value: widgetState?.value ?? widget.value,
+    label: widgetState?.label ?? widget.label,
+    options: widgetState?.options ?? widget.options,
+    spec: nodeDefStore.getInputSpecForWidget(sourceNode, sourceWidget.name),
+    controlWidget: getControlWidget(sourceWidget)
+  }
 })
 
 const sourceNodeName = computed((): string | null => {
-  let sourceNode: LGraphNode | null = node
-  if (isPromotedWidgetView(widget) && node.isSubgraphNode()) {
-    sourceNode = node.subgraph.getNodeById(widget.sourceNodeId) ?? null
-  }
+  const sourceNode = resolvePromotedWidgetSource(node, widget)?.node ?? node
   if (!sourceNode) return null
   const fallbackNodeTitle = t('rightSidePanel.fallbackNodeTitle')
   return resolveNodeDisplayName(sourceNode, {
@@ -174,7 +197,7 @@ const displayLabel = customRef((track, trigger) => {
     <component
       :is="widgetComponent"
       v-model="widgetValue"
-      :widget="enhancedWidget"
+      :widget="simplifiedWidget"
       :node-id="String(node.id)"
       :node-type="node.type"
       :class="cn('col-span-1', shouldExpand(widget.type) && 'min-h-36')"
