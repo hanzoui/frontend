@@ -34,6 +34,7 @@ import {
   type NodeId,
   isSubgraphDefinition
 } from '@/platform/workflow/validation/schemas/workflowSchema'
+import { buildSubgraphExecutionPaths } from '@/utils/nodeExecutionUtil'
 import type {
   ExecutionErrorWsMessage,
   NodeError,
@@ -1188,7 +1189,9 @@ export class ComfyApp {
             type: n.type,
             nodeId: executionId,
             cnrId,
-            ...(displayName && { hint: `in subgraph '${displayName}'` }),
+            ...(displayName && {
+              hint: t('g.inSubgraph', { name: displayName })
+            }),
             isReplaceable: replacement !== null,
             replacement: replacement ?? undefined
           })
@@ -1207,31 +1210,25 @@ export class ComfyApp {
     // Process nodes at the top level
     collectMissingNodesAndModels(graphData.nodes)
 
-    // Build map: subgraph definition UUID → container node LiteGraph ID
-    // A SubgraphNode in graphData.nodes has type === subgraph definition UUID.
-    const subgraphDefIds = new Set(
-      graphData.definitions?.subgraphs
-        ?.filter(isSubgraphDefinition)
-        .map((s) => s.id) ?? []
+    // Build map: subgraph definition UUID → full execution path prefix.
+    // Handles arbitrary nesting depth (e.g. root node 11 → "11", node 14 in sg 11 → "11:14").
+    const subgraphContainerIdMap = buildSubgraphExecutionPaths(
+      graphData.nodes,
+      graphData.definitions?.subgraphs ?? []
     )
-    const subgraphContainerIdMap = new Map<string, string>()
-    for (const node of graphData.nodes ?? []) {
-      if (typeof node.type === 'string' && subgraphDefIds.has(node.type)) {
-        subgraphContainerIdMap.set(node.type, String(node.id))
-      }
-    }
 
     // Process nodes in subgraphs
     if (graphData.definitions?.subgraphs) {
       for (const subgraph of graphData.definitions.subgraphs) {
         if (isSubgraphDefinition(subgraph)) {
-          // Use the container node's LiteGraph ID as path prefix so the
-          // resulting nodeId is a valid execution ID: "containerNodeId:localNodeId"
-          collectMissingNodesAndModels(
-            subgraph.nodes,
-            subgraphContainerIdMap.get(subgraph.id) ?? '',
-            subgraph.name || subgraph.id
-          )
+          const paths = subgraphContainerIdMap.get(subgraph.id) ?? []
+          for (const pathPrefix of paths) {
+            collectMissingNodesAndModels(
+              subgraph.nodes,
+              pathPrefix,
+              subgraph.name || subgraph.id
+            )
+          }
         }
       }
     }
