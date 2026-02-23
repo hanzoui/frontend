@@ -47,7 +47,7 @@ components.d.ts
 
 # Ignore test data.
 tests-ui/data/*
-tests-ui/Hanzo Studio_examples
+tests-ui/HanzoStudio_examples
 tests-ui/workflows/examples
 coverage/
 

@@ -27,7 +27,7 @@ Have another idea? Drop into Discord or open an issue, and let's chat!
 
    ```bash
    git clone https://github.com/hanzoui/frontend.git
-   cd Hanzo Studio_frontend
+   cd HanzoStudio_frontend
    ```
 
 2. Install dependencies:

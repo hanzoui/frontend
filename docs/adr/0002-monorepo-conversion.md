@@ -1,4 +1,4 @@
-# 2. Restructure Hanzo Studio_frontend as a monorepo
+# 2. Restructure HanzoStudio_frontend as a monorepo
 
 Date: 2025-08-25
 

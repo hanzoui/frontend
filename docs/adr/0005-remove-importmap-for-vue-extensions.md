@@ -92,6 +92,6 @@ Affected versions:
 
 ## Notes
 
-- [Hanzo Studio_frontend_vue_basic](https://github.com/jtydhr88/Hanzo Studio_frontend_vue_basic) has been updated to demonstrate the new bundled pattern
+- [HanzoStudio_frontend_vue_basic](https://github.com/jtydhr88/HanzoStudio_frontend_vue_basic) has been updated to demonstrate the new bundled pattern
 - Issue #7267 documents the user-facing impact and migration discussion
 - Future Extension API v2 (Issue #4668) may provide alternative mechanisms for shared dependencies

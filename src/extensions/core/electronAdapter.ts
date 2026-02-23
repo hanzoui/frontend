@@ -301,7 +301,7 @@ import { electronAPI as getElectronAPI } from '@/utils/envUtil'
 
     aboutPageBadges: [
       {
-        label: 'Hanzo Studio_desktop v' + desktopAppVersion,
+        label: 'HanzoStudio_desktop v' + desktopAppVersion,
         url: staticUrls.githubElectron,
         icon: 'pi pi-github'
       }

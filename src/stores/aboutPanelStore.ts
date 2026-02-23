@@ -46,7 +46,7 @@ export const useAboutPanelStore = defineStore('aboutPanel', () => {
       icon: isCloud ? 'pi pi-cloud' : 'pi pi-github'
     },
     {
-      label: `Hanzo Studio_frontend v${frontendVersion}`,
+      label: `HanzoStudio_frontend v${frontendVersion}`,
       url: staticUrls.githubFrontend,
       icon: 'pi pi-github'
     },

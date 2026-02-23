@@ -1,6 +1,6 @@
 <div align="center">
 
-# Hanzo Studio_frontend
+# HanzoStudio_frontend
 
 **Official front-end implementation of [Hanzo Studio](https://github.com/hanzoai/studio).**
 

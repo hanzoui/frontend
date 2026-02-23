@@ -197,7 +197,7 @@ test.describe('Node search box', { tag: '@node' }, () => {
       147 |       // Verify the node search dialog is still visible
       148 |       expect(comfyPage.searchBox.input).toBeVisible()
 
-        at /home/runner/work/Hanzo Studio_frontend/Hanzo Studio_frontend/Hanzo Studio_frontend/browser_tests/nodeSearchBox.spec.ts:145:32
+        at /home/runner/work/HanzoStudio_frontend/HanzoStudio_frontend/HanzoStudio_frontend/browser_tests/nodeSearchBox.spec.ts:145:32
      */
     test.skip('Outer click dismisses filter panel but keeps search box visible', async ({
       comfyPage

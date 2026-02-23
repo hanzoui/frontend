@@ -39,7 +39,7 @@ test.describe(
     })
 
     const urls = [
-      'https://hanzoai.github.io/Hanzo Studio_examples/hidream/hidream_dev_example.png'
+      'https://hanzoai.github.io/HanzoStudio_examples/hidream/hidream_dev_example.png'
     ]
     urls.forEach(async (url) => {
       test(`Load workflow from URL ${url} (drop from different browser tabs)`, async ({

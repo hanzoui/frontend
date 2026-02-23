@@ -22,7 +22,7 @@ const UNKNOWN_NODE_SOURCE: NodeSource = {
 
 const shortenNodeName = (name: string) => {
   return name
-    .replace(/^(Hanzo Studio-|Hanzo Studio_|Comfy-|Comfy_)/, '')
+    .replace(/^(Hanzo Studio-|HanzoStudio_|Comfy-|Comfy_)/, '')
     .replace(/(-Hanzo Studio|_Hanzo Studio|-Comfy|_Comfy)$/, '')
 }
 
