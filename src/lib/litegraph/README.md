@@ -1,6 +1,6 @@
 # @ComfyOrg/litegraph
 
-This is the litegraph version used in [HanzoStudio_frontend](https://github.com/hanzoui/frontend).
+This is the litegraph version used in [Hanzo Frontend](https://github.com/hanzoui/frontend).
 
 It is a fork of the original `litegraph.js`. Some APIs may by unchanged, however it is largely incompatible with the original.
 
