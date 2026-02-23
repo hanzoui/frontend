@@ -211,7 +211,7 @@ describe('useSubgraphStore', () => {
         {
           global_bp: {
             name: 'Global Blueprint',
-            info: { node_pack: 'comfyui-ltx-video-0fbc55c6-long-uuid' },
+            info: { node_pack: 'hanzo-studio-ltx-video-0fbc55c6-long-uuid' },
             data: JSON.stringify(mockGraph)
           }
         }

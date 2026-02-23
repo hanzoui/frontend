@@ -26,13 +26,13 @@ describe('useLegacySearchTip', () => {
       expect(isLegacyManagerSearch.value).toBe(true)
     })
 
-    it('returns true when searching "comfyui-manager"', async () => {
+    it('returns true when searching "hanzo-studio-manager"', async () => {
       const { isLegacyManagerSearch } = useLegacySearchTip(
         searchQuery,
         isNewManagerUI
       )
 
-      searchQuery.value = 'comfyui-manager'
+      searchQuery.value = 'hanzo-studio-manager'
       await nextTick()
 
       expect(isLegacyManagerSearch.value).toBe(true)

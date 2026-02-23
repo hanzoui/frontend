@@ -8,7 +8,7 @@ body:
     attributes:
       label: Prerequisites
       options:
-        - label: I am running the latest version of ComfyUI
+        - label: I am running the latest version of Hanzo Studio
           required: true
         - label: I have custom nodes enabled
 
@@ -44,7 +44,7 @@ body:
     attributes:
       label: How is this affecting you?
       options:
-        - Crashes ComfyUI completely
+        - Crashes Hanzo Studio completely
         - Workflow won't execute
         - Feature doesn't work as expected
         - Visual/UI issue only
@@ -55,7 +55,7 @@ body:
   - type: input
     id: version
     attributes:
-      label: ComfyUI Frontend Version
+      label: Hanzo Frontend Version
       description: Found in Settings > About (e.g., "1.3.45")
       placeholder: '1.3.45'
     validations:

@@ -68,7 +68,7 @@
 </template>
 
 <script setup lang="ts">
-import type { TorchDeviceType } from '@comfyorg/comfyui-electron-types'
+import type { TorchDeviceType } from '@hanzoui/hanzo-studio-electron-types'
 import Tag from 'primevue/tag'
 import { computed } from 'vue'
 

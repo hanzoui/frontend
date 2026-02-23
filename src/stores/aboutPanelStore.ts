@@ -16,7 +16,7 @@ export const useAboutPanelStore = defineStore('aboutPanel', () => {
   const systemStatsStore = useSystemStatsStore()
   const { staticUrls } = useExternalLink()
   const coreVersion = computed(
-    () => systemStatsStore?.systemStats?.system?.comfyui_version ?? ''
+    () => systemStatsStore?.systemStats?.system?.hanzo_studio_version ?? ''
   )
   const templatesVersion = computed(
     () =>
@@ -34,19 +34,19 @@ export const useAboutPanelStore = defineStore('aboutPanel', () => {
   )
 
   const coreBadges = computed<AboutPageBadge[]>(() => [
-    // In electron, the ComfyUI is packaged without the git repo,
+    // In electron, the Hanzo Studio is packaged without the git repo,
     // so the python server's API doesn't have the version info.
     {
-      label: `ComfyUI ${
+      label: `Hanzo Studio ${
         isDesktop
-          ? 'v' + electronAPI().getComfyUIVersion()
+          ? 'v' + electronAPI().getHanzo StudioVersion()
           : formatCommitHash(coreVersion.value)
       }`,
       url: isCloud ? staticUrls.comfyOrg : staticUrls.github,
       icon: isCloud ? 'pi pi-cloud' : 'pi pi-github'
     },
     {
-      label: `ComfyUI_frontend v${frontendVersion}`,
+      label: `Hanzo Studio_frontend v${frontendVersion}`,
       url: staticUrls.githubFrontend,
       icon: 'pi pi-github'
     },
@@ -54,7 +54,7 @@ export const useAboutPanelStore = defineStore('aboutPanel', () => {
       ? [
           {
             label: `Templates v${templatesVersion.value}`,
-            url: 'https://pypi.org/project/comfyui-workflow-templates/',
+            url: 'https://pypi.org/project/hanzo-studio-workflow-templates/',
             icon: 'pi pi-book',
             ...(isTemplatesOutdated.value
               ? { severity: 'danger' as const }

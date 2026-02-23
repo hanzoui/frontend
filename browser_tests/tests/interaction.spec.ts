@@ -216,7 +216,7 @@ test.describe('Node Interaction', () => {
       await expect(comfyPage.canvas).toHaveScreenshot('moved-link.png')
     })
 
-    // Shift drag copy link regressed. See https://github.com/Comfy-Org/ComfyUI_frontend/issues/2941
+    // Shift drag copy link regressed. See https://github.com/hanzoui/frontend/issues/2941
     test.skip('Can copy link by shift-drag existing link', async ({
       comfyPage
     }) => {
@@ -598,7 +598,7 @@ test.describe('Canvas Interaction', { tag: '@screenshot' }, () => {
     expect(await getCursorStyle()).toBe('default')
   })
 
-  // https://github.com/Comfy-Org/litegraph.js/pull/424
+  // https://github.com/hanzoui/litegraph.js/pull/424
   test('Properly resets dragging state after pan mode sequence', async ({
     comfyPage
   }) => {

@@ -23,7 +23,7 @@
       "custom": "سفارشی",
       "default": "پیش‌فرض"
     },
-    "tooltip": "سفارشی: نوار عنوان سیستم با منوی بالای ComfyUI جایگزین می‌شود"
+    "tooltip": "سفارشی: نوار عنوان سیستم با منوی بالای Hanzo Studio جایگزین می‌شود"
   },
   "Comfy_Canvas_BackgroundImage": {
     "name": "تصویر پس‌زمینه بوم",

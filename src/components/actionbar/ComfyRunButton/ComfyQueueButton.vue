@@ -5,7 +5,7 @@
         value: queueButtonTooltip,
         showDelay: 600
       }"
-      class="comfyui-queue-button"
+      class="hanzo-studio-queue-button"
       :label="queueButtonLabel"
       :severity="queueButtonSeverity"
       size="small"
@@ -203,7 +203,7 @@ const queuePrompt = async (e: Event) => {
 </script>
 
 <style scoped>
-.comfyui-queue-button :deep(.p-splitbutton-dropdown) {
+.hanzo-studio-queue-button :deep(.p-splitbutton-dropdown) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }

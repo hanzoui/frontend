@@ -120,23 +120,23 @@ describe('hostWhitelist utils', () => {
       })
     })
 
-    describe('comfy.org hosts', () => {
+    describe('hanzo.ai hosts', () => {
       it.each([
-        'staging.comfy.org',
-        'stagingcloud.comfy.org',
-        'pr-123.testingcloud.comfy.org',
-        'api.v2.staging.comfy.org'
+        'staging.hanzo.ai',
+        'stagingcloud.hanzo.ai',
+        'pr-123.testingcloud.hanzo.ai',
+        'api.v2.staging.hanzo.ai'
       ])('should allow %o', (input) => {
         expect(isHostWhitelisted(input)).toBe(true)
       })
 
       it.each([
-        'comfy.org.evil.com',
-        'evil-comfy.org',
-        'comfy.organization',
-        'notcomfy.org',
-        'comfy.org.hacker.net',
-        'mycomfy.org.example.com'
+        'hanzo.ai.evil.com',
+        'evil-hanzo.ai',
+        'hanzo.aianization',
+        'nothanzo.ai',
+        'hanzo.ai.hacker.net',
+        'myhanzo.ai.example.com'
       ])('should NOT allow %o', (input) => {
         expect(isHostWhitelisted(input)).toBe(false)
       })

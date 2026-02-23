@@ -26,7 +26,7 @@ const HARD_BLACKLIST = new Set([
 
 /**
  * Core menu items - items that should appear in the main menu, not under Extensions
- * Includes both LiteGraph base menu items and ComfyUI built-in functionality
+ * Includes both LiteGraph base menu items and Hanzo Studio built-in functionality
  */
 const CORE_MENU_ITEMS = new Set([
   // Basic operations
@@ -132,7 +132,7 @@ function isDuplicateItem(label: string, existingItems: MenuOption[]): boolean {
 
 /**
  * Check if a menu item is a core menu item (not an extension)
- * Core items include LiteGraph base items and ComfyUI built-in functionality
+ * Core items include LiteGraph base items and Hanzo Studio built-in functionality
  */
 function isCoreMenuItem(label: string): boolean {
   return CORE_MENU_ITEMS.has(label)

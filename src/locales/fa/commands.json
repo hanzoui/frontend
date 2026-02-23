@@ -164,20 +164,20 @@
   "Comfy_GroupNode_UngroupSelectedGroupNodes": {
     "label": "خارج کردن گروه نودهای انتخاب‌شده از گروه"
   },
-  "Comfy_Help_AboutComfyUI": {
-    "label": "درباره ComfyUI"
+  "Comfy_Help_AboutHanzo Studio": {
+    "label": "درباره Hanzo Studio"
   },
   "Comfy_Help_OpenComfyOrgDiscord": {
-    "label": "بازکردن دیسکورد Comfy-Org"
+    "label": "بازکردن دیسکورد hanzoui"
   },
-  "Comfy_Help_OpenComfyUIDocs": {
-    "label": "بازکردن مستندات ComfyUI"
+  "Comfy_Help_OpenHanzo StudioDocs": {
+    "label": "بازکردن مستندات Hanzo Studio"
   },
-  "Comfy_Help_OpenComfyUIForum": {
-    "label": "بازکردن انجمن ComfyUI"
+  "Comfy_Help_OpenHanzo StudioForum": {
+    "label": "بازکردن انجمن Hanzo Studio"
   },
-  "Comfy_Help_OpenComfyUIIssues": {
-    "label": "بازکردن مشکلات ComfyUI"
+  "Comfy_Help_OpenHanzo StudioIssues": {
+    "label": "بازکردن مشکلات Hanzo Studio"
   },
   "Comfy_Interrupt": {
     "label": "توقف"

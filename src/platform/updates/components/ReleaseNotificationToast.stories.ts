@@ -12,7 +12,7 @@ const mockReleases: ReleaseNote[] = [
     version: '1.2.3',
     attention: 'medium',
     published_at: '2024-01-15T10:00:00Z',
-    content: `# ComfyUI 1.2.3 Release
+    content: `# Hanzo Studio 1.2.3 Release
 
 **What's new**
 
@@ -29,11 +29,11 @@ New features and improvements for better workflow management.
     version: '1.2.4',
     attention: 'high',
     published_at: '2024-02-01T14:30:00Z',
-    content: `# ComfyUI 1.2.4 Major Release
+    content: `# Hanzo Studio 1.2.4 Major Release
 
 **What's new**
 
-Revolutionary updates that change how you create with ComfyUI.
+Revolutionary updates that change how you create with Hanzo Studio.
 
 - **Real-time Collaboration**: Share and edit workflows with your team in real-time
 - **Advanced Upscaling**: New ESRGAN and Real-ESRGAN models built-in
@@ -47,7 +47,7 @@ Revolutionary updates that change how you create with ComfyUI.
     version: '1.3.0',
     attention: 'high',
     published_at: '2024-03-10T09:15:00Z',
-    content: `# ComfyUI 1.3.0 - The Biggest Update Yet
+    content: `# Hanzo Studio 1.3.0 - The Biggest Update Yet
 
 **What's new**
 
@@ -147,7 +147,7 @@ export const LongContent: Story = {
       version: '1.4.0',
       attention: 'high',
       published_at: '2024-04-05T11:00:00Z',
-      content: `# ComfyUI 1.4.0 - Comprehensive Update
+      content: `# Hanzo Studio 1.4.0 - Comprehensive Update
 
 **What's new**
 

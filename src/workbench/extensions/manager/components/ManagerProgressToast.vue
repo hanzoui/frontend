@@ -179,7 +179,7 @@ async function handleRestart() {
 
     useEventListener(api, 'reconnected', onReconnect, { once: true })
 
-    await useComfyManagerService().rebootComfyUI()
+    await useComfyManagerService().rebootHanzo Studio()
   } catch (error) {
     await settingStore.set(
       'Comfy.Toast.DisableReconnectingToast',

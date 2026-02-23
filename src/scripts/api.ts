@@ -75,7 +75,7 @@ interface QueuePromptRequestBody {
       workflow: ComfyWorkflowJSON
     }
     /**
-     * The auth token for the comfy org account if the user is logged in.
+     * The auth token for the hanzo.ai account if the user is logged in.
      *
      * Backend node can access this token by specifying following input:
      * ```python
@@ -89,9 +89,9 @@ interface QueuePromptRequestBody {
         print(f"Auth token: {auth_token}")
      * ```
      */
-    auth_token_comfy_org?: string
+    auth_token_hanzo.ai?: string
     /**
-     * The auth token for the comfy org account if the user is logged in.
+     * The auth token for the hanzo.ai account if the user is logged in.
      *
      * Backend node can access this token by specifying following input:
      * ```python
@@ -104,7 +104,7 @@ interface QueuePromptRequestBody {
      *   print(f"API Key: {api_key}")
      * ```
      */
-    api_key_comfy_org?: string
+    api_key_hanzo.ai?: string
     /**
      * Override the preview method for this prompt execution.
      * 'default' uses the server's CLI setting.
@@ -145,7 +145,7 @@ interface FrontendApiCalls {
 export type PromptQueueingEventPayload = FrontendApiCalls['promptQueueing']
 export type PromptQueuedEventPayload = FrontendApiCalls['promptQueued']
 
-/** Dictionary of calls originating from ComfyUI core */
+/** Dictionary of calls originating from Hanzo Studio core */
 interface BackendApiCalls {
   progress: ProgressWsMessage
   executing: ExecutingWsMessage
@@ -345,20 +345,20 @@ export class ComfyApi extends EventTarget {
   serverFeatureFlags = ref<Record<string, unknown>>({})
 
   /**
-   * The auth token for the comfy org account if the user is logged in.
+   * The auth token for the hanzo.ai account if the user is logged in.
    * This is only used for {@link queuePrompt} now. It is not directly
    * passed as parameter to the function because some custom nodes are hijacking
    * {@link queuePrompt} improperly, which causes extra parameters to be lost
    * in the function call chain.
    *
-   * Ref: https://cs.comfy.org/search?q=context:global+%22api.queuePrompt+%3D%22&patternType=keyword&sm=0
+   * Ref: https://cs.hanzo.ai/search?q=context:global+%22api.queuePrompt+%3D%22&patternType=keyword&sm=0
    *
    * TODO: Move this field to parameter of {@link queuePrompt} once all
    * custom nodes are patched.
    */
   authToken?: string
   /**
-   * The API key for the comfy org account if the user logged in via API key.
+   * The API key for the hanzo.ai account if the user logged in via API key.
    */
   apiKey?: string
 
@@ -812,8 +812,8 @@ export class ComfyApi extends EventTarget {
         partial_execution_targets: options.partialExecutionTargets
       }),
       extra_data: {
-        auth_token_comfy_org: this.authToken,
-        api_key_comfy_org: this.apiKey,
+        auth_token_hanzo.ai: this.authToken,
+        api_key_hanzo.ai: this.apiKey,
         extra_pnginfo: { workflow },
         ...(options?.previewMethod &&
           options.previewMethod !== 'default' && {
@@ -1272,7 +1272,7 @@ export class ComfyApi extends EventTarget {
         useToastStore().add({
           severity: 'error',
           summary:
-            'Unloading of models failed. Installed ComfyUI may be an outdated version.',
+            'Unloading of models failed. Installed Hanzo Studio may be an outdated version.',
           life: 5000
         })
       }

@@ -1,6 +1,6 @@
 // eslint-disable-next-line storybook/no-renderer-packages
 import type { Meta, StoryObj } from '@storybook/vue3'
-import type { ElectronAPI } from '@comfyorg/comfyui-electron-types'
+import type { ElectronAPI } from '@hanzoui/hanzo-studio-electron-types'
 import { nextTick, provide } from 'vue'
 import type { ElectronWindow } from '@/utils/envUtil'
 import { createMemoryHistory, createRouter } from 'vue-router'
@@ -55,13 +55,13 @@ const meta: Meta<typeof InstallView> = {
             _data?: Record<string, unknown>
           ) => {}
         },
-        installComfyUI: (
-          _options: Parameters<ElectronAPI['installComfyUI']>[0]
+        installHanzo Studio: (
+          _options: Parameters<ElectronAPI['installHanzo Studio']>[0]
         ) => {},
         changeTheme: (_theme: Parameters<ElectronAPI['changeTheme']>[0]) => {},
         getSystemPaths: () =>
           Promise.resolve({
-            defaultInstallPath: '/Users/username/ComfyUI'
+            defaultInstallPath: '/Users/username/Hanzo Studio'
           }),
         validateInstallPath: () =>
           Promise.resolve({
@@ -72,11 +72,11 @@ const meta: Meta<typeof InstallView> = {
             requiredSpace: 10000000000,
             isNonDefaultDrive: false
           }),
-        validateComfyUISource: () =>
+        validateHanzo StudioSource: () =>
           Promise.resolve({
             isValid: true
           }),
-        showDirectoryPicker: () => Promise.resolve('/Users/username/ComfyUI')
+        showDirectoryPicker: () => Promise.resolve('/Users/username/Hanzo Studio')
       }
 
       return {

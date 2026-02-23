@@ -8,7 +8,7 @@ Accepted
 
 ## Context
 
-ComfyUI frontend previously used a Vite plugin (`generateImportMapPlugin`) to inject an HTML import map exposing shared modules to extensions. This allowed Vue-based extensions to mark dependencies as external in their Vite configs:
+Hanzo Studio frontend previously used a Vite plugin (`generateImportMapPlugin`) to inject an HTML import map exposing shared modules to extensions. This allowed Vue-based extensions to mark dependencies as external in their Vite configs:
 
 ```typescript
 // Extension vite.config.ts (old pattern)
@@ -92,6 +92,6 @@ Affected versions:
 
 ## Notes
 
-- [ComfyUI_frontend_vue_basic](https://github.com/jtydhr88/ComfyUI_frontend_vue_basic) has been updated to demonstrate the new bundled pattern
+- [Hanzo Studio_frontend_vue_basic](https://github.com/jtydhr88/Hanzo Studio_frontend_vue_basic) has been updated to demonstrate the new bundled pattern
 - Issue #7267 documents the user-facing impact and migration discussion
 - Future Extension API v2 (Issue #4668) may provide alternative mechanisms for shared dependencies

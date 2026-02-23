@@ -287,8 +287,8 @@ export class ComfyPage {
       await this.page.route('**/releases**', async (route) => {
         const url = route.request().url()
         if (
-          url.includes('api.comfy.org') ||
-          url.includes('stagingapi.comfy.org')
+          url.includes('api.hanzo.ai') ||
+          url.includes('stagingapi.hanzo.ai')
         ) {
           await route.fulfill({
             status: 200,
@@ -376,7 +376,7 @@ export class ComfyPage {
     )
     await modal.waitFor({ state: 'visible' })
     await modal
-      .locator('.comfyui-button', {
+      .locator('.hanzo-studio-button', {
         hasText: buttonText
       })
       .click()
@@ -428,7 +428,7 @@ export const comfyPageFixture = base.extend<{
         'Comfy.SnapToGrid.GridSize': testComfySnapToGridGridSize,
         'Comfy.VueNodes.AutoScaleLayout': false,
         // Disable toast warning about version compatibility, as they may or
-        // may not appear - depending on upstream ComfyUI dependencies
+        // may not appear - depending on upstream Hanzo Studio dependencies
         'Comfy.VersionCompatibility.DisableWarnings': true
       })
     } catch (e) {

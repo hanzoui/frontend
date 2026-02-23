@@ -348,7 +348,7 @@ class ComfyList {
   }
 }
 
-export class ComfyUI {
+export class Hanzo Studio {
   app: ComfyApp
   dialog: _ComfyDialog
   settings: ComfySettingsDialog
@@ -642,7 +642,7 @@ export class ComfyUI {
           onclick: () => app.refreshComboInNodes()
         }),
         $el('button', {
-          id: 'comfy-clipspace-button',
+          id: 'hanzo-clipspace-button',
           textContent: 'Clipspace',
           onclick: () => app.openClipspace()
         }),

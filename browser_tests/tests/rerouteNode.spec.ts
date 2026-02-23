@@ -108,7 +108,7 @@ test.describe(
     test('Can delete link that is connected to two reroutes', async ({
       comfyPage
     }) => {
-      // https://github.com/Comfy-Org/ComfyUI_frontend/issues/4695
+      // https://github.com/hanzoui/frontend/issues/4695
       await comfyPage.workflow.loadWorkflow(
         'reroute/single-native-reroute-default-workflow'
       )

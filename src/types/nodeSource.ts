@@ -22,8 +22,8 @@ const UNKNOWN_NODE_SOURCE: NodeSource = {
 
 const shortenNodeName = (name: string) => {
   return name
-    .replace(/^(ComfyUI-|ComfyUI_|Comfy-|Comfy_)/, '')
-    .replace(/(-ComfyUI|_ComfyUI|-Comfy|_Comfy)$/, '')
+    .replace(/^(Hanzo Studio-|Hanzo Studio_|Comfy-|Comfy_)/, '')
+    .replace(/(-Hanzo Studio|_Hanzo Studio|-Comfy|_Comfy)$/, '')
 }
 
 // TODO: Remove this mock mapping once object_info/global_subgraphs returns essentials_category

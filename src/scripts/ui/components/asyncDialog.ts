@@ -10,10 +10,10 @@ export class ComfyAsyncDialog<
 
   constructor(actions?: Array<DialogAction<T>>) {
     super(
-      'dialog.comfy-dialog.comfyui-dialog',
+      'dialog.comfy-dialog.hanzo-studio-dialog',
       actions?.map((opt) => {
         const action = typeof opt === 'string' ? { text: opt } : opt
-        return $el('button.comfyui-button', {
+        return $el('button.hanzo-studio-button', {
           type: 'button',
           textContent: action.text,
           onclick: () => this.close((action.value ?? action.text) as T)

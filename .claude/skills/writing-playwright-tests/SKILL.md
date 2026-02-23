@@ -1,9 +1,9 @@
 ---
 name: writing-playwright-tests
-description: 'Writes Playwright e2e tests for ComfyUI_frontend. Use when creating, modifying, or debugging browser tests. Triggers on: playwright, e2e test, browser test, spec file.'
+description: 'Writes Playwright e2e tests for Hanzo Studio_frontend. Use when creating, modifying, or debugging browser tests. Triggers on: playwright, e2e test, browser test, spec file.'
 ---
 
-# Writing Playwright Tests for ComfyUI_frontend
+# Writing Playwright Tests for Hanzo Studio_frontend
 
 ## Golden Rules
 

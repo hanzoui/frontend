@@ -233,7 +233,7 @@ echo "Last stable release: $LAST_STABLE"
    # Only create file if GTM-worthy features exist:
    if [ "$GTM_FEATURES_FOUND" = "true" ]; then
      cat > gtm-summary-${NEW_VERSION}.md << 'EOF'
-   *GTM Summary: ComfyUI Frontend v${NEW_VERSION}*
+   *GTM Summary: Hanzo Frontend v${NEW_VERSION}*
 
    _Disclaimer: the below is AI-generated_
 
@@ -368,7 +368,7 @@ echo "Last stable release: $LAST_STABLE"
    <!-- List dependency updates -->
    - Updated dependency from vX.X.X to vY.Y.Y (#PR_NUMBER)
 
-   **Full Changelog**: https://github.com/Comfy-Org/ComfyUI_frontend/compare/${BASE_TAG}...v${NEW_VERSION}
+   **Full Changelog**: https://github.com/hanzoui/frontend/compare/${BASE_TAG}...v${NEW_VERSION}
    EOF
    ```
 
@@ -509,7 +509,7 @@ echo "Workflow triggered. Waiting for PR creation..."
    ```bash
    # Update release with our release notes
    gh release edit v${NEW_VERSION} \
-     --title "🚀 ComfyUI Frontend v${NEW_VERSION}" \
+     --title "🚀 Hanzo Frontend v${NEW_VERSION}" \
      --notes-file release-notes-${NEW_VERSION}.md \
      --latest
 
@@ -539,7 +539,7 @@ echo "Workflow triggered. Waiting for PR creation..."
    ```bash
    # Check PyPI availability (may take a few minutes)
    for i in {1..10}; do
-     if curl -s https://pypi.org/pypi/comfyui-frontend-package/json | jq -r '.releases | keys[]' | grep -q ${NEW_VERSION}; then
+     if curl -s https://pypi.org/pypi/hanzo-studio-frontend-package/json | jq -r '.releases | keys[]' | grep -q ${NEW_VERSION}; then
        echo "✅ PyPI package available"
        break
      fi
@@ -553,7 +553,7 @@ echo "Workflow triggered. Waiting for PR creation..."
    ```bash
    # Check npm availability
    for i in {1..10}; do
-     if pnpm view @comfyorg/comfyui-frontend-types@${NEW_VERSION} version >/dev/null 2>&1; then
+     if pnpm view @hanzoui/hanzo-studio-frontend-types@${NEW_VERSION} version >/dev/null 2>&1; then
        echo "✅ npm package available"
        break
      fi
@@ -611,7 +611,7 @@ echo "Workflow triggered. Waiting for PR creation..."
 
    ```bash
    cat > release-summary-${NEW_VERSION}.md << EOF
-   # Release Summary: ComfyUI Frontend v${NEW_VERSION}
+   # Release Summary: Hanzo Frontend v${NEW_VERSION}
 
    **Released:** $(date)
    **Type:** ${VERSION_TYPE}
@@ -649,7 +649,7 @@ echo "Workflow triggered. Waiting for PR creation..."
 
    ```bash
    cat > release-summary-${NEW_VERSION}.md << EOF
-   # Release Summary: ComfyUI Frontend v${NEW_VERSION}
+   # Release Summary: Hanzo Frontend v${NEW_VERSION}
 
    **Released:** $(date)
    **Type:** ${VERSION_TYPE}

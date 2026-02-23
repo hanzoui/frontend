@@ -90,8 +90,8 @@ describe('useComfyManagerStore', () => {
       disablePack: vi.fn().mockResolvedValue(null),
       updatePack: vi.fn().mockResolvedValue(null),
       updateAllPacks: vi.fn().mockResolvedValue(null),
-      updateComfyUI: vi.fn().mockResolvedValue(null),
-      rebootComfyUI: vi.fn().mockResolvedValue(null),
+      updateHanzo Studio: vi.fn().mockResolvedValue(null),
+      rebootHanzo Studio: vi.fn().mockResolvedValue(null),
       isLegacyManagerUI: vi.fn().mockResolvedValue(false)
     }
 
@@ -439,15 +439,15 @@ describe('useComfyManagerStore', () => {
   describe('refreshInstalledList with pack ID normalization', () => {
     it('normalizes pack IDs by removing version suffixes', async () => {
       const mockPacks = {
-        'ComfyUI-GGUF@1_1_4': {
+        'Hanzo Studio-GGUF@1_1_4': {
           enabled: false,
-          cnr_id: 'ComfyUI-GGUF',
+          cnr_id: 'Hanzo Studio-GGUF',
           ver: '1.1.4',
           aux_id: undefined
         },
-        'ComfyUI-Manager': {
+        'Hanzo Manager': {
           enabled: true,
-          cnr_id: 'ComfyUI-Manager',
+          cnr_id: 'Hanzo Manager',
           ver: '2.0.0',
           aux_id: undefined
         }
@@ -461,21 +461,21 @@ describe('useComfyManagerStore', () => {
       await store.refreshInstalledList()
 
       // Both packs should be accessible by their base name
-      expect(store.installedPacks['ComfyUI-GGUF']).toEqual({
+      expect(store.installedPacks['Hanzo Studio-GGUF']).toEqual({
         enabled: false,
-        cnr_id: 'ComfyUI-GGUF',
+        cnr_id: 'Hanzo Studio-GGUF',
         ver: '1.1.4',
         aux_id: undefined
       })
-      expect(store.installedPacks['ComfyUI-Manager']).toEqual({
+      expect(store.installedPacks['Hanzo Manager']).toEqual({
         enabled: true,
-        cnr_id: 'ComfyUI-Manager',
+        cnr_id: 'Hanzo Manager',
         ver: '2.0.0',
         aux_id: undefined
       })
 
       // Version suffixed keys should not exist
-      expect(store.installedPacks['ComfyUI-GGUF@1_1_4']).toBeUndefined()
+      expect(store.installedPacks['Hanzo Studio-GGUF@1_1_4']).toBeUndefined()
     })
 
     it('handles duplicate keys after normalization', async () => {

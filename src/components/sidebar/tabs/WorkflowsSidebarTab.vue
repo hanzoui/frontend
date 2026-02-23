@@ -30,10 +30,10 @@
       </div>
     </template>
     <template #body>
-      <div v-if="!isSearching" class="comfyui-workflows-panel">
+      <div v-if="!isSearching" class="hanzo-studio-workflows-panel">
         <div
           v-if="workflowTabsPosition === 'Sidebar'"
-          class="comfyui-workflows-open"
+          class="hanzo-studio-workflows-open"
         >
           <TextDivider
             :text="t('sideToolbar.workflowTab.workflowTreeType.open')"
@@ -77,7 +77,7 @@
         </div>
         <div
           v-show="workflowStore.bookmarkedWorkflows.length > 0"
-          class="comfyui-workflows-bookmarks"
+          class="hanzo-studio-workflows-bookmarks"
         >
           <TextDivider
             :text="t('sideToolbar.workflowTab.workflowTreeType.bookmarks')"
@@ -99,7 +99,7 @@
             </template>
           </TreeExplorer>
         </div>
-        <div class="comfyui-workflows-browse">
+        <div class="hanzo-studio-workflows-browse">
           <TextDivider
             :text="t('sideToolbar.workflowTab.workflowTreeType.browse')"
             type="dashed"
@@ -123,7 +123,7 @@
           />
         </div>
       </div>
-      <div v-else class="comfyui-workflows-search-panel">
+      <div v-else class="hanzo-studio-workflows-search-panel">
         <TreeExplorer
           v-model:expanded-keys="expandedKeys"
           :root="renderTreeNode(filteredRoot, WorkflowTreeType.Browse)"

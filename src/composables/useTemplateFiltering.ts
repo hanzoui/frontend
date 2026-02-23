@@ -82,7 +82,7 @@ export function useTemplateFiltering(
   })
 
   const availableRunsOn = computed(() => {
-    return ['ComfyUI', 'External or Remote API']
+    return ['Hanzo Studio', 'External or Remote API']
   })
 
   // Compute which selected filters are actually applicable to the current scope
@@ -171,15 +171,15 @@ export function useTemplateFiltering(
     return filteredByUseCases.value.filter((template) => {
       // Use openSource field to determine where template runs
       // openSource === false -> External/Remote API
-      // openSource !== false -> ComfyUI (includes true and undefined)
+      // openSource !== false -> Hanzo Studio (includes true and undefined)
       const isExternalAPI = template.openSource === false
-      const isComfyUI = template.openSource !== false
+      const isHanzo Studio = template.openSource !== false
 
       return selectedRunsOn.value.some((runsOn) => {
         if (runsOn === 'External or Remote API') {
           return isExternalAPI
-        } else if (runsOn === 'ComfyUI') {
-          return isComfyUI
+        } else if (runsOn === 'Hanzo Studio') {
+          return isHanzo Studio
         }
         return false
       })

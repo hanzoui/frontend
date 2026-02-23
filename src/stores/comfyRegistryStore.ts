@@ -105,7 +105,7 @@ export const useComfyRegistryStore = defineStore('comfyRegistry', () => {
   >(registryService.search, { maxSize: PACK_LIST_CACHE_SIZE })
 
   /**
-   * Get the node pack that contains a specific ComfyUI node by its name.
+   * Get the node pack that contains a specific Hanzo Studio node by its name.
    * Results are cached to avoid redundant API calls.
    *
    * @see {@link useComfyRegistryService.inferPackFromNodeName} for details on the ranking algorithm

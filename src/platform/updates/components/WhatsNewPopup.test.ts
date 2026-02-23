@@ -137,7 +137,7 @@ describe('WhatsNewPopup', () => {
 
     const learnMoreLink = wrapper.find('.learn-more-link')
     expect(learnMoreLink.attributes('href')).toContain(
-      'docs.comfy.org/changelog'
+      'docs.hanzo.ai/changelog'
     )
   })
 

@@ -1,1 +1,1 @@
-export * from '@comfyorg/registry-types'
+export * from '@hanzoui/registry-types'

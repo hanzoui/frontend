@@ -53,7 +53,7 @@
       ],
       "outputs": [],
       "properties": {},
-      "widgets_values": ["ComfyUI"]
+      "widgets_values": ["Hanzo Studio"]
     }
   ],
   "links": [[2, 2, 0, 3, 0, "IMAGE"]],

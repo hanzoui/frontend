@@ -78,7 +78,7 @@ describe('parseComfyWorkflow', () => {
     expect(validatedWorkflow.nodes[0].pos).toEqual([3, 4])
 
     // Should accept the legacy bugged format object.
-    // https://github.com/Comfy-Org/ComfyUI_frontend/issues/710
+    // https://github.com/hanzoui/frontend/issues/710
     workflow.nodes[0].pos = {
       '0': 600,
       '1': 340,

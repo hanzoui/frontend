@@ -152,7 +152,7 @@ vi.mock('@/base/credits/comfyCredits', () => ({
 // Mock useExternalLink
 vi.mock('@/composables/useExternalLink', () => ({
   useExternalLink: vi.fn(() => ({
-    buildDocsUrl: vi.fn((path) => `https://docs.comfy.org${path}`),
+    buildDocsUrl: vi.fn((path) => `https://docs.hanzo.ai${path}`),
     docsPaths: {
       partnerNodesPricing: '/tutorials/partner-nodes/pricing'
     }
@@ -283,7 +283,7 @@ describe('CurrentUserPopoverLegacy', () => {
 
     // Verify window.open was called with the correct URL
     expect(window.open).toHaveBeenCalledWith(
-      'https://docs.comfy.org/tutorials/partner-nodes/pricing',
+      'https://docs.hanzo.ai/tutorials/partner-nodes/pricing',
       '_blank'
     )
 

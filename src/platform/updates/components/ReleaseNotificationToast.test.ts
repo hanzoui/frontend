@@ -185,7 +185,7 @@ describe('ReleaseNotificationToast', () => {
     await wrapper.vm.handleUpdate()
 
     expect(mockWindowOpen).toHaveBeenCalledWith(
-      'https://docs.comfy.org/installation/update_comfyui',
+      'https://docs.hanzo.ai/installation/update_comfyui',
       '_blank'
     )
   })
@@ -263,7 +263,7 @@ describe('ReleaseNotificationToast', () => {
     const learnMoreLink = wrapper.find('a[target="_blank"]')
     expect(learnMoreLink.exists()).toBe(true)
     expect(learnMoreLink.attributes('href')).toContain(
-      'docs.comfy.org/changelog'
+      'docs.hanzo.ai/changelog'
     )
   })
 

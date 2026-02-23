@@ -333,7 +333,7 @@
       >
         <i class="pi pi-external-link text-muted"></i>
         <a
-          href="https://www.comfy.org/cloud/pricing"
+          href="https://hanzo.ai/cloud/pricing"
           target="_blank"
           rel="noopener noreferrer"
           class="text-sm underline hover:opacity-80 text-muted"

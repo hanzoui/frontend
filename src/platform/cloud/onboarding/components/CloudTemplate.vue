@@ -74,7 +74,7 @@ import BaseViewTemplate from '@/views/templates/BaseViewTemplate.vue'
 const { t } = useI18n()
 
 const handleDownloadClick = () => {
-  window.open('https://www.comfy.org/download', '_blank')
+  window.open('https://hanzo.ai/download', '_blank')
 }
 </script>
 <style>

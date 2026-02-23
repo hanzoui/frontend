@@ -123,7 +123,7 @@ describe('imagePreviewStore restoreOutputs', () => {
 
     // Simulate execution: set outputs for node "4" (e.g., PreviewImage)
     const executionOutput = createMockOutputs([
-      { filename: 'ComfyUI_00001.png', subfolder: '', type: 'temp' }
+      { filename: 'Hanzo Studio_00001.png', subfolder: '', type: 'temp' }
     ])
     const savedOutputs: Record<string, ExecutedWsMessage['output']> = {
       '4': executionOutput

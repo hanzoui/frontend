@@ -3,7 +3,7 @@ import { computed } from 'vue'
 
 const LEGACY_MANAGER_KEYWORDS = [
   'manager',
-  'comfyui-manager',
+  'hanzo-studio-manager',
   'manager comfyui',
   'comfyui manager'
 ] as const

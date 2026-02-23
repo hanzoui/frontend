@@ -55,7 +55,7 @@ vi.mock('@/platform/settings/settingStore', () => {
 const mockSystemStatsState = vi.hoisted(() => ({
   systemStats: {
     system: {
-      comfyui_version: '1.0.0',
+      hanzo_studio_version: '1.0.0',
       argv: []
     }
   } satisfies {
@@ -65,7 +65,7 @@ const mockSystemStatsState = vi.hoisted(() => ({
   reset() {
     this.systemStats = {
       system: {
-        comfyui_version: '1.0.0',
+        hanzo_studio_version: '1.0.0',
         argv: []
       } satisfies Partial<SystemStats['system']>
     }
@@ -214,7 +214,7 @@ describe('useReleaseStore', () => {
         const store = useReleaseStore()
         store.releases = [mockRelease]
         const systemStatsStore = useSystemStatsStore()
-        systemStatsStore.systemStats!.system.comfyui_version = '1.2.0'
+        systemStatsStore.systemStats!.system.hanzo_studio_version = '1.2.0'
 
         vi.mocked(compare).mockReturnValue(0)
 
@@ -266,7 +266,7 @@ describe('useReleaseStore', () => {
         const store = useReleaseStore()
         store.releases = [mockRelease]
         const systemStatsStore = useSystemStatsStore()
-        systemStatsStore.systemStats!.system.comfyui_version = '1.2.0'
+        systemStatsStore.systemStats!.system.hanzo_studio_version = '1.2.0'
 
         vi.mocked(compare).mockReturnValue(0)
 
@@ -605,7 +605,7 @@ describe('useReleaseStore', () => {
       const store = useReleaseStore()
       const systemStatsStore = useSystemStatsStore()
       const settingStore = useSettingStore()
-      systemStatsStore.systemStats!.system.comfyui_version = '1.2.0' // Same as release
+      systemStatsStore.systemStats!.system.hanzo_studio_version = '1.2.0' // Same as release
       vi.mocked(settingStore.get).mockImplementation((key: string) => {
         if (key === 'Comfy.Notification.ShowVersionUpdates') return true
         return null
@@ -683,7 +683,7 @@ describe('useReleaseStore', () => {
         const store = useReleaseStore()
         store.releases = [mockRelease]
         const systemStatsStore = useSystemStatsStore()
-        systemStatsStore.systemStats!.system.comfyui_version = '1.2.0'
+        systemStatsStore.systemStats!.system.hanzo_studio_version = '1.2.0'
 
         vi.mocked(compare).mockReturnValue(0)
 
@@ -747,7 +747,7 @@ describe('useReleaseStore', () => {
         const store = useReleaseStore()
         store.releases = [mockRelease]
         const systemStatsStore = useSystemStatsStore()
-        systemStatsStore.systemStats!.system.comfyui_version = '1.2.0'
+        systemStatsStore.systemStats!.system.hanzo_studio_version = '1.2.0'
 
         vi.mocked(compare).mockReturnValue(0)
 

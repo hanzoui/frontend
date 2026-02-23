@@ -38,7 +38,7 @@ function exec(command: string, cwd?: string): string {
 
 /**
  * Parse version from requirements.txt
- * Handles formats: comfyui-frontend-package==1.2.3, comfyui-frontend-package>=1.2.3, etc.
+ * Handles formats: hanzo-studio-frontend-package==1.2.3, hanzo-studio-frontend-package>=1.2.3, etc.
  */
 function parseRequirementsVersion(requirementsPath: string): string | null {
   if (!fs.existsSync(requirementsPath)) {
@@ -48,12 +48,12 @@ function parseRequirementsVersion(requirementsPath: string): string | null {
 
   const content = fs.readFileSync(requirementsPath, 'utf-8')
   const match = content.match(
-    /comfyui-frontend-package\s*(?:==|>=|<=|~=|>|<)\s*([0-9]+\.[0-9]+\.[0-9]+)/
+    /hanzo-studio-frontend-package\s*(?:==|>=|<=|~=|>|<)\s*([0-9]+\.[0-9]+\.[0-9]+)/
   )
 
   if (!match) {
     console.error(
-      'Could not find comfyui-frontend-package version in requirements.txt'
+      'Could not find hanzo-studio-frontend-package version in requirements.txt'
     )
     return null
   }
@@ -110,13 +110,13 @@ function getLatestPatchTag(repoPath: string, minor: number): string | null {
 }
 
 /**
- * Resolve the ComfyUI release information
+ * Resolve the Hanzo Studio release information
  */
 function resolveRelease(
   comfyuiRepoPath: string,
   frontendRepoPath: string
 ): ReleaseInfo | null {
-  // Parse current version from ComfyUI requirements.txt
+  // Parse current version from Hanzo Studio requirements.txt
   const requirementsPath = path.join(comfyuiRepoPath, 'requirements.txt')
   const currentVersion = parseRequirementsVersion(requirementsPath)
 
@@ -229,7 +229,7 @@ function resolveRelease(
     )
   }
 
-  const diffUrl = `https://github.com/Comfy-Org/ComfyUI_frontend/compare/v${currentVersion}...v${targetVersion}`
+  const diffUrl = `https://github.com/hanzoui/frontend/compare/v${currentVersion}...v${targetVersion}`
 
   return {
     current_version: currentVersion,
@@ -251,7 +251,7 @@ const frontendRepoPath = process.argv[3] || process.cwd()
 
 if (!comfyuiRepoPath) {
   console.error(
-    'Usage: resolve-comfyui-release.ts <comfyui-repo-path> [frontend-repo-path]'
+    'Usage: resolve-hanzo-studio-release.ts <hanzo-studio-repo-path> [frontend-repo-path]'
   )
   process.exit(1)
 }

@@ -15,8 +15,8 @@ test.describe('Release Notifications', () => {
     await comfyPage.page.route('**/releases**', async (route) => {
       const url = route.request().url()
       if (
-        url.includes('api.comfy.org') ||
-        url.includes('stagingapi.comfy.org')
+        url.includes('api.hanzo.ai') ||
+        url.includes('stagingapi.hanzo.ai')
       ) {
         await route.fulfill({
           status: 200,
@@ -104,8 +104,8 @@ test.describe('Release Notifications', () => {
     await comfyPage.page.route('**/releases**', async (route) => {
       const url = route.request().url()
       if (
-        url.includes('api.comfy.org') ||
-        url.includes('stagingapi.comfy.org')
+        url.includes('api.hanzo.ai') ||
+        url.includes('stagingapi.hanzo.ai')
       ) {
         await route.fulfill({
           status: 500,
@@ -151,8 +151,8 @@ test.describe('Release Notifications', () => {
     await comfyPage.page.route('**/releases**', async (route) => {
       const url = route.request().url()
       if (
-        url.includes('api.comfy.org') ||
-        url.includes('stagingapi.comfy.org')
+        url.includes('api.hanzo.ai') ||
+        url.includes('stagingapi.hanzo.ai')
       ) {
         await route.fulfill({
           status: 200,
@@ -211,8 +211,8 @@ test.describe('Release Notifications', () => {
     await comfyPage.page.route('**/releases**', async (route) => {
       const url = route.request().url()
       if (
-        url.includes('api.comfy.org') ||
-        url.includes('stagingapi.comfy.org')
+        url.includes('api.hanzo.ai') ||
+        url.includes('stagingapi.hanzo.ai')
       ) {
         apiCallCount++
         await route.fulfill({
@@ -244,8 +244,8 @@ test.describe('Release Notifications', () => {
     await comfyPage.page.route('**/releases**', async (route) => {
       const url = route.request().url()
       if (
-        url.includes('api.comfy.org') ||
-        url.includes('stagingapi.comfy.org')
+        url.includes('api.hanzo.ai') ||
+        url.includes('stagingapi.hanzo.ai')
       ) {
         await route.fulfill({
           status: 200,
@@ -296,8 +296,8 @@ test.describe('Release Notifications', () => {
     await comfyPage.page.route('**/releases**', async (route) => {
       const url = route.request().url()
       if (
-        url.includes('api.comfy.org') ||
-        url.includes('stagingapi.comfy.org')
+        url.includes('api.hanzo.ai') ||
+        url.includes('stagingapi.hanzo.ai')
       ) {
         await route.fulfill({
           status: 200,
@@ -365,8 +365,8 @@ test.describe('Release Notifications', () => {
     await comfyPage.page.route('**/releases**', async (route) => {
       const url = route.request().url()
       if (
-        url.includes('api.comfy.org') ||
-        url.includes('stagingapi.comfy.org')
+        url.includes('api.hanzo.ai') ||
+        url.includes('stagingapi.hanzo.ai')
       ) {
         await route.fulfill({
           status: 200,

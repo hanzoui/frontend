@@ -1,7 +1,7 @@
 {
-  "name": "@comfyorg/tailwind-utils",
+  "name": "@hanzoui/tailwind-utils",
   "version": "1.0.0",
-  "description": "Shared Tailwind CSS utilities for ComfyUI Frontend",
+  "description": "Shared Tailwind CSS utilities for Hanzo Frontend",
   "type": "module",
   "main": "./src/index.ts",
   "types": "./src/index.ts",

@@ -182,7 +182,7 @@ export default defineConfig([
             'API',
             'App Data:',
             'App Path:',
-            'ComfyUI',
+            'Hanzo Studio',
             'CPU',
             'fps',
             'GB',

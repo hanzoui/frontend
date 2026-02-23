@@ -252,7 +252,7 @@ const handleViewEnterprise = () => {
     is_external: true,
     source: 'subscription'
   })
-  window.open('https://www.comfy.org/cloud/enterprise', '_blank')
+  window.open('https://hanzo.ai/cloud/enterprise', '_blank')
 }
 
 onBeforeUnmount(() => {

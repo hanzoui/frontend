@@ -1,5 +1,5 @@
-name: Start ComfyUI Server
-description: 'Start ComfyUI server in a container environment (assumes ComfyUI is pre-installed)'
+name: Start Hanzo Studio Server
+description: 'Start Hanzo Studio server in a container environment (assumes Hanzo Studio is pre-installed)'
 
 inputs:
   front_end_root:
@@ -18,6 +18,6 @@ runs:
       shell: bash
       run: |
         set -euo pipefail
-        cp -r ./tools/devtools/* /ComfyUI/custom_nodes/ComfyUI_devtools/
-        cd /ComfyUI && python3 main.py --cpu --multi-user --front-end-root "${{ inputs.front_end_root }}" &
+        cp -r ./tools/devtools/* /Hanzo Studio/custom_nodes/Hanzo Studio_devtools/
+        cd /Hanzo Studio && python3 main.py --cpu --multi-user --front-end-root "${{ inputs.front_end_root }}" &
         wait-for-it --service 127.0.0.1:8188 -t ${{ inputs.timeout }}

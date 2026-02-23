@@ -24,7 +24,7 @@ export function getDistribution(): 'ccloud' | 'oss-nightly' | 'oss' {
   return 'oss'
 }
 
-const SUPPORT_BASE_URL = 'https://support.comfy.org/hc/en-us/requests/new'
+const SUPPORT_BASE_URL = 'https://support.hanzo.ai/hc/en-us/requests/new'
 
 /**
  * Builds the support URL with optional user information for pre-filling.

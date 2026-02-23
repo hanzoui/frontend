@@ -132,7 +132,7 @@
 
               <div class="flex items-center justify-between">
                 <a
-                  href="https://platform.comfy.org/profile/usage"
+                  href="https://platform.hanzo.ai/profile/usage"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="text-sm underline text-center text-muted"
@@ -186,7 +186,7 @@
     <div class="flex items-center gap-2 py-4">
       <i class="pi pi-external-link text-muted"></i>
       <a
-        href="https://www.comfy.org/cloud/pricing"
+        href="https://hanzo.ai/cloud/pricing"
         target="_blank"
         rel="noopener noreferrer"
         class="text-sm underline hover:opacity-80 text-muted"

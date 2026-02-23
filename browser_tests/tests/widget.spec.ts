@@ -273,7 +273,7 @@ test.describe(
   'Animated image widget',
   { tag: ['@screenshot', '@widget'] },
   () => {
-    // https://github.com/Comfy-Org/ComfyUI_frontend/issues/3718
+    // https://github.com/hanzoui/frontend/issues/3718
     test.skip('Shows preview of uploaded animated image', async ({
       comfyPage
     }) => {

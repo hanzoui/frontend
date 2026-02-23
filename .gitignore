@@ -47,7 +47,7 @@ components.d.ts
 
 # Ignore test data.
 tests-ui/data/*
-tests-ui/ComfyUI_examples
+tests-ui/Hanzo Studio_examples
 tests-ui/workflows/examples
 coverage/
 
@@ -70,7 +70,7 @@ dist.zip
 /schemas/
 
 # Workflow templates assets
-# Hosted on https://github.com/Comfy-Org/workflow_templates
+# Hosted on https://github.com/hanzoui/workflow_templates
 /public/templates/
 
 # Temporary repository directory

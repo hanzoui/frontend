@@ -1,4 +1,4 @@
-# 1. Merge LiteGraph.js into ComfyUI Frontend
+# 1. Merge LiteGraph.js into Hanzo Frontend
 
 Date: 2025-08-05
 
@@ -8,7 +8,7 @@ Accepted
 
 ## Context
 
-ComfyUI's frontend architecture currently depends on a forked version of litegraph.js maintained as a separate package (@comfyorg/litegraph). This separation has created several architectural and operational challenges:
+Hanzo Studio's frontend architecture currently depends on a forked version of litegraph.js maintained as a separate package (@hanzoui/litegraph). This separation has created several architectural and operational challenges:
 
 **Architectural Issues:**
 
@@ -18,7 +18,7 @@ ComfyUI's frontend architecture currently depends on a forked version of litegra
 
 **Operational Issues:**
 
-- ComfyUI is the only known user of the @comfyorg/litegraph fork
+- Hanzo Studio is the only known user of the @hanzoui/litegraph fork
 - Managing separate repositories significantly slows developer velocity due to coordination overhead
 - Version mismatches between frontend and litegraph cause recurring issues
 - No upstream contributions to consider (original litegraph.js is no longer maintained)
@@ -34,13 +34,13 @@ The following planned features are blocked by the current architecture:
 
 ## Decision
 
-We will merge litegraph.js directly into the ComfyUI frontend repository using git subtree to preserve the complete commit history.
+We will merge litegraph.js directly into the Hanzo Studio frontend repository using git subtree to preserve the complete commit history.
 
 The merge will:
 
 1. Move litegraph source to `src/lib/litegraph/`
-2. Update all import paths from `@comfyorg/litegraph` to `@/lib/litegraph`
-3. Remove the npm dependency on `@comfyorg/litegraph`
+2. Update all import paths from `@hanzoui/litegraph` to `@/lib/litegraph`
+3. Remove the npm dependency on `@hanzoui/litegraph`
 4. Preserve the full git history using subtree merge
 
 This integration is the first step toward restructuring the application along clear Model-View-Controller boundaries, with state mutations going through a single CRDT-mediated access point.

@@ -48,5 +48,5 @@ Open UX questions (from the autogrow author):
 - `src/core/graph/widgets/dynamicWidgets.ts` — `applyMatchType`, `applyAutogrow`
 - `src/lib/litegraph/src/subgraph/SubgraphInputNode.ts` — `connectByType`
 - `src/lib/litegraph/src/subgraph/SubgraphNode.ts` — `input-added` event listener
-- [#8352](https://github.com/Comfy-Org/ComfyUI_frontend/pull/8352) (closed) — attempted fix, unresolved edge cases
-- [#7837](https://github.com/Comfy-Org/ComfyUI_frontend/pull/7837) (merged) — partial fix only
+- [#8352](https://github.com/hanzoui/frontend/pull/8352) (closed) — attempted fix, unresolved edge cases
+- [#7837](https://github.com/hanzoui/frontend/pull/7837) (merged) — partial fix only

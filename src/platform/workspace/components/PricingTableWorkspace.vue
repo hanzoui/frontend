@@ -235,7 +235,7 @@
           {{ t('subscription.videoEstimateExplanation') }}
         </p>
         <a
-          href="https://cloud.comfy.org/?template=video_wan2_2_14B_i2v"
+          href="https://cloud.hanzo.ai/?template=video_wan2_2_14B_i2v"
           target="_blank"
           rel="noopener noreferrer"
           class="text-sm text-azure-600 hover:text-azure-400 no-underline flex gap-1"
@@ -276,7 +276,7 @@
 </template>
 
 <script setup lang="ts">
-import { cn } from '@comfyorg/tailwind-utils'
+import { cn } from '@hanzoui/tailwind-utils'
 import Popover from 'primevue/popover'
 import SelectButton from 'primevue/selectbutton'
 import type { ToggleButtonPassThroughMethodOptions } from 'primevue/togglebutton'
@@ -512,10 +512,10 @@ function handleSubscribe(tierKey: CheckoutTierKey) {
 }
 
 function handleContactUs() {
-  window.open('https://www.comfy.org/discord', '_blank')
+  window.open('https://hanzo.ai/discord', '_blank')
 }
 
 function handleViewEnterprise() {
-  window.open('https://www.comfy.org/enterprise', '_blank')
+  window.open('https://hanzo.ai/enterprise', '_blank')
 }
 </script>

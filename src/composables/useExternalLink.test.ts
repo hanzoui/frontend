@@ -42,21 +42,21 @@ describe('useExternalLink', () => {
       const { staticUrls } = useExternalLink()
 
       // Static URLs
-      expect(staticUrls.discord).toBe('https://www.comfy.org/discord')
+      expect(staticUrls.discord).toBe('https://hanzo.ai/discord')
       expect(staticUrls.github).toBe(
-        'https://github.com/comfyanonymous/ComfyUI'
+        'https://github.com/hanzoai/studio'
       )
       expect(staticUrls.githubIssues).toBe(
-        'https://github.com/comfyanonymous/ComfyUI/issues'
+        'https://github.com/hanzoai/studio/issues'
       )
       expect(staticUrls.githubFrontend).toBe(
-        'https://github.com/Comfy-Org/ComfyUI_frontend'
+        'https://github.com/hanzoui/frontend'
       )
       expect(staticUrls.githubElectron).toBe(
-        'https://github.com/Comfy-Org/electron'
+        'https://github.com/hanzoui/electron'
       )
-      expect(staticUrls.forum).toBe('https://forum.comfy.org/')
-      expect(staticUrls.comfyOrg).toBe('https://www.comfy.org/')
+      expect(staticUrls.forum).toBe('https://forum.hanzo.ai/')
+      expect(staticUrls.comfyOrg).toBe('https://hanzo.ai/')
     })
   })
 
@@ -66,7 +66,7 @@ describe('useExternalLink', () => {
       const { buildDocsUrl } = useExternalLink()
 
       const url = buildDocsUrl('/changelog')
-      expect(url).toBe('https://docs.comfy.org/changelog')
+      expect(url).toBe('https://docs.hanzo.ai/changelog')
     })
 
     it('should build docs URL with Chinese (zh) locale when requested', () => {
@@ -74,7 +74,7 @@ describe('useExternalLink', () => {
       const { buildDocsUrl } = useExternalLink()
 
       const url = buildDocsUrl('/changelog', { includeLocale: true })
-      expect(url).toBe('https://docs.comfy.org/zh-CN/changelog')
+      expect(url).toBe('https://docs.hanzo.ai/zh-CN/changelog')
     })
 
     it('should build docs URL with Chinese (zh-TW) locale when requested', () => {
@@ -82,7 +82,7 @@ describe('useExternalLink', () => {
       const { buildDocsUrl } = useExternalLink()
 
       const url = buildDocsUrl('/changelog', { includeLocale: true })
-      expect(url).toBe('https://docs.comfy.org/zh-CN/changelog')
+      expect(url).toBe('https://docs.hanzo.ai/zh-CN/changelog')
     })
 
     it('should not include locale for English when requested', () => {
@@ -90,14 +90,14 @@ describe('useExternalLink', () => {
       const { buildDocsUrl } = useExternalLink()
 
       const url = buildDocsUrl('/changelog', { includeLocale: true })
-      expect(url).toBe('https://docs.comfy.org/changelog')
+      expect(url).toBe('https://docs.hanzo.ai/changelog')
     })
 
     it('should handle path without leading slash', () => {
       const { buildDocsUrl } = useExternalLink()
 
       const url = buildDocsUrl('changelog')
-      expect(url).toBe('https://docs.comfy.org/changelog')
+      expect(url).toBe('https://docs.hanzo.ai/changelog')
     })
 
     it('should add platform suffix when requested', () => {
@@ -109,7 +109,7 @@ describe('useExternalLink', () => {
 
       const { buildDocsUrl } = useExternalLink()
       const url = buildDocsUrl('/installation/desktop', { platform: true })
-      expect(url).toBe('https://docs.comfy.org/installation/desktop/macos')
+      expect(url).toBe('https://docs.hanzo.ai/installation/desktop/macos')
     })
 
     it('should add platform suffix with trailing slash', () => {
@@ -121,7 +121,7 @@ describe('useExternalLink', () => {
 
       const { buildDocsUrl } = useExternalLink()
       const url = buildDocsUrl('/installation/desktop/', { platform: true })
-      expect(url).toBe('https://docs.comfy.org/installation/desktop/windows')
+      expect(url).toBe('https://docs.hanzo.ai/installation/desktop/windows')
     })
 
     it('should combine locale and platform', () => {
@@ -137,7 +137,7 @@ describe('useExternalLink', () => {
         platform: true
       })
       expect(url).toBe(
-        'https://docs.comfy.org/zh-CN/installation/desktop/macos'
+        'https://docs.hanzo.ai/zh-CN/installation/desktop/macos'
       )
     })
 
@@ -147,7 +147,7 @@ describe('useExternalLink', () => {
 
       const { buildDocsUrl } = useExternalLink()
       const url = buildDocsUrl('/installation/desktop', { platform: true })
-      expect(url).toBe('https://docs.comfy.org/installation/desktop')
+      expect(url).toBe('https://docs.hanzo.ai/installation/desktop')
     })
   })
 })

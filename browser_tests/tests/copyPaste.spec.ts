@@ -65,7 +65,7 @@ test.describe('Copy Paste', { tag: ['@screenshot', '@workflow'] }, () => {
   })
 
   /**
-   * https://github.com/Comfy-Org/ComfyUI_frontend/issues/98
+   * https://github.com/hanzoui/frontend/issues/98
    */
   test('Paste in text area with node previously copied', async ({
     comfyPage

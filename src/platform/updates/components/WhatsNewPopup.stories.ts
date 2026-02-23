@@ -12,7 +12,7 @@ const mockReleases: ReleaseNote[] = [
     version: '1.2.3',
     attention: 'medium',
     published_at: '2024-01-15T10:00:00Z',
-    content: `# ComfyUI 1.2.3 Release
+    content: `# Hanzo Studio 1.2.3 Release
 
 **What's new**
 
@@ -31,11 +31,11 @@ New features and improvements for better workflow management.
     published_at: '2024-02-01T14:30:00Z',
     content: `![Featured Image](https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=200&fit=crop&fm=jpg)
 
-# ComfyUI 1.2.4 Major Release
+# Hanzo Studio 1.2.4 Major Release
 
 **What's new**
 
-Revolutionary updates that change how you create with ComfyUI.
+Revolutionary updates that change how you create with Hanzo Studio.
 
 - **Real-time Collaboration**: Share and edit workflows with your team in real-time
 - **Advanced Upscaling**: New ESRGAN and Real-ESRGAN models built-in
@@ -51,7 +51,7 @@ Revolutionary updates that change how you create with ComfyUI.
     published_at: '2024-03-10T09:15:00Z',
     content: `![Release Image](https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=200&fit=crop&fm=jpg)
 
-# ComfyUI 1.3.0 - The Biggest Update Yet
+# Hanzo Studio 1.3.0 - The Biggest Update Yet
 
 **What's new**
 
@@ -148,11 +148,11 @@ export const LongContent: Story = {
       published_at: '2024-04-20T16:00:00Z',
       content: `![Major Update](https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=200&fit=crop)
 
-# ComfyUI 2.0.0 - Complete Rewrite
+# Hanzo Studio 2.0.0 - Complete Rewrite
 
 **What's new**
 
-The most significant update in ComfyUI history with complete platform rewrite.
+The most significant update in Hanzo Studio history with complete platform rewrite.
 
 ## Core Engine Improvements
 
@@ -186,7 +186,7 @@ export const MinimalContent: Story = {
       version: '1.0.1',
       attention: 'low',
       published_at: '2024-01-05T12:00:00Z',
-      content: `# ComfyUI 1.0.1
+      content: `# Hanzo Studio 1.0.1
 
 **What's new**
 

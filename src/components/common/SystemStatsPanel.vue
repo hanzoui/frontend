@@ -87,12 +87,12 @@ const localColumns: ColumnDef[] = [
 const cloudColumns: ColumnDef[] = [
   { field: 'cloud_version', header: 'Cloud Version' },
   {
-    field: 'comfyui_version',
-    header: 'ComfyUI Version',
+    field: 'hanzo_studio_version',
+    header: 'Hanzo Studio Version',
     format: formatCommitHash
   },
   {
-    field: 'comfyui_frontend_version',
+    field: 'hanzo_studio_frontend_version',
     header: 'Frontend Version',
     format: formatCommitHash
   },

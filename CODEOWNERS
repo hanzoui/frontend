@@ -40,8 +40,8 @@
 /src/renderer/extensions/minimap/                 @jtydhr88 @Myestery @Comfy-org/comfy_frontend_devs
 
 # Workflow Templates
-/src/platform/workflow/templates/                 @Myestery @christian-byrne @comfyui-wiki @Comfy-org/comfy_frontend_devs
-/src/components/templates/                        @Myestery @christian-byrne @comfyui-wiki @Comfy-org/comfy_frontend_devs
+/src/platform/workflow/templates/                 @Myestery @christian-byrne @hanzo-studio-wiki @Comfy-org/comfy_frontend_devs
+/src/components/templates/                        @Myestery @christian-byrne @hanzo-studio-wiki @Comfy-org/comfy_frontend_devs
 
 # Mask Editor
 /src/extensions/core/maskeditor.ts                @trsommer @brucew4yn3rp @Comfy-org/comfy_frontend_devs
@@ -52,10 +52,10 @@
 /src/components/load3d/                           @jtydhr88 @Comfy-org/comfy_frontend_devs
 
 # Manager
-/src/workbench/extensions/manager/                @viva-jinyi @christian-byrne @ltdrdata @Comfy-org/comfy_frontend_devs
+/src/workbench/extensions/manager/                @viva-jinyi @christian-byrne @hanzoai @Comfy-org/comfy_frontend_devs
 
 # Translations
-/src/locales/                                     @Comfy-Org/comfy_maintainer @Comfy-org/comfy_frontend_devs
+/src/locales/                                     @hanzoui/comfy_maintainer @Comfy-org/comfy_frontend_devs
 
 # LLM Instructions (blank on purpose)
 .claude/

@@ -8,7 +8,7 @@ test.beforeEach(async ({ comfyPage }) => {
 
 test.describe('Graph', { tag: ['@smoke', '@canvas'] }, () => {
   // Should be able to fix link input slot index after swap the input order
-  // Ref: https://github.com/Comfy-Org/ComfyUI_frontend/issues/3348
+  // Ref: https://github.com/hanzoui/frontend/issues/3348
   test('Fix link input slots', async ({ comfyPage }) => {
     await comfyPage.workflow.loadWorkflow('inputs/input_order_swap')
     expect(

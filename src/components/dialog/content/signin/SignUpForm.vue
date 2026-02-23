@@ -9,12 +9,12 @@
     <FormField v-slot="$field" name="email" class="flex flex-col gap-2">
       <label
         class="mb-2 text-base font-medium opacity-80"
-        for="comfy-org-sign-up-email"
+        for="hanzo.ai-sign-up-email"
       >
         {{ t('auth.signup.emailLabel') }}
       </label>
       <InputText
-        pt:root:id="comfy-org-sign-up-email"
+        pt:root:id="hanzo.ai-sign-up-email"
         pt:root:autocomplete="email"
         class="h-10"
         type="text"

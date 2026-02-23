@@ -70,8 +70,8 @@
             class="text-muted text-sm"
           >
             <template #email>
-              <a href="mailto:support@comfy.org" class="underline"
-                >support@comfy.org</a
+              <a href="mailto:support@hanzo.ai" class="underline"
+                >support@hanzo.ai</a
               >
             </template>
           </i18n-t>

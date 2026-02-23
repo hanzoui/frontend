@@ -6,8 +6,8 @@ See `@docs/guidance/storybook.md` for story patterns (auto-loaded for `*.stories
 
 Stories have access to:
 
-- All ComfyUI stores
-- PrimeVue with ComfyUI theming
+- All Hanzo Studio stores
+- PrimeVue with Hanzo Studio theming
 - i18n system
 - CSS variables and styling
 

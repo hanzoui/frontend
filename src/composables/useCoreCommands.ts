@@ -773,10 +773,10 @@ export function useCoreCommands(): ComfyCommand[] {
       }
     },
     {
-      id: 'Comfy.Help.OpenComfyUIIssues',
+      id: 'Comfy.Help.OpenHanzo StudioIssues',
       icon: 'pi pi-github',
-      label: 'Open ComfyUI Issues',
-      menubarLabel: 'ComfyUI Issues',
+      label: 'Open Hanzo Studio Issues',
+      menubarLabel: 'Hanzo Studio Issues',
       versionAdded: '1.5.5',
       function: () => {
         telemetry?.trackHelpResourceClicked({
@@ -788,10 +788,10 @@ export function useCoreCommands(): ComfyCommand[] {
       }
     },
     {
-      id: 'Comfy.Help.OpenComfyUIDocs',
+      id: 'Comfy.Help.OpenHanzo StudioDocs',
       icon: 'pi pi-info-circle',
-      label: 'Open ComfyUI Docs',
-      menubarLabel: 'ComfyUI Docs',
+      label: 'Open Hanzo Studio Docs',
+      menubarLabel: 'Hanzo Studio Docs',
       versionAdded: '1.5.5',
       function: () => {
         telemetry?.trackHelpResourceClicked({
@@ -805,8 +805,8 @@ export function useCoreCommands(): ComfyCommand[] {
     {
       id: 'Comfy.Help.OpenComfyOrgDiscord',
       icon: 'pi pi-discord',
-      label: 'Open Comfy-Org Discord',
-      menubarLabel: 'Comfy-Org Discord',
+      label: 'Open hanzoui Discord',
+      menubarLabel: 'hanzoui Discord',
       versionAdded: '1.5.5',
       function: () => {
         telemetry?.trackHelpResourceClicked({
@@ -827,10 +827,10 @@ export function useCoreCommands(): ComfyCommand[] {
       }
     },
     {
-      id: 'Comfy.Help.AboutComfyUI',
+      id: 'Comfy.Help.AboutHanzo Studio',
       icon: 'pi pi-info-circle',
-      label: 'Open About ComfyUI',
-      menubarLabel: 'About ComfyUI',
+      label: 'Open About Hanzo Studio',
+      menubarLabel: 'About Hanzo Studio',
       versionAdded: '1.6.4',
       function: () => {
         settingsDialog.showAbout()
@@ -870,10 +870,10 @@ export function useCoreCommands(): ComfyCommand[] {
       }
     },
     {
-      id: 'Comfy.Help.OpenComfyUIForum',
+      id: 'Comfy.Help.OpenHanzo StudioForum',
       icon: 'pi pi-comments',
-      label: 'Open ComfyUI Forum',
-      menubarLabel: 'ComfyUI Forum',
+      label: 'Open Hanzo Studio Forum',
+      menubarLabel: 'Hanzo Studio Forum',
       versionAdded: '1.8.2',
       function: () => {
         telemetry?.trackHelpResourceClicked({

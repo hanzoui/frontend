@@ -191,7 +191,7 @@ describe('useConflictDetection', () => {
         os: 'darwin', // sys.platform returns 'darwin' for macOS
         ram_total: 17179869184,
         ram_free: 8589934592,
-        comfyui_version: '0.3.41',
+        hanzo_studio_version: '0.3.41',
         required_frontend_version: '1.24.0',
         python_version:
           '3.11.0 (main, Oct 13 2023, 09:34:16) [Clang 15.0.0 (clang-1500.0.40.1)]',
@@ -219,7 +219,7 @@ describe('useConflictDetection', () => {
   >
 
   const mockAcknowledgment = {
-    checkComfyUIVersionChange: vi.fn(),
+    checkHanzo StudioVersionChange: vi.fn(),
     acknowledgmentState: computed(
       () => ({}) as Partial<ConflictAcknowledgmentState>
     ),
@@ -275,7 +275,7 @@ describe('useConflictDetection', () => {
       const environment = await collectSystemEnvironment()
 
       expect(environment).toEqual({
-        comfyui_version: '0.3.41',
+        hanzo_studio_version: '0.3.41',
         frontend_version: '1.24.0',
         os: 'darwin',
         accelerator: 'mps'
@@ -290,7 +290,7 @@ describe('useConflictDetection', () => {
 
       // When systemStats is null, empty strings are used as fallback
       expect(environment).toEqual({
-        comfyui_version: '',
+        hanzo_studio_version: '',
         frontend_version: '1.24.0',
         os: '',
         accelerator: ''
@@ -324,8 +324,8 @@ describe('useConflictDetection', () => {
             status: 'success' as const,
             identifier: { node_id: 'test-pack', version: '1.0.0' },
             node_version: {
-              supported_comfyui_version: '>=0.4.0',
-              supported_comfyui_frontend_version: '>=2.0.0',
+              supported_hanzo_studio_version: '>=0.4.0',
+              supported_hanzo_studio_frontend_version: '>=2.0.0',
               supported_os: ['Windows', 'Linux', 'macOS'],
               supported_accelerators: ['CUDA', 'Metal', 'CPU'],
               status: 'NodeVersionStatusActive' as const,
@@ -341,9 +341,9 @@ describe('useConflictDetection', () => {
       // Mock version checks to return conflicts
       vi.mocked(checkVersionCompatibility).mockImplementation(
         (type, current, required) => {
-          if (type === 'comfyui_version' && required === '>=0.4.0') {
+          if (type === 'hanzo_studio_version' && required === '>=0.4.0') {
             return {
-              type: 'comfyui_version',
+              type: 'hanzo_studio_version',
               current_value: current || '0.3.41',
               required_value: '>=0.4.0'
             }
@@ -359,7 +359,7 @@ describe('useConflictDetection', () => {
       expect(result.results).toHaveLength(1)
       expect(result.results[0].has_conflict).toBe(true)
       expect(result.results[0].conflicts).toContainEqual({
-        type: 'comfyui_version',
+        type: 'hanzo_studio_version',
         current_value: '0.3.41',
         required_value: '>=0.4.0'
       })
@@ -392,8 +392,8 @@ describe('useConflictDetection', () => {
               publisher_id: 'test-publisher',
               node_id: 'banned-pack',
               created_at: '2024-01-01T00:00:00Z',
-              supported_comfyui_version: undefined,
-              supported_comfyui_frontend_version: undefined,
+              supported_hanzo_studio_version: undefined,
+              supported_hanzo_studio_frontend_version: undefined,
               supported_os: undefined,
               supported_accelerators: undefined
             } as components['schemas']['NodeVersion']
