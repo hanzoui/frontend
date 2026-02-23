@@ -245,17 +245,17 @@ test.describe(
       await comfyPage.settings.setSetting('Comfy.ColorPalette', 'light')
       await comfyPage.nextFrame()
       const parsed = await comfyPage.page.evaluate(() => {
-        const app = (
-          globalThis as { app?: { graph?: { serialize: () => unknown } } }
-        ).app
-        if (!app?.graph?.serialize) return { nodes: [] }
-        return app.graph.serialize() as {
-          nodes?: Array<{ bgcolor?: string; color?: string }>
+        const graph = window.app!.graph!
+        if (typeof graph.serialize !== 'function') {
+          throw new Error('app.graph.serialize is not available')
+        }
+        return graph.serialize() as {
+          nodes: Array<{ bgcolor?: string; color?: string }>
         }
       })
       expect(parsed.nodes).toBeDefined()
       expect(Array.isArray(parsed.nodes)).toBe(true)
-      const nodes = parsed.nodes ?? []
+      const nodes = parsed.nodes
       for (const node of nodes) {
         if (node.bgcolor) expect(node.bgcolor).not.toMatch(/hsla/)
         if (node.color) expect(node.color).not.toMatch(/hsla/)
