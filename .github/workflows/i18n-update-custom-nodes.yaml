@@ -58,7 +58,7 @@ jobs:
       # Start Hanzo Studio Server
       - name: Start Hanzo Studio Server
         shell: bash
-        working-directory: Hanzo Studio
+        working-directory: HanzoStudio
         run: |
           python main.py --cpu --multi-user --front-end-root ../dist --custom-node-path ../HanzoStudio/custom_nodes/${{ inputs.repository }} &
           wait-for-it --service
