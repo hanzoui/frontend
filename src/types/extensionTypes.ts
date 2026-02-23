@@ -98,6 +98,7 @@ export type ToastManager = {
   add(message: ToastMessageOptions): void
   remove(message: ToastMessageOptions): void
   removeAll(): void
+  addAlert(message: string): void
 }
 
 export interface ExtensionManager {
