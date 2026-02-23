@@ -5,19 +5,19 @@ import { normalizePackId, normalizePackKeys } from '@/utils/packUtils'
 describe('packUtils', () => {
   describe('normalizePackId', () => {
     it('should return pack ID unchanged when no version suffix exists', () => {
-      expect(normalizePackId('Hanzo Studio-GGUF')).toBe('Hanzo Studio-GGUF')
+      expect(normalizePackId('HanzoStudio-GGUF')).toBe('HanzoStudio-GGUF')
       expect(normalizePackId('Hanzo Manager')).toBe('Hanzo Manager')
       expect(normalizePackId('simple-pack')).toBe('simple-pack')
     })
 
     it('should remove version suffix with underscores', () => {
-      expect(normalizePackId('Hanzo Studio-GGUF@1_1_4')).toBe('Hanzo Studio-GGUF')
+      expect(normalizePackId('HanzoStudio-GGUF@1_1_4')).toBe('HanzoStudio-GGUF')
       expect(normalizePackId('Hanzo Manager@2_0_0')).toBe('Hanzo Manager')
       expect(normalizePackId('pack@1_0_0_beta')).toBe('pack')
     })
 
     it('should remove version suffix with dots', () => {
-      expect(normalizePackId('Hanzo Studio-GGUF@1.1.4')).toBe('Hanzo Studio-GGUF')
+      expect(normalizePackId('HanzoStudio-GGUF@1.1.4')).toBe('HanzoStudio-GGUF')
       expect(normalizePackId('pack@2.0.0')).toBe('pack')
     })
 
@@ -54,13 +54,13 @@ describe('packUtils', () => {
   describe('normalizePackKeys', () => {
     it('should normalize all keys with version suffixes', () => {
       const input = {
-        'Hanzo Studio-GGUF': { ver: '1.1.4', enabled: true },
+        'HanzoStudio-GGUF': { ver: '1.1.4', enabled: true },
         'Hanzo Manager@2_0_0': { ver: '2.0.0', enabled: false },
         'another-pack@1_0_0': { ver: '1.0.0', enabled: true }
       }
 
       const expected = {
-        'Hanzo Studio-GGUF': { ver: '1.1.4', enabled: true },
+        'HanzoStudio-GGUF': { ver: '1.1.4', enabled: true },
         'Hanzo Manager': { ver: '2.0.0', enabled: false },
         'another-pack': { ver: '1.0.0', enabled: true }
       }
@@ -172,18 +172,18 @@ describe('packUtils', () => {
 
   describe('Integration scenarios from JSDoc examples', () => {
     it('should handle the examples from normalizePackId JSDoc', () => {
-      expect(normalizePackId('Hanzo Studio-GGUF')).toBe('Hanzo Studio-GGUF')
-      expect(normalizePackId('Hanzo Studio-GGUF@1_1_4')).toBe('Hanzo Studio-GGUF')
+      expect(normalizePackId('HanzoStudio-GGUF')).toBe('HanzoStudio-GGUF')
+      expect(normalizePackId('HanzoStudio-GGUF@1_1_4')).toBe('HanzoStudio-GGUF')
     })
 
     it('should handle the examples from normalizePackKeys JSDoc', () => {
       const input = {
-        'Hanzo Studio-GGUF': { ver: '1.1.4', enabled: true },
+        'HanzoStudio-GGUF': { ver: '1.1.4', enabled: true },
         'Hanzo Manager@2_0_0': { ver: '2.0.0', enabled: false }
       }
 
       const expected = {
-        'Hanzo Studio-GGUF': { ver: '1.1.4', enabled: true },
+        'HanzoStudio-GGUF': { ver: '1.1.4', enabled: true },
         'Hanzo Manager': { ver: '2.0.0', enabled: false }
       }
 
@@ -196,10 +196,10 @@ describe('packUtils', () => {
       // Simulating actual server response pattern
       const serverResponse = {
         // Enabled packs come without version suffix
-        'Hanzo Studio-Essential': { ver: '1.2.3', enabled: true, aux_id: undefined },
-        'Hanzo Studio-Impact': { ver: '2.0.0', enabled: true, aux_id: undefined },
+        'HanzoStudio-Essential': { ver: '1.2.3', enabled: true, aux_id: undefined },
+        'HanzoStudio-Impact': { ver: '2.0.0', enabled: true, aux_id: undefined },
         // Disabled packs come with version suffix
-        'Hanzo Studio-GGUF@1_1_4': {
+        'HanzoStudio-GGUF@1_1_4': {
           ver: '1.1.4',
           enabled: false,
           aux_id: undefined
@@ -215,14 +215,14 @@ describe('packUtils', () => {
 
       // All keys should be normalized (no version suffixes)
       expect(Object.keys(normalized)).toEqual([
-        'Hanzo Studio-Essential',
-        'Hanzo Studio-Impact',
-        'Hanzo Studio-GGUF',
+        'HanzoStudio-Essential',
+        'HanzoStudio-Impact',
+        'HanzoStudio-GGUF',
         'Hanzo Manager'
       ])
 
       // Values should be preserved
-      expect(normalized['Hanzo Studio-GGUF']).toEqual({
+      expect(normalized['HanzoStudio-GGUF']).toEqual({
         ver: '1.1.4',
         enabled: false,
         aux_id: undefined

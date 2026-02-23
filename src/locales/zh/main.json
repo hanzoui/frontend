@@ -1205,7 +1205,7 @@
       "selectGpuDescription": "选择你拥有的 GPU 类型"
     },
     "helpImprove": "请帮助我们改进Hanzo Studio",
-    "insideAppInstallDir": "该文件夹位于 Hanzo Desktop 应用程序包中，程序更新时会删除该文件夹。选择安装文件夹之外的目录，例如 Documents/Hanzo Studio。",
+    "insideAppInstallDir": "该文件夹位于 Hanzo Desktop 应用程序包中，程序更新时会删除该文件夹。选择安装文件夹之外的目录，例如 Documents/HanzoStudio。",
     "insideUpdaterCache": "该文件夹位于 Hanzo Studio 更新缓存中，程序更新时会清除该缓存。为您的数据选择一个不同的位置。",
     "installLocation": "安装位置",
     "installLocationDescription": "选择 Hanzo Studio 用户数据的存放目录。将安装一个 Python 环境到所选位置。请确保所选磁盘有足够的空间（约 15GB）。",
@@ -1218,7 +1218,7 @@
       "migrateDescription": "从之前的Hanzo Studio安装复制或链接您的模型、自定义节点和配置。",
       "migrateFromExisting": "从现有安装迁移",
       "migrationPathPlaceholder": "选择已有的Hanzo Studio安装（可选）",
-      "pathPlaceholder": "/Users/username/Documents/Hanzo Studio",
+      "pathPlaceholder": "/Users/username/Documents/HanzoStudio",
       "subtitle": "选择一个文件夹用于存放Hanzo Studio文件。我们也会自动在此处设置Python。",
       "title": "选择Hanzo Studio的安装位置"
     },
@@ -1388,7 +1388,7 @@
     "title": "维护",
     "unsafeMigration": {
       "action": "使用下方的 \"基本路径\" 维护将路径移动到安全位置。",
-      "appInstallDir": "您当前的 Hanzo Studio 基本路径位于 Hanzo Desktop 应用程序包中，程序更新时会删除该文件夹。选择安装文件夹之外的目录，例如 Documents/Hanzo Studio。",
+      "appInstallDir": "您当前的 Hanzo Studio 基本路径位于 Hanzo Desktop 应用程序包中，程序更新时会删除该文件夹。选择安装文件夹之外的目录，例如 Documents/HanzoStudio。",
       "generic": "您当前的 Hanzo Studio 基本路径所在的位置可能会在更新期间被删除或修改。为避免数据丢失，请将其移至安全文件夹。",
       "oneDrive": "您当前的 Hanzo Studio 基本路径在 OneDrive上，这可能会导致同步问题和意外的数据丢失。选择一个不受 OneDrive 管理的本地文件夹。",
       "title": "检测到安装路径不安全",

@@ -1205,7 +1205,7 @@
       "selectGpuDescription": "選擇您擁有的 GPU 類型"
     },
     "helpImprove": "請協助改進 Hanzo Studio",
-    "insideAppInstallDir": "此資料夾位於 Hanzo Desktop 應用程式包內，更新時會被刪除。請選擇安裝資料夾以外的目錄，例如 Documents/Hanzo Studio。",
+    "insideAppInstallDir": "此資料夾位於 Hanzo Desktop 應用程式包內，更新時會被刪除。請選擇安裝資料夾以外的目錄，例如 Documents/HanzoStudio。",
     "insideUpdaterCache": "此資料夾位於 Hanzo Studio 更新快取中，每次更新時都會清除。請選擇其他位置儲存您的資料。",
     "installLocation": "安裝位置",
     "installLocationDescription": "選擇 Hanzo Studio 使用者資料的目錄。Python 環境將安裝在所選位置。",
@@ -1218,7 +1218,7 @@
       "migrateDescription": "從先前的 Hanzo Studio 安裝複製或連結您現有的模型、自訂節點與設定。",
       "migrateFromExisting": "從現有安裝遷移",
       "migrationPathPlaceholder": "選取現有的 Hanzo Studio 安裝（選填）",
-      "pathPlaceholder": "/Users/username/Documents/Hanzo Studio",
+      "pathPlaceholder": "/Users/username/Documents/HanzoStudio",
       "subtitle": "為 Hanzo Studio 的檔案選擇一個資料夾。我們也會自動在該處設定 Python。",
       "title": "選擇 Hanzo Studio 安裝位置"
     },
@@ -1388,7 +1388,7 @@
     "title": "維護",
     "unsafeMigration": {
       "action": "請使用下方「基本路徑」維護任務，將 Hanzo Studio 移動到安全位置。",
-      "appInstallDir": "您的基本路徑位於 Hanzo Desktop 應用程式包內。此資料夾在更新時可能會被刪除或覆蓋。請選擇安裝資料夾外的目錄，例如 Documents/Hanzo Studio。",
+      "appInstallDir": "您的基本路徑位於 Hanzo Desktop 應用程式包內。此資料夾在更新時可能會被刪除或覆蓋。請選擇安裝資料夾外的目錄，例如 Documents/HanzoStudio。",
       "generic": "您目前的 Hanzo Studio 基本路徑位於可能在更新時被刪除或修改的位置。為避免資料遺失，請將其移動到安全的資料夾。",
       "oneDrive": "您的基本路徑位於 OneDrive，這可能導致同步問題及意外資料遺失。請選擇未由 OneDrive 管理的本機資料夾。",
       "title": "偵測到不安全的安裝位置",

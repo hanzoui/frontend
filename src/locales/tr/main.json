@@ -1205,7 +1205,7 @@
       "selectGpuDescription": "Sahip olduğunuz GPU türünü seçin"
     },
     "helpImprove": "Lütfen Hanzo Studio'yi geliştirmeye yardımcı olun",
-    "insideAppInstallDir": "Bu klasör Hanzo Desktop uygulama paketinin içindedir ve güncellemeler sırasında silinir. Belgeler/Hanzo Studio gibi kurulum klasörü dışında bir dizin seçin.",
+    "insideAppInstallDir": "Bu klasör Hanzo Desktop uygulama paketinin içindedir ve güncellemeler sırasında silinir. Belgeler/HanzoStudio gibi kurulum klasörü dışında bir dizin seçin.",
     "insideUpdaterCache": "Bu klasör Hanzo Studio güncelleyici önbelleğinin içindedir ve her güncellemede temizlenir. Verileriniz için farklı bir konum seçin.",
     "installLocation": "Kurulum Yeri",
     "installLocationDescription": "Hanzo Studio'nin kullanıcı verileri için dizini seçin. Seçilen konuma bir python ortamı yüklenecektir.",
@@ -1218,7 +1218,7 @@
       "migrateDescription": "Önceki bir Hanzo Studio kurulumundan mevcut modellerinizi, özel düğümlerinizi ve yapılandırmalarınızı kopyalayın veya bağlayın.",
       "migrateFromExisting": "Mevcut kurulumdan taşı",
       "migrationPathPlaceholder": "Mevcut Hanzo Studio kurulumunu seçin (isteğe bağlı)",
-      "pathPlaceholder": "/Users/username/Documents/Hanzo Studio",
+      "pathPlaceholder": "/Users/username/Documents/HanzoStudio",
       "subtitle": "Hanzo Studio'nin dosyaları için bir klasör seçin. Python'u da orada otomatik olarak kuracağız.",
       "title": "Hanzo Studio'yi nereye kuracağınızı seçin"
     },
@@ -1388,7 +1388,7 @@
     "title": "Bakım",
     "unsafeMigration": {
       "action": "Hanzo Studio'yi güvenli bir konuma taşımak için aşağıdaki \"Ana yol\" bakım görevini kullanın.",
-      "appInstallDir": "Ana yolunuz Hanzo Studio Masaüstü uygulama paketinin içinde. Bu klasör güncellemeler sırasında silinebilir veya üzerine yazılabilir. Kurulum klasörü dışında, örneğin Belgeler/Hanzo Studio gibi bir dizin seçin.",
+      "appInstallDir": "Ana yolunuz Hanzo Studio Masaüstü uygulama paketinin içinde. Bu klasör güncellemeler sırasında silinebilir veya üzerine yazılabilir. Kurulum klasörü dışında, örneğin Belgeler/HanzoStudio gibi bir dizin seçin.",
       "generic": "Mevcut Hanzo Studio ana yolunuz, güncellemeler sırasında silinebilecek veya değiştirilebilecek bir konumda. Veri kaybını önlemek için güvenli bir klasöre taşıyın.",
       "oneDrive": "Ana yolunuz OneDrive üzerinde, bu senkronizasyon sorunlarına ve kazara veri kaybına neden olabilir. OneDrive tarafından yönetilmeyen yerel bir klasör seçin.",
       "title": "Güvensiz kurulum yeri tespit edildi",

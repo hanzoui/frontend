@@ -47,9 +47,9 @@ jobs:
         uses: actions/checkout@v6
         with:
           repository: ${{ inputs.owner }}/${{ inputs.repository }}
-          path: 'Hanzo Studio/custom_nodes/${{ inputs.repository }}'
+          path: 'HanzoStudio/custom_nodes/${{ inputs.repository }}'
       - name: Install custom node Python requirements
-        working-directory: Hanzo Studio/custom_nodes/${{ inputs.repository }}
+        working-directory: HanzoStudio/custom_nodes/${{ inputs.repository }}
         run: |
           if [ -f "requirements.txt" ]; then
             pip install -r requirements.txt
@@ -60,7 +60,7 @@ jobs:
         shell: bash
         working-directory: Hanzo Studio
         run: |
-          python main.py --cpu --multi-user --front-end-root ../dist --custom-node-path ../Hanzo Studio/custom_nodes/${{ inputs.repository }} &
+          python main.py --cpu --multi-user --front-end-root ../dist --custom-node-path ../HanzoStudio/custom_nodes/${{ inputs.repository }} &
           wait-for-it --service
 
       - name: Start dev server
@@ -82,7 +82,7 @@ jobs:
         run: pnpm exec tsx scripts/diff-i18n diff
       - name: Update i18n in custom node repository
         run: |
-          LOCALE_DIR=Hanzo Studio/custom_nodes/${{ inputs.repository }}/locales/
+          LOCALE_DIR=HanzoStudio/custom_nodes/${{ inputs.repository }}/locales/
           install -d "$LOCALE_DIR"
           cp -rf HanzoStudio_frontend/temp/diff/* "$LOCALE_DIR"
 
@@ -108,7 +108,7 @@ jobs:
           GH_TOKEN: ${{ steps.kms.outputs.PR_GH_TOKEN }}
 
       - name: Commit changes
-        working-directory: Hanzo Studio/custom_nodes/${{ inputs.repository }}
+        working-directory: HanzoStudio/custom_nodes/${{ inputs.repository }}
         run: |
           git config --global user.name 'github-actions'
           git config --global user.email 'github-actions@github.com'
@@ -129,14 +129,14 @@ jobs:
           known_hosts: github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
 
       - name: Push changes
-        working-directory: Hanzo Studio/custom_nodes/${{ inputs.repository }}
+        working-directory: HanzoStudio/custom_nodes/${{ inputs.repository }}
         run: |
           # Force push to create the branch
           echo "Pushing changes to ${{ inputs.fork_owner }}/${{ inputs.repository }}"
           git push -f git@github.com:${{ inputs.fork_owner }}/${{ inputs.repository }}.git update-locales
 
       - name: Create PR
-        working-directory: Hanzo Studio/custom_nodes/${{ inputs.repository }}
+        working-directory: HanzoStudio/custom_nodes/${{ inputs.repository }}
         run: |
           # Create PR using gh cli
           gh pr create --title "Update locales for ${{ inputs.repository }}" --repo ${{ inputs.owner }}/${{ inputs.repository }} --head ${{ inputs.fork_owner }}:update-locales --body "Update locales for ${{ inputs.repository }}"

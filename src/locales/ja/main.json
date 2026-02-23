@@ -1205,7 +1205,7 @@
       "selectGpuDescription": "所有しているGPUのタイプを選択してください"
     },
     "helpImprove": "Hanzo Studioの改善にご協力ください",
-    "insideAppInstallDir": "このフォルダーはHanzo Desktopアプリケーションバンドル内にあり、アップデート時に削除されます。インストールフォルダー外（例：Documents/Hanzo Studio）を選択してください。",
+    "insideAppInstallDir": "このフォルダーはHanzo Desktopアプリケーションバンドル内にあり、アップデート時に削除されます。インストールフォルダー外（例：Documents/HanzoStudio）を選択してください。",
     "insideUpdaterCache": "このフォルダーはHanzo Studioアップデーターのキャッシュ内にあり、アップデートごとに消去されます。データ用に別の場所を選択してください。",
     "installLocation": "インストール先",
     "installLocationDescription": "Hanzo Studioのユーザーデータを保存するディレクトリを選択してください。Python環境が選択した場所にインストールされます。選択したディスクに約15GBの空き容量が必要です。",
@@ -1218,7 +1218,7 @@
       "migrateDescription": "以前のHanzo Studioインストールから既存のモデル、カスタムノード、設定をコピーまたはリンクします。",
       "migrateFromExisting": "既存のインストールから移行",
       "migrationPathPlaceholder": "既存のHanzo Studioインストールを選択（任意）",
-      "pathPlaceholder": "/Users/username/Documents/Hanzo Studio",
+      "pathPlaceholder": "/Users/username/Documents/HanzoStudio",
       "subtitle": "Hanzo Studioのファイル用フォルダを選択してください。Pythonも自動的にセットアップされます。",
       "title": "Hanzo Studioのインストール場所を選択"
     },
@@ -1388,7 +1388,7 @@
     "title": "メンテナンス",
     "unsafeMigration": {
       "action": "下記の「ベースパス」メンテナンスタスクを使用して、Hanzo Studioを安全な場所に移動してください。",
-      "appInstallDir": "ベースパスがHanzo Desktopアプリケーションバンドル内にあります。このフォルダーはアップデート時に削除または上書きされる可能性があります。Documents/Hanzo Studioなど、インストールフォルダー外のディレクトリを選択してください。",
+      "appInstallDir": "ベースパスがHanzo Desktopアプリケーションバンドル内にあります。このフォルダーはアップデート時に削除または上書きされる可能性があります。Documents/HanzoStudioなど、インストールフォルダー外のディレクトリを選択してください。",
       "generic": "現在のHanzo Studioのベースパスは、アップデート時に削除または変更される可能性のある場所にあります。データ損失を防ぐため、安全なフォルダーに移動してください。",
       "oneDrive": "ベースパスがOneDrive上にあり、同期の問題やデータ損失が発生する可能性があります。OneDriveで管理されていないローカルフォルダーを選択してください。",
       "title": "安全でないインストール場所が検出されました",

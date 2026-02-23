@@ -21,7 +21,7 @@ These tools provide:
 During CI/CD, these files are automatically copied to the Hanzo Studio `custom_nodes` directory. For local development, copy these files to your Hanzo Studio installation:
 
 ```bash
-cp -r tools/devtools/* /path/to/your/Hanzo Studio/custom_nodes/HanzoStudio_devtools/
+cp -r tools/devtools/* /path/to/your/HanzoStudio/custom_nodes/HanzoStudio_devtools/
 ```
 
 ## Migration

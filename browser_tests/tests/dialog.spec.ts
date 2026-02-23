@@ -133,7 +133,7 @@ test.describe('Missing models warning', () => {
       body: JSON.stringify([
         {
           name: 'text_encoders',
-          folders: ['Hanzo Studio/models/text_encoders']
+          folders: ['HanzoStudio/models/text_encoders']
         }
       ])
     }

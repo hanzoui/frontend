@@ -1205,7 +1205,7 @@
       "selectGpuDescription": "소유한 GPU 유형을 선택하세요"
     },
     "helpImprove": "Hanzo Studio 개선에 도움을 주세요",
-    "insideAppInstallDir": "이 폴더는 Hanzo Desktop 애플리케이션 번들 내부에 있으며, 업데이트 시 삭제됩니다. Documents/Hanzo Studio와 같은 설치 폴더 외부의 디렉터리를 선택하세요.",
+    "insideAppInstallDir": "이 폴더는 Hanzo Desktop 애플리케이션 번들 내부에 있으며, 업데이트 시 삭제됩니다. Documents/HanzoStudio와 같은 설치 폴더 외부의 디렉터리를 선택하세요.",
     "insideUpdaterCache": "이 폴더는 Hanzo Studio 업데이트 캐시 내부에 있으며, 매번 업데이트 시 삭제됩니다. 데이터 저장을 위해 다른 위치를 선택하세요.",
     "installLocation": "설치 위치",
     "installLocationDescription": "Hanzo Studio의 사용자 데이터 디렉토리를 선택하십시오. 선택한 위치에 Python 환경이 설치됩니다. 선택한 디스크에 충분한 공간(~15GB)이 남아 있는지 확인하십시오.",
@@ -1218,7 +1218,7 @@
       "migrateDescription": "이전 Hanzo Studio 설치에서 기존 모델, 커스텀 노드 및 구성을 복사하거나 링크합니다.",
       "migrateFromExisting": "기존 설치에서 마이그레이션",
       "migrationPathPlaceholder": "기존 Hanzo Studio 설치 선택 (선택사항)",
-      "pathPlaceholder": "/Users/username/Documents/Hanzo Studio",
+      "pathPlaceholder": "/Users/username/Documents/HanzoStudio",
       "subtitle": "Hanzo Studio 파일을 위한 폴더를 선택하세요. Python도 자동으로 설정됩니다.",
       "title": "Hanzo Studio를 설치할 위치를 선택하세요"
     },
@@ -1388,7 +1388,7 @@
     "title": "유지 보수",
     "unsafeMigration": {
       "action": "아래의 \"기본 경로\" 유지 관리 작업을 사용하여 Hanzo Studio를 안전한 위치로 이동하세요.",
-      "appInstallDir": "기본 경로가 Hanzo Studio 데스크톱 애플리케이션 번들 내부에 있습니다. 이 폴더는 업데이트 시 삭제되거나 덮어쓸 수 있습니다. Documents/Hanzo Studio와 같은 설치 폴더 외부의 디렉터리를 선택하세요.",
+      "appInstallDir": "기본 경로가 Hanzo Studio 데스크톱 애플리케이션 번들 내부에 있습니다. 이 폴더는 업데이트 시 삭제되거나 덮어쓸 수 있습니다. Documents/HanzoStudio와 같은 설치 폴더 외부의 디렉터리를 선택하세요.",
       "generic": "현재 Hanzo Studio 기본 경로가 업데이트 중 삭제되거나 수정될 수 있는 위치에 있습니다. 데이터 손실을 방지하려면 안전한 폴더로 이동하세요.",
       "oneDrive": "기본 경로가 OneDrive에 있습니다. 이는 동기화 문제 및 우발적인 데이터 손실을 일으킬 수 있습니다. OneDrive에서 관리되지 않는 로컬 폴더를 선택하세요.",
       "title": "안전하지 않은 설치 위치 감지됨",

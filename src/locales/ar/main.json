@@ -1205,7 +1205,7 @@
       "selectGpuDescription": "اختر نوع وحدة معالجة الرسومات التي تملكها"
     },
     "helpImprove": "يرجى المساعدة في تحسين Hanzo Studio",
-    "insideAppInstallDir": "هذا المجلد داخل حزمة تطبيق Hanzo Desktop وسيتم حذفه أثناء التحديثات. اختر مجلدًا خارج مجلد التثبيت، مثل Documents/Hanzo Studio.",
+    "insideAppInstallDir": "هذا المجلد داخل حزمة تطبيق Hanzo Desktop وسيتم حذفه أثناء التحديثات. اختر مجلدًا خارج مجلد التثبيت، مثل Documents/HanzoStudio.",
     "insideUpdaterCache": "هذا المجلد داخل ذاكرة التخزين المؤقت لمحدث Hanzo Studio، والتي يتم مسحها في كل تحديث. اختر موقعًا مختلفًا لبياناتك.",
     "installLocation": "موقع التثبيت",
     "installLocationDescription": "اختر الدليل الخاص ببيانات مستخدم Hanzo Studio. سيتم تثبيت بيئة بايثون في الموقع المحدد.",
@@ -1218,7 +1218,7 @@
       "migrateDescription": "انسخ أو اربط النماذج الحالية والعقد المخصصة والإعدادات من تثبيت Hanzo Studio سابق.",
       "migrateFromExisting": "الترحيل من تثبيت موجود",
       "migrationPathPlaceholder": "حدد تثبيت Hanzo Studio موجود (اختياري)",
-      "pathPlaceholder": "/Users/username/Documents/Hanzo Studio",
+      "pathPlaceholder": "/Users/username/Documents/HanzoStudio",
       "subtitle": "اختر مجلدًا لملفات Hanzo Studio. سنقوم أيضًا بإعداد Python هناك تلقائيًا.",
       "title": "اختر مكان تثبيت Hanzo Studio"
     },
@@ -1388,7 +1388,7 @@
     "title": "الصيانة",
     "unsafeMigration": {
       "action": "استخدم مهمة الصيانة \"المسار الأساسي\" أدناه لنقل Hanzo Studio إلى موقع آمن.",
-      "appInstallDir": "مسارك الأساسي داخل حزمة تطبيق Hanzo Desktop. قد يتم حذف هذا المجلد أو الكتابة فوقه أثناء التحديثات. اختر دليلاً خارج مجلد التثبيت، مثل Documents/Hanzo Studio.",
+      "appInstallDir": "مسارك الأساسي داخل حزمة تطبيق Hanzo Desktop. قد يتم حذف هذا المجلد أو الكتابة فوقه أثناء التحديثات. اختر دليلاً خارج مجلد التثبيت، مثل Documents/HanzoStudio.",
       "generic": "مسار Hanzo Studio الأساسي الحالي في موقع قد يتم حذفه أو تعديله أثناء التحديثات. لتجنب فقدان البيانات، انقله إلى مجلد آمن.",
       "oneDrive": "مسارك الأساسي على OneDrive، مما قد يسبب مشاكل في المزامنة وفقدان البيانات عن طريق الخطأ. اختر مجلدًا محليًا غير مُدار بواسطة OneDrive.",
       "title": "تم اكتشاف موقع تثبيت غير آمن",
