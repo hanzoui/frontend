@@ -48,4 +48,16 @@ describe('AssetsListItem', () => {
 
     expect(wrapper.emitted('preview-click')).toHaveLength(1)
   })
+
+  it('emits preview-click when fallback icon is clicked', async () => {
+    const wrapper = mount(AssetsListItem, {
+      props: {
+        iconName: 'icon-[lucide--box]'
+      }
+    })
+
+    await wrapper.find('i').trigger('click')
+
+    expect(wrapper.emitted('preview-click')).toHaveLength(1)
+  })
 })

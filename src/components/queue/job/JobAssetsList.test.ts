@@ -115,6 +115,21 @@ describe('JobAssetsList', () => {
     expect(wrapper.emitted('viewItem')).toEqual([[job]])
   })
 
+  it('emits viewItem on icon click for completed 3D jobs without preview tile', async () => {
+    const job = buildJob({
+      iconImageUrl: undefined,
+      taskRef: createTaskRef(createResultItem('job-1.glb', 'model'))
+    })
+    const wrapper = mountJobAssetsList([job])
+
+    const listItem = wrapper.findComponent({ name: 'AssetsListItem' })
+
+    await listItem.find('i').trigger('click')
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.emitted('viewItem')).toEqual([[job]])
+  })
+
   it('does not emit viewItem on double-click for non-completed jobs', async () => {
     const job = buildJob({
       state: 'running',
