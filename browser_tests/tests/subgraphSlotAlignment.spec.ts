@@ -24,7 +24,9 @@ test.describe(
       // to trigger the 1.2x scale in ensureCorrectLayoutScale.
       const result = await comfyPage.page.evaluate(async () => {
         const app = window.app!
-        const resp = await fetch('/browser_tests/assets/subgraphs/basic-subgraph.json')
+        const resp = await fetch(
+          '/browser_tests/assets/subgraphs/basic-subgraph.json'
+        )
         const workflow = (await resp.json()) as ComfyWorkflowJSON
 
         // Force LG renderer version to trigger ensureCorrectLayoutScale 1.2x
@@ -74,18 +76,11 @@ test.describe(
           const nodeRect = nodeEl.getBoundingClientRect()
           for (const slotEl of slotEls) {
             const slotRect = slotEl.getBoundingClientRect()
-            const slotKey =
-              (slotEl as HTMLElement).dataset.slotKey ?? 'unknown'
+            const slotKey = (slotEl as HTMLElement).dataset.slotKey ?? 'unknown'
             slots.push({
               key: slotKey,
-              offsetX:
-                slotRect.left +
-                slotRect.width / 2 -
-                nodeRect.left,
-              offsetY:
-                slotRect.top +
-                slotRect.height / 2 -
-                nodeRect.top
+              offsetX: slotRect.left + slotRect.width / 2 - nodeRect.left,
+              offsetY: slotRect.top + slotRect.height / 2 - nodeRect.top
             })
           }
 
