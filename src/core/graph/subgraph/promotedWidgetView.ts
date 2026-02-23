@@ -261,8 +261,7 @@ class PromotedWidgetView implements IPromotedWidgetView {
     const shouldRebuild =
       !this.projectedWidget ||
       this.projectedSourceNode !== resolved.node ||
-      this.projectedSourceWidget !== resolved.widget ||
-      this.projectedWidget.type !== resolved.widget.type
+      this.projectedSourceWidget !== resolved.widget
 
     if (!shouldRebuild) return this.projectedWidget
 
