@@ -84,7 +84,7 @@ jobs:
         run: |
           LOCALE_DIR=Hanzo Studio/custom_nodes/${{ inputs.repository }}/locales/
           install -d "$LOCALE_DIR"
-          cp -rf Hanzo Studio_frontend/temp/diff/* "$LOCALE_DIR"
+          cp -rf HanzoStudio_frontend/temp/diff/* "$LOCALE_DIR"
 
       # Git ops for pushing changes and creating PR
       - name: Check and create fork of custom node repository

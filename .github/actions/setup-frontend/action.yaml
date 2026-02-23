@@ -1,5 +1,5 @@
 name: Setup Hanzo Frontend
-description: 'Install nodejs/pnpm/dependencies and optionally build Hanzo Studio_frontend'
+description: 'Install nodejs/pnpm/dependencies and optionally build HanzoStudio_frontend'
 inputs:
   include_build_step:
     description: 'Include the build step to build the frontend. Set to true for workflows that need a built frontend'
@@ -27,7 +27,7 @@ runs:
       shell: bash
       run: pnpm install --frozen-lockfile
 
-    - name: Build Hanzo Studio_frontend
+    - name: Build HanzoStudio_frontend
       if: ${{ inputs.include_build_step == 'true' }}
       shell: bash
       run: pnpm build

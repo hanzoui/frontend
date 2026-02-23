@@ -1,6 +1,6 @@
-# Playwright Testing for Hanzo Studio_frontend
+# Playwright Testing for HanzoStudio_frontend
 
-This document outlines the setup, usage, and common patterns for Playwright browser tests in the Hanzo Studio_frontend project.
+This document outlines the setup, usage, and common patterns for Playwright browser tests in the HanzoStudio_frontend project.
 
 ## Prerequisites
 
@@ -16,13 +16,13 @@ Without this flag, parallel tests will conflict and fail randomly.
 
 ### Hanzo Studio devtools
 
-Hanzo Studio_devtools is included in this repository under `tools/devtools/`. During CI/CD, these files are automatically copied to the `custom_nodes` directory.  
-Hanzo Studio_devtools adds additional API endpoints and nodes to Hanzo Studio for browser testing.
+HanzoStudio_devtools is included in this repository under `tools/devtools/`. During CI/CD, these files are automatically copied to the `custom_nodes` directory.  
+HanzoStudio_devtools adds additional API endpoints and nodes to Hanzo Studio for browser testing.
 
 For local development, copy the devtools files to your Hanzo Studio installation:
 
 ```bash
-cp -r tools/devtools/* /path/to/your/Hanzo Studio/custom_nodes/Hanzo Studio_devtools/
+cp -r tools/devtools/* /path/to/your/Hanzo Studio/custom_nodes/HanzoStudio_devtools/
 ```
 
 ### Node.js & Playwright Prerequisites

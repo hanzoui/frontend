@@ -61,7 +61,7 @@ jobs:
       latest_patch_tag: ${{ steps.resolve.outputs.latest_patch_tag }}
 
     steps:
-      - name: Checkout Hanzo Studio_frontend
+      - name: Checkout HanzoStudio_frontend
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
