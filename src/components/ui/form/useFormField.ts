@@ -6,6 +6,19 @@ import {
   FORM_ITEM_ID_INJECTION_KEY
 } from './injectionKeys'
 
+/**
+ * Exposes form field identifiers and validation state for a form field component.
+ *
+ * @returns An object with:
+ * - `errorMessage`: a reactive validation message for the injected field name
+ * - `formDescriptionId`: the element id for the field description (`<itemId>-form-item-description`)
+ * - `formItemId`: the element id for the form item container (`<itemId>-form-item`)
+ * - `formMessageId`: the element id for the field validation message (`<itemId>-form-item-message`)
+ * - `describedBy`: a computed string listing ids to use for `aria-describedby` (includes the message id when an error exists)
+ * - `name`: the injected field name
+ *
+ * @throws Error if the required injection keys (field name or item id) are not found
+ */
 export function useFormField() {
   const fieldName = inject(FORM_FIELD_NAME_INJECTION_KEY)
   const itemId = inject(FORM_ITEM_ID_INJECTION_KEY)

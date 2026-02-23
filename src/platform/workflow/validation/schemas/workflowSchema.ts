@@ -482,6 +482,13 @@ const zWorkflowVersion = z.object({
   version: z.number()
 })
 
+/**
+ * Validate and normalize a Comfy workflow payload.
+ *
+ * @param data - The workflow data to validate.
+ * @param onError - Callback invoked with a human-readable validation error message when validation fails.
+ * @returns The parsed ComfyWorkflowJSON when validation succeeds, `null` when validation fails or the payload lacks a valid version.
+ */
 export async function validateComfyWorkflow(
   data: unknown,
   onError: (error: string) => void = console.warn

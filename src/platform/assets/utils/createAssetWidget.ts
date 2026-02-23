@@ -34,11 +34,13 @@ interface CreateAssetWidgetParams {
 }
 
 /**
- * Creates an asset widget that opens the Asset Browser dialog for model selection.
- * Used by both regular nodes (via useComboWidget) and PrimitiveNode.
+ * Build and attach an asset-selection widget to a LiteGraph node that opens the Asset Browser for choosing an asset.
  *
- * @param params - Configuration for the asset widget
- * @returns The created asset widget
+ * The widget validates the selected asset and its filename, updates the widget value on success, and triggers the optional
+ * onValueChange callback. Validation failures are surfaced via console errors and toast notifications.
+ *
+ * @param params - Configuration for the asset widget (see CreateAssetWidgetParams)
+ * @returns The created asset widget attached to the provided node
  */
 export function createAssetWidget(
   params: CreateAssetWidgetParams
@@ -55,6 +57,13 @@ export function createAssetWidget(
   const displayLabel = defaultValue ?? t('widgets.selectModel')
   const assetBrowserDialog = useAssetBrowserDialog()
 
+  /**
+   * Opens the Asset Browser, validates the selected asset and its filename, and updates the provided widget with the validated filename.
+   *
+   * If the selected asset or its filename fails validation, logs a descriptive error and displays an error toast; on success the widget's value is set to the validated filename and the optional `onValueChange` callback is invoked with the widget, new value, and old value.
+   *
+   * @param widget - The IBaseWidget instance whose value will be updated and which will be passed to the `onValueChange` callback
+   */
   async function openModal(widget: IBaseWidget) {
     const toastStore = useToastStore()
 

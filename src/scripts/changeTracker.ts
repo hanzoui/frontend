@@ -428,6 +428,12 @@ export class ChangeTracker {
   }
 
   private static graphDiff(a: ComfyWorkflowJSON, b: ComfyWorkflowJSON) {
+    /**
+     * Create a copy of a workflow object with its `nodes` array ordered by numeric node id.
+     *
+     * @param graph - The workflow JSON to normalize
+     * @returns A new workflow-like object containing the same top-level properties as `graph` but with `nodes` sorted in ascending order when node `id`s are numbers
+     */
     function sortGraphNodes(graph: ComfyWorkflowJSON) {
       return {
         links: graph.links,

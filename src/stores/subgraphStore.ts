@@ -60,7 +60,12 @@ export const useSubgraphStore = defineStore('subgraph', () => {
         )
       const { subgraphs } = this.activeState.definitions
       const { nodes } = this.activeState
-      //Instanceof doesn't function as nodes are serialized
+      /**
+       * Determines whether a given node represents a subgraph node.
+       *
+       * @param node - The node to test
+       * @returns `true` if the node corresponds to a registered subgraph type, `false` otherwise.
+       */
       function isSubgraphNode(node: ComfyNode) {
         return node && subgraphs.some((s: { id: string }) => s.id === node.type)
       }
@@ -185,6 +190,11 @@ export const useSubgraphStore = defineStore('subgraph', () => {
   const subgraphBlueprints = computed(() => [
     ...subgraphDefCache.value.values()
   ])
+  /**
+   * Loads user and installed subgraph blueprints, registers their node definitions, and attaches them to the workflow store.
+   *
+   * Loads blueprints from the user's SubgraphBlueprints folder and from the platform-provided (global) set, filters installed blueprints by distribution and custom-node requirements, registers resulting node definitions, and attaches the corresponding workflows to the workflow store. Any load failures are logged to the console and surfaced to the user as an error toast summarizing the number or list of failures.
+   */
   async function fetchSubgraphs() {
     async function loadBlueprint(options: {
       path: string
@@ -262,6 +272,18 @@ export const useSubgraphStore = defineStore('subgraph', () => {
       })
     }
   }
+  /**
+   * Build and register a Comfy node definition for a loaded subgraph blueprint.
+   *
+   * Creates a ComfyNodeDefV1 from the blueprint's root subgraph node, applies any provided overrides,
+   * stores the resulting node definition in the subgraph definition cache, and associates the
+   * loaded workflow in the subgraph workflow cache under the given name.
+   *
+   * @param workflow - The loaded subgraph workflow to register as a node definition
+   * @param overrides - Partial node definition fields to apply on top of the generated definition
+   * @param name - The blueprint name to register (defaults to the workflow filename)
+   * @throws Error if the workflow does not contain a root subgraph node suitable for registration
+   */
   function registerNodeDef(
     workflow: LoadedComfyWorkflow,
     overrides: Partial<ComfyNodeDefV1> = {},
