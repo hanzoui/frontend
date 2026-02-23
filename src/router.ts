@@ -30,7 +30,7 @@ const isFileProtocol = window.location.protocol === 'file:'
  * - Electron: always root
  * - Cloud: use Vite's BASE_URL (configured at build time)
  * - Standard web (including reverse proxy subpaths): use window.location.pathname
- *   to support deployments like http://mysite.com/Hanzo Studio/
+ *   to support deployments like http://mysite.com/HanzoStudio/
  */
 function getBasePath(): string {
   if (isDesktop) return '/'

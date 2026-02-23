@@ -1205,7 +1205,7 @@
       "selectGpuDescription": "Selecione o tipo de GPU que você possui"
     },
     "helpImprove": "Por favor, ajude a melhorar o Hanzo Studio",
-    "insideAppInstallDir": "Esta pasta está dentro do pacote do aplicativo Hanzo Desktop e será excluída durante as atualizações. Escolha um diretório fora da pasta de instalação, como Documentos/Hanzo Studio.",
+    "insideAppInstallDir": "Esta pasta está dentro do pacote do aplicativo Hanzo Desktop e será excluída durante as atualizações. Escolha um diretório fora da pasta de instalação, como Documentos/HanzoStudio.",
     "insideUpdaterCache": "Esta pasta está dentro do cache de atualização do Hanzo Studio, que é limpo a cada atualização. Selecione um local diferente para seus dados.",
     "installLocation": "Local de Instalação",
     "installLocationDescription": "Selecione o diretório para os dados do usuário do Hanzo Studio. Um ambiente Python será instalado no local selecionado.",
@@ -1218,7 +1218,7 @@
       "migrateDescription": "Copie ou vincule seus modelos, nós personalizados e configurações de uma instalação anterior do Hanzo Studio.",
       "migrateFromExisting": "Migrar de uma instalação existente",
       "migrationPathPlaceholder": "Selecione uma instalação existente do Hanzo Studio (opcional)",
-      "pathPlaceholder": "/Users/username/Documents/Hanzo Studio",
+      "pathPlaceholder": "/Users/username/Documents/HanzoStudio",
       "subtitle": "Escolha uma pasta para os arquivos do Hanzo Studio. Também configuraremos o Python automaticamente lá.",
       "title": "Escolha onde instalar o Hanzo Studio"
     },
@@ -1388,7 +1388,7 @@
     "title": "Manutenção",
     "unsafeMigration": {
       "action": "Use a tarefa de manutenção \"Caminho base\" abaixo para mover o Hanzo Studio para um local seguro.",
-      "appInstallDir": "Seu caminho base está dentro do pacote do aplicativo Hanzo Desktop. Esta pasta pode ser excluída ou sobrescrita durante as atualizações. Escolha um diretório fora da pasta de instalação, como Documentos/Hanzo Studio.",
+      "appInstallDir": "Seu caminho base está dentro do pacote do aplicativo Hanzo Desktop. Esta pasta pode ser excluída ou sobrescrita durante as atualizações. Escolha um diretório fora da pasta de instalação, como Documentos/HanzoStudio.",
       "generic": "Seu caminho base atual do Hanzo Studio está em um local que pode ser excluído ou modificado durante as atualizações. Para evitar perda de dados, mova-o para uma pasta segura.",
       "oneDrive": "Seu caminho base está no OneDrive, o que pode causar problemas de sincronização e perda acidental de dados. Escolha uma pasta local que não seja gerenciada pelo OneDrive.",
       "title": "Local de instalação inseguro detectado",

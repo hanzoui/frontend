@@ -225,10 +225,10 @@ export const useModelToNodeStore = defineStore('modelToNode', () => {
     quickRegister('segformer_b3_clothes', 'LS_LoadSegformerModel', 'model_name')
     quickRegister('segformer_b3_fashion', 'LS_LoadSegformerModel', 'model_name')
 
-    // NLF pose estimation models (Hanzo Studio-WanVideoWrapper)
+    // NLF pose estimation models (HanzoStudio-WanVideoWrapper)
     quickRegister('nlf', 'LoadNLFModel', 'nlf_model')
 
-    // FlashVSR video super-resolution (Hanzo Studio-FlashVSR_Ultra_Fast)
+    // FlashVSR video super-resolution (HanzoStudio-FlashVSR_Ultra_Fast)
     // Empty key means the node auto-loads models without a widget selector
     quickRegister('FlashVSR', 'FlashVSRNode', '')
     quickRegister('FlashVSR-v1.1', 'FlashVSRNode', '')

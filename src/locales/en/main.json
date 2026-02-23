@@ -600,7 +600,7 @@
     "locationPicker": {
       "title": "Choose where to install Hanzo Studio",
       "subtitle": "Pick a folder for Hanzo Studio's files. We'll also set up Python there automatically.",
-      "pathPlaceholder": "/Users/username/Documents/Hanzo Studio",
+      "pathPlaceholder": "/Users/username/Documents/HanzoStudio",
       "migrationPathPlaceholder": "Select existing Hanzo Studio installation (optional)",
       "migrateFromExisting": "Migrate from existing installation",
       "migrateDescription": "Copy or link your existing models, custom nodes, and configurations from a previous Hanzo Studio installation.",
@@ -614,7 +614,7 @@
     "cannotWrite": "Unable to write to the selected path",
     "insufficientFreeSpace": "Insufficient space - minimum free space",
     "isOneDrive": "OneDrive is not supported. Please install Hanzo Studio in another location.",
-    "insideAppInstallDir": "This folder is inside the Hanzo Desktop application bundle and will be deleted during updates. Choose a directory outside the install folder, such as Documents/Hanzo Studio.",
+    "insideAppInstallDir": "This folder is inside the Hanzo Desktop application bundle and will be deleted during updates. Choose a directory outside the install folder, such as Documents/HanzoStudio.",
     "insideUpdaterCache": "This folder is inside the Hanzo Studio updater cache, which is cleared on every update. Select a different location for your data.",
     "nonDefaultDrive": "Please install Hanzo Studio on your system drive (eg. C:\\). Drives with different file systems may cause unpredicable issues. Models and other files can be stored on other drives after installation.",
     "parentMissing": "Path does not exist - create the containing directory first",
@@ -1735,7 +1735,7 @@
     "unsafeMigration": {
       "title": "Unsafe install location detected",
       "generic": "Your current Hanzo Studio base path is in a location that may be deleted or modified during updates. To avoid data loss, move it to a safe folder.",
-      "appInstallDir": "Your base path is inside the Hanzo Desktop application bundle. This folder may be deleted or overwritten during updates. Choose a directory outside the install folder, such as Documents/Hanzo Studio.",
+      "appInstallDir": "Your base path is inside the Hanzo Desktop application bundle. This folder may be deleted or overwritten during updates. Choose a directory outside the install folder, such as Documents/HanzoStudio.",
       "updaterCache": "Your base path is inside the Hanzo Studio updater cache, which is cleared on each update. Choose a different location for your data.",
       "oneDrive": "Your base path is on OneDrive, which can cause sync issues and accidental data loss. Choose a local folder that is not managed by OneDrive.",
       "action": "Use the \"Base path\" maintenance task below to move Hanzo Studio to a safe location."

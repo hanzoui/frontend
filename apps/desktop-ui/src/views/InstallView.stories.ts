@@ -61,7 +61,7 @@ const meta: Meta<typeof InstallView> = {
         changeTheme: (_theme: Parameters<ElectronAPI['changeTheme']>[0]) => {},
         getSystemPaths: () =>
           Promise.resolve({
-            defaultInstallPath: '/Users/username/Hanzo Studio'
+            defaultInstallPath: '/Users/username/HanzoStudio'
           }),
         validateInstallPath: () =>
           Promise.resolve({
@@ -76,7 +76,7 @@ const meta: Meta<typeof InstallView> = {
           Promise.resolve({
             isValid: true
           }),
-        showDirectoryPicker: () => Promise.resolve('/Users/username/Hanzo Studio')
+        showDirectoryPicker: () => Promise.resolve('/Users/username/HanzoStudio')
       }
 
       return {

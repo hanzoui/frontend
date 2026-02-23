@@ -302,11 +302,11 @@ For each commit:
    ```bash
    # Clone your fork (or use existing clone)
    GITHUB_USER=$(gh api user --jq .login)
-   if [ ! -d "Hanzo Studio-fork" ]; then
-     gh repo clone ${GITHUB_USER}/Hanzo Studio Hanzo Studio-fork
+   if [ ! -d "HanzoStudio-fork" ]; then
+     gh repo clone ${GITHUB_USER}/HanzoStudio HanzoStudio-fork
    fi
 
-   cd Hanzo Studio-fork
+   cd HanzoStudio-fork
    git checkout master
    git pull origin master
 
@@ -365,7 +365,7 @@ python main.py --front-end-version hanzoui/frontend@${NEW_VERSION}
    cd ..
 
    # Keep fork directory for future updates
-   echo "Fork directory 'Hanzo Studio-fork' kept for future use"
+   echo "Fork directory 'HanzoStudio-fork' kept for future use"
    ```
 
 6. **CONFIRMATION REQUIRED**: Hanzo Studio requirements.txt PR created from fork?

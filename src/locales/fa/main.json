@@ -1205,7 +1205,7 @@
       "selectGpuDescription": "نوع GPU خود را انتخاب کنید"
     },
     "helpImprove": "لطفاً به بهبود Hanzo Studio کمک کنید",
-    "insideAppInstallDir": "این پوشه داخل بسته برنامه دسکتاپ Hanzo Studio قرار دارد و هنگام به‌روزرسانی حذف خواهد شد. پوشه‌ای خارج از پوشه نصب مانند Documents/Hanzo Studio انتخاب کنید.",
+    "insideAppInstallDir": "این پوشه داخل بسته برنامه دسکتاپ Hanzo Studio قرار دارد و هنگام به‌روزرسانی حذف خواهد شد. پوشه‌ای خارج از پوشه نصب مانند Documents/HanzoStudio انتخاب کنید.",
     "insideUpdaterCache": "این پوشه داخل کش به‌روزرسانی‌کننده Hanzo Studio است که در هر به‌روزرسانی پاک می‌شود. محل دیگری را برای داده‌های خود انتخاب کنید.",
     "installLocation": "محل نصب",
     "installLocationDescription": "پوشه‌ای را برای داده‌های کاربری Hanzo Studio انتخاب کنید. محیط پایتون در محل انتخاب‌شده نصب خواهد شد.",
@@ -1218,7 +1218,7 @@
       "migrateDescription": "مدل‌ها، nodeهای سفارشی و تنظیمات خود را از نصب قبلی Hanzo Studio کپی یا لینک کنید.",
       "migrateFromExisting": "انتقال از نصب موجود",
       "migrationPathPlaceholder": "انتخاب نصب موجود Hanzo Studio (اختیاری)",
-      "pathPlaceholder": "/Users/username/Documents/Hanzo Studio",
+      "pathPlaceholder": "/Users/username/Documents/HanzoStudio",
       "subtitle": "یک پوشه برای فایل‌های Hanzo Studio انتخاب کنید. پایتون نیز به طور خودکار در آنجا نصب خواهد شد.",
       "title": "انتخاب محل نصب Hanzo Studio"
     },
@@ -1388,7 +1388,7 @@
     "title": "نگهداری",
     "unsafeMigration": {
       "action": "از وظیفه نگهداری «Base path» در زیر برای انتقال Hanzo Studio به محل امن استفاده کنید.",
-      "appInstallDir": "مسیر پایه شما داخل بسته نرم‌افزاری برنامه Hanzo Desktop قرار دارد. این پوشه ممکن است هنگام به‌روزرسانی حذف یا بازنویسی شود. پوشه‌ای خارج از محل نصب مانند Documents/Hanzo Studio را انتخاب کنید.",
+      "appInstallDir": "مسیر پایه شما داخل بسته نرم‌افزاری برنامه Hanzo Desktop قرار دارد. این پوشه ممکن است هنگام به‌روزرسانی حذف یا بازنویسی شود. پوشه‌ای خارج از محل نصب مانند Documents/HanzoStudio را انتخاب کنید.",
       "generic": "مسیر فعلی Hanzo Studio شما در مکانی قرار دارد که ممکن است هنگام به‌روزرسانی حذف یا تغییر کند. برای جلوگیری از از دست رفتن داده‌ها، آن را به پوشه‌ای امن منتقل کنید.",
       "oneDrive": "مسیر پایه شما روی OneDrive قرار دارد که می‌تواند باعث مشکلات همگام‌سازی و از دست رفتن تصادفی داده‌ها شود. پوشه‌ای محلی که توسط OneDrive مدیریت نمی‌شود انتخاب کنید.",
       "title": "محل نصب ناامن شناسایی شد",

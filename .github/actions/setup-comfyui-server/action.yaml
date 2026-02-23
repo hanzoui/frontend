@@ -24,8 +24,8 @@ runs:
     - name: Install HanzoStudio_devtools from frontend repo
       shell: bash
       run: |
-        mkdir -p Hanzo Studio/custom_nodes/HanzoStudio_devtools
-        if ! cp -r ./tools/devtools/* Hanzo Studio/custom_nodes/HanzoStudio_devtools/; then
+        mkdir -p HanzoStudio/custom_nodes/HanzoStudio_devtools
+        if ! cp -r ./tools/devtools/* HanzoStudio/custom_nodes/HanzoStudio_devtools/; then
           echo "::error::Failed to copy HanzoStudio_devtools from ./tools/devtools/"
           echo "::error::This action assumes the HanzoStudio_frontend repository is checked out in the current working directory."
           echo "::error::Please ensure you have run 'actions/checkout@v5' before calling this action."

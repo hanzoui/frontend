@@ -22,7 +22,7 @@ HanzoStudio_devtools adds additional API endpoints and nodes to Hanzo Studio for
 For local development, copy the devtools files to your Hanzo Studio installation:
 
 ```bash
-cp -r tools/devtools/* /path/to/your/Hanzo Studio/custom_nodes/HanzoStudio_devtools/
+cp -r tools/devtools/* /path/to/your/HanzoStudio/custom_nodes/HanzoStudio_devtools/
 ```
 
 ### Node.js & Playwright Prerequisites
@@ -52,7 +52,7 @@ PLAYWRIGHT_TEST_URL=http://localhost:5173  # Dev server
 # PLAYWRIGHT_TEST_URL=http://localhost:8188  # Direct backend
 
 # Path to Hanzo Studio for backing up user data/settings before tests
-TEST_COMFYUI_DIR=/path/to/your/Hanzo Studio
+TEST_COMFYUI_DIR=/path/to/your/HanzoStudio
 ```
 
 ### Common Setup Issues

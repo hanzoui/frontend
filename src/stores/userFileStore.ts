@@ -32,7 +32,7 @@ export class UserFile {
 
   constructor(
     /**
-     * Path relative to Hanzo Studio/user/ directory.
+     * Path relative to HanzoStudio/user/ directory.
      */
     public path: string,
     /**

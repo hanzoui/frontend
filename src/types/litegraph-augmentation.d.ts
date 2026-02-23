@@ -128,8 +128,8 @@ declare module '@/lib/litegraph/src/litegraph' {
      * @deprecated primitive node.
      * Used by virtual nodes (primitives) to insert their values into the graph prior to queueing.
      * Externally used by
-     * - https://github.com/pythongosssss/Hanzo Studio-Custom-Scripts/blob/bbda5e52ad580c13ceaa53136d9c2bed9137bd2e/web/js/presetText.js#L160-L182
-     * - https://github.com/Kosinkadink/Hanzo Studio-VideoHelperSuite/blob/4c7858ddd5126f7293dc3c9f6e0fc4c263cde079/web/js/VHS.core.js#L1889-L1889
+     * - https://github.com/pythongosssss/HanzoStudio-Custom-Scripts/blob/bbda5e52ad580c13ceaa53136d9c2bed9137bd2e/web/js/presetText.js#L160-L182
+     * - https://github.com/Kosinkadink/HanzoStudio-VideoHelperSuite/blob/4c7858ddd5126f7293dc3c9f6e0fc4c263cde079/web/js/VHS.core.js#L1889-L1889
      */
     applyToGraph?(extraLinks?: LLink[]): void
     onExecutionStart?(): unknown

@@ -1205,7 +1205,7 @@
       "selectGpuDescription": "Sélectionnez le type de GPU que vous avez"
     },
     "helpImprove": "Veuillez aider à améliorer Hanzo Studio",
-    "insideAppInstallDir": "Ce dossier se trouve dans le bundle de l’application Hanzo Desktop et sera supprimé lors des mises à jour. Choisissez un répertoire en dehors du dossier d’installation, comme Documents/Hanzo Studio.",
+    "insideAppInstallDir": "Ce dossier se trouve dans le bundle de l’application Hanzo Desktop et sera supprimé lors des mises à jour. Choisissez un répertoire en dehors du dossier d’installation, comme Documents/HanzoStudio.",
     "insideUpdaterCache": "Ce dossier se trouve dans le cache de mise à jour de Hanzo Studio, qui est effacé à chaque mise à jour. Sélectionnez un autre emplacement pour vos données.",
     "installLocation": "Emplacement d'installation",
     "installLocationDescription": "Sélectionnez le répertoire pour les données utilisateur de Hanzo Studio. Un environnement python sera installé à l'emplacement sélectionné. Veuillez vous assurer que le disque sélectionné a suffisamment d'espace (~15GB) restant.",
@@ -1218,7 +1218,7 @@
       "migrateDescription": "Copiez ou liez vos modèles, nœuds personnalisés et configurations existants d'une installation Hanzo Studio précédente.",
       "migrateFromExisting": "Migrer depuis une installation existante",
       "migrationPathPlaceholder": "Sélectionnez une installation Hanzo Studio existante (facultatif)",
-      "pathPlaceholder": "/Users/nomutilisateur/Documents/Hanzo Studio",
+      "pathPlaceholder": "/Users/nomutilisateur/Documents/HanzoStudio",
       "subtitle": "Sélectionnez un dossier pour les fichiers de Hanzo Studio. Nous configurerons également Python automatiquement.",
       "title": "Choisissez où installer Hanzo Studio"
     },
@@ -1388,7 +1388,7 @@
     "title": "Maintenance",
     "unsafeMigration": {
       "action": "Utilisez la tâche de maintenance « Chemin de base » ci-dessous pour déplacer Hanzo Studio vers un emplacement sécurisé.",
-      "appInstallDir": "Votre chemin de base se trouve dans le bundle de l’application Hanzo Desktop. Ce dossier peut être supprimé ou écrasé lors des mises à jour. Choisissez un répertoire en dehors du dossier d’installation, comme Documents/Hanzo Studio.",
+      "appInstallDir": "Votre chemin de base se trouve dans le bundle de l’application Hanzo Desktop. Ce dossier peut être supprimé ou écrasé lors des mises à jour. Choisissez un répertoire en dehors du dossier d’installation, comme Documents/HanzoStudio.",
       "generic": "Votre chemin de base Hanzo Studio actuel se trouve dans un emplacement qui peut être supprimé ou modifié lors des mises à jour. Pour éviter toute perte de données, déplacez-le dans un dossier sécurisé.",
       "oneDrive": "Votre chemin de base se trouve sur OneDrive, ce qui peut entraîner des problèmes de synchronisation et une perte accidentelle de données. Choisissez un dossier local qui n’est pas géré par OneDrive.",
       "title": "Emplacement d’installation non sécurisé détecté",

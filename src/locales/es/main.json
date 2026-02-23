@@ -1205,7 +1205,7 @@
       "selectGpuDescription": "Selecciona el tipo de GPU que tienes"
     },
     "helpImprove": "Por favor ayuda a mejorar Hanzo Studio",
-    "insideAppInstallDir": "Esta carpeta está dentro del paquete de la aplicación Hanzo Desktop y se eliminará durante las actualizaciones. Elige un directorio fuera de la carpeta de instalación, como Documentos/Hanzo Studio.",
+    "insideAppInstallDir": "Esta carpeta está dentro del paquete de la aplicación Hanzo Desktop y se eliminará durante las actualizaciones. Elige un directorio fuera de la carpeta de instalación, como Documentos/HanzoStudio.",
     "insideUpdaterCache": "Esta carpeta está dentro de la caché de actualización de Hanzo Studio, que se borra en cada actualización. Selecciona una ubicación diferente para tus datos.",
     "installLocation": "Ubicación de Instalación",
     "installLocationDescription": "Selecciona el directorio para los datos de usuario de Hanzo Studio. Un entorno de python será instalado en la ubicación seleccionada.",
@@ -1218,7 +1218,7 @@
       "migrateDescription": "Copia o vincula tus modelos existentes, nodos personalizados y configuraciones de una instalación previa de Hanzo Studio.",
       "migrateFromExisting": "Migrar desde instalación existente",
       "migrationPathPlaceholder": "Selecciona instalación existente de Hanzo Studio (opcional)",
-      "pathPlaceholder": "/Users/username/Documents/Hanzo Studio",
+      "pathPlaceholder": "/Users/username/Documents/HanzoStudio",
       "subtitle": "Elige una carpeta para los archivos de Hanzo Studio. También configuraremos Python allí automáticamente.",
       "title": "Elige dónde instalar Hanzo Studio"
     },
@@ -1388,7 +1388,7 @@
     "title": "Mantenimiento",
     "unsafeMigration": {
       "action": "Utilice la tarea de mantenimiento \"Ruta base\" a continuación para mover Hanzo Studio a una ubicación segura.",
-      "appInstallDir": "Su ruta base está dentro del paquete de la aplicación Hanzo Desktop. Esta carpeta puede ser eliminada o sobrescrita durante las actualizaciones. Elija un directorio fuera de la carpeta de instalación, como Documentos/Hanzo Studio.",
+      "appInstallDir": "Su ruta base está dentro del paquete de la aplicación Hanzo Desktop. Esta carpeta puede ser eliminada o sobrescrita durante las actualizaciones. Elija un directorio fuera de la carpeta de instalación, como Documentos/HanzoStudio.",
       "generic": "La ruta base actual de Hanzo Studio está en una ubicación que puede ser eliminada o modificada durante las actualizaciones. Para evitar la pérdida de datos, muévala a una carpeta segura.",
       "oneDrive": "Su ruta base está en OneDrive, lo que puede causar problemas de sincronización y pérdida accidental de datos. Elija una carpeta local que no esté gestionada por OneDrive.",
       "title": "Ubicación de instalación no segura detectada",

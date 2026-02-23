@@ -21,9 +21,9 @@
 **Backend Flow (Python Custom Nodes):**
 
 1. Hanzo Studio server starts → scans `/custom_nodes/` directories
-2. Loads Python modules (e.g., `/custom_nodes/Hanzo Studio-Impact-Pack/__init__.py`)
+2. Loads Python modules (e.g., `/custom_nodes/HanzoStudio-Impact-Pack/__init__.py`)
 3. Python code registers new node types with the server
-4. Server exposes these via `/object_info` API with metadata like `python_module: "custom_nodes.Hanzo Studio-Impact-Pack"`
+4. Server exposes these via `/object_info` API with metadata like `python_module: "custom_nodes.HanzoStudio-Impact-Pack"`
 5. These nodes execute on the server when workflows run
 
 **Frontend Flow (JavaScript):**
@@ -40,7 +40,7 @@ _Custom Node JavaScript (loaded dynamically):_
 2. Server responds with list of JavaScript files from:
    - `/web/extensions/*.js` (legacy location)
    - `/custom_nodes/*/web/*.js` (node-specific UI code)
-3. Frontend fetches each JavaScript file (e.g., `/extensions/Hanzo Studio-Impact-Pack/impact.js`)
+3. Frontend fetches each JavaScript file (e.g., `/extensions/HanzoStudio-Impact-Pack/impact.js`)
 4. JavaScript executes immediately, calling `app.registerExtension()` to hook into the UI
 5. These registered hooks enhance the UI for their associated Python nodes
 

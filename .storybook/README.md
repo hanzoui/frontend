@@ -210,7 +210,7 @@ This project uses [Chromatic](https://chromatic.com) for automated visual regres
 
 This Storybook setup includes:
 
-- Hanzo Studio-specific theming and styling
+- HanzoStudio-specific theming and styling
 - Pre-configured Pinia stores for state management
 - Internationalization (i18n) support
 - PrimeVue component library integration

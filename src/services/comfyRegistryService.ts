@@ -372,7 +372,7 @@ export const useComfyRegistryService = () => {
    * ```typescript
    * const versions = await getBulkNodeVersions([
    *   { node_id: 'Hanzo Manager', version: '1.0.0' },
-   *   { node_id: 'Hanzo Studio-Impact-Pack', version: '2.0.0' }
+   *   { node_id: 'HanzoStudio-Impact-Pack', version: '2.0.0' }
    * ])
    * if (versions) {
    *   versions.node_versions.forEach(result => {

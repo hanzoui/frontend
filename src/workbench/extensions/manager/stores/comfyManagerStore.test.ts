@@ -439,9 +439,9 @@ describe('useComfyManagerStore', () => {
   describe('refreshInstalledList with pack ID normalization', () => {
     it('normalizes pack IDs by removing version suffixes', async () => {
       const mockPacks = {
-        'Hanzo Studio-GGUF@1_1_4': {
+        'HanzoStudio-GGUF@1_1_4': {
           enabled: false,
-          cnr_id: 'Hanzo Studio-GGUF',
+          cnr_id: 'HanzoStudio-GGUF',
           ver: '1.1.4',
           aux_id: undefined
         },
@@ -461,9 +461,9 @@ describe('useComfyManagerStore', () => {
       await store.refreshInstalledList()
 
       // Both packs should be accessible by their base name
-      expect(store.installedPacks['Hanzo Studio-GGUF']).toEqual({
+      expect(store.installedPacks['HanzoStudio-GGUF']).toEqual({
         enabled: false,
-        cnr_id: 'Hanzo Studio-GGUF',
+        cnr_id: 'HanzoStudio-GGUF',
         ver: '1.1.4',
         aux_id: undefined
       })
@@ -475,7 +475,7 @@ describe('useComfyManagerStore', () => {
       })
 
       // Version suffixed keys should not exist
-      expect(store.installedPacks['Hanzo Studio-GGUF@1_1_4']).toBeUndefined()
+      expect(store.installedPacks['HanzoStudio-GGUF@1_1_4']).toBeUndefined()
     })
 
     it('handles duplicate keys after normalization', async () => {

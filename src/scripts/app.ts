@@ -1580,7 +1580,7 @@ export class ComfyApp {
     }
 
     // Check workflow first - it should take priority over parameters
-    // when both are present (e.g., in Hanzo Studio-generated PNGs)
+    // when both are present (e.g., in HanzoStudio-generated PNGs)
     if (workflow) {
       let workflowObj: ComfyWorkflowJSON | undefined = undefined
       try {

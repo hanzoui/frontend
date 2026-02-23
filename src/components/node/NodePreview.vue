@@ -1,5 +1,5 @@
 <!-- Reference:
-https://github.com/Nuked88/Hanzo Studio-N-Sidebar/blob/7ae7da4a9761009fb6629bc04c683087a3e168db/app/js/functions/sb_fn.js#L149
+https://github.com/Nuked88/HanzoStudio-N-Sidebar/blob/7ae7da4a9761009fb6629bc04c683087a3e168db/app/js/functions/sb_fn.js#L149
 -->
 <template>
   <LGraphNodePreview

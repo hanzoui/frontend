@@ -24,7 +24,7 @@ const meta: Meta<typeof InstallLocationPicker> = {
       ;(window as any).electronAPI = {
         getSystemPaths: () =>
           Promise.resolve({
-            defaultInstallPath: '/Users/username/Hanzo Studio'
+            defaultInstallPath: '/Users/username/HanzoStudio'
           }),
         validateInstallPath: () =>
           Promise.resolve({
@@ -39,7 +39,7 @@ const meta: Meta<typeof InstallLocationPicker> = {
           Promise.resolve({
             isValid: true
           }),
-        showDirectoryPicker: () => Promise.resolve('/Users/username/Hanzo Studio')
+        showDirectoryPicker: () => Promise.resolve('/Users/username/HanzoStudio')
       }
       return { template: '<story />' }
     }
@@ -54,9 +54,9 @@ export const Default: Story = {
   render: (args) => ({
     components: { InstallLocationPicker },
     setup() {
-      const installPath = ref('/Users/username/Hanzo Studio')
+      const installPath = ref('/Users/username/HanzoStudio')
       const pathError = ref('')
-      const migrationSourcePath = ref('/Users/username/Hanzo Studio-old')
+      const migrationSourcePath = ref('/Users/username/HanzoStudio-old')
       const migrationItemIds = ref<string[]>(['models', 'custom_nodes'])
 
       return {
@@ -85,9 +85,9 @@ export const OnNeutral900: Story = {
   render: (args) => ({
     components: { InstallLocationPicker },
     setup() {
-      const installPath = ref('/Users/username/Hanzo Studio')
+      const installPath = ref('/Users/username/HanzoStudio')
       const pathError = ref('')
-      const migrationSourcePath = ref('/Users/username/Hanzo Studio-old')
+      const migrationSourcePath = ref('/Users/username/HanzoStudio-old')
       const migrationItemIds = ref<string[]>(['models', 'custom_nodes'])
 
       return {
@@ -116,9 +116,9 @@ export const DebugBackgrounds: Story = {
   render: (args) => ({
     components: { InstallLocationPicker },
     setup() {
-      const installPath = ref('/Users/username/Hanzo Studio')
+      const installPath = ref('/Users/username/HanzoStudio')
       const pathError = ref('')
-      const migrationSourcePath = ref('/Users/username/Hanzo Studio-old')
+      const migrationSourcePath = ref('/Users/username/HanzoStudio-old')
       const migrationItemIds = ref<string[]>(['models', 'custom_nodes'])
 
       return {
