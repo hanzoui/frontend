@@ -13,6 +13,7 @@ import type { LGraphNode } from '@/lib/litegraph/src/litegraph'
 
 import {
   getNodeByExecutionId,
+  getExecutionIdByNode,
   getRootParentNode
 } from '@/utils/graphTraversalUtil'
 import { resolveNodeDisplayName } from '@/utils/nodeTitleUtil'
@@ -20,12 +21,8 @@ import { isLGraphNode } from '@/utils/litegraphUtil'
 import { isGroupNode } from '@/utils/executableGroupNodeDto'
 import { st } from '@/i18n'
 import type { MissingNodeType } from '@/types/comfy'
-import type {
-  ErrorCardData,
-  ErrorGroup,
-  ErrorGroupType,
-  ErrorItem
-} from './types'
+import type { ErrorCardData, ErrorGroup, ErrorGroupType, ErrorItem } from './types'
+import type { NodeExecutionId } from '@/types/nodeIdentification'
 import { isNodeExecutionId } from '@/types/nodeIdentification'
 
 const PROMPT_CARD_ID = '__prompt__'
@@ -225,26 +222,30 @@ export function useErrorGroups(
   const selectedNodeInfo = computed(() => {
     const items = canvasStore.selectedItems
     const nodeIds = new Set<string>()
-    const containerIds = new Set<string>()
+    const containerExecutionIds = new Set<NodeExecutionId>()
 
     for (const item of items) {
       if (!isLGraphNode(item)) continue
       nodeIds.add(String(item.id))
-      if (item instanceof SubgraphNode || isGroupNode(item)) {
-        containerIds.add(String(item.id))
+      if (
+        (item instanceof SubgraphNode || isGroupNode(item)) &&
+        app.rootGraph
+      ) {
+        const execId = getExecutionIdByNode(app.rootGraph, item)
+        if (execId) containerExecutionIds.add(execId)
       }
     }
 
     return {
       nodeIds: nodeIds.size > 0 ? nodeIds : null,
-      containerIds
+      containerExecutionIds
     }
   })
 
   const isSingleNodeSelected = computed(
     () =>
       selectedNodeInfo.value.nodeIds?.size === 1 &&
-      selectedNodeInfo.value.containerIds.size === 0
+      selectedNodeInfo.value.containerExecutionIds.size === 0
   )
 
   const errorNodeCache = computed(() => {
@@ -276,8 +277,9 @@ export function useErrorGroups(
     const graphNode = errorNodeCache.value.get(executionNodeId)
     if (graphNode && nodeIds.has(String(graphNode.id))) return true
 
-    for (const containerId of selectedNodeInfo.value.containerIds) {
-      if (executionNodeId.startsWith(`${containerId}:`)) return true
+    for (const containerExecId of selectedNodeInfo.value
+      .containerExecutionIds) {
+      if (executionNodeId.startsWith(`${containerExecId}:`)) return true
     }
 
     return false
