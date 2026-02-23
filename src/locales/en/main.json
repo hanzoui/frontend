@@ -71,6 +71,7 @@
     "error": "Error",
     "enter": "Enter",
     "enterSubgraph": "Enter Subgraph",
+    "inSubgraph": "in subgraph '{name}'",
     "resizeFromBottomRight": "Resize from bottom-right corner",
     "resizeFromTopRight": "Resize from top-right corner",
     "resizeFromBottomLeft": "Resize from bottom-left corner",
@@ -449,6 +450,9 @@
         "import_failed": "Import Failed"
       },
       "warningTooltip": "This package may have compatibility issues with your current environment"
+    },
+    "packInstall": {
+      "nodeIdRequired": "Node ID is required for installation"
     }
   },
   "importFailed": {

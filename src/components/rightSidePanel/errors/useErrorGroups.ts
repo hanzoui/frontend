@@ -21,7 +21,12 @@ import { isLGraphNode } from '@/utils/litegraphUtil'
 import { isGroupNode } from '@/utils/executableGroupNodeDto'
 import { st } from '@/i18n'
 import type { MissingNodeType } from '@/types/comfy'
-import type { ErrorCardData, ErrorGroup, ErrorGroupType, ErrorItem } from './types'
+import type {
+  ErrorCardData,
+  ErrorGroup,
+  ErrorGroupType,
+  ErrorItem
+} from './types'
 import type { NodeExecutionId } from '@/types/nodeIdentification'
 import { isNodeExecutionId } from '@/types/nodeIdentification'
 
@@ -389,16 +394,21 @@ export function useErrorGroups(
   watch(
     pendingTypes,
     async (pending) => {
-      for (const nodeType of pending) {
-        const typeName = nodeType.type
-        if (asyncResolvedIds.value.has(typeName)) continue
+      const toResolve = pending.filter(
+        (n) => !asyncResolvedIds.value.has(n.type)
+      )
+      if (!toResolve.length) return
+
+      const updated = new Map(asyncResolvedIds.value)
+      for (const nodeType of toResolve) {
+        updated.set(nodeType.type, RESOLVING)
+      }
+      asyncResolvedIds.value = updated
+
+      for (const nodeType of toResolve) {
+        const pack = await inferPackFromNodeName.call(nodeType.type)
         asyncResolvedIds.value = new Map(asyncResolvedIds.value).set(
-          typeName,
-          RESOLVING
-        )
-        const pack = await inferPackFromNodeName.call(typeName)
-        asyncResolvedIds.value = new Map(asyncResolvedIds.value).set(
-          typeName,
+          nodeType.type,
           pack?.id ?? null
         )
       }
@@ -458,9 +468,9 @@ export function useErrorGroups(
           const typeB = typeof b === 'string' ? b : b.type
           const typeCmp = typeA.localeCompare(typeB)
           if (typeCmp !== 0) return typeCmp
-          const idA = typeof a === 'string' ? 0 : Number(a.nodeId ?? 0)
-          const idB = typeof b === 'string' ? 0 : Number(b.nodeId ?? 0)
-          return idA - idB
+          const idA = typeof a === 'string' ? '' : String(a.nodeId ?? '')
+          const idB = typeof b === 'string' ? '' : String(b.nodeId ?? '')
+          return idA.localeCompare(idB, undefined, { numeric: true })
         }),
         isResolving
       }))
