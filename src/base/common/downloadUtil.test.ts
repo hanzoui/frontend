@@ -2,7 +2,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import {
   downloadFile,
-  extractFilenameFromContentDisposition
+  extractFilenameFromContentDisposition,
+  openFileInNewTab
 } from '@/base/common/downloadUtil'
 
 let mockIsCloud = false
@@ -173,6 +174,7 @@ describe('downloadUtil', () => {
       expect(fetchMock).toHaveBeenCalledWith(testUrl)
       const fetchPromise = fetchMock.mock.results[0].value as Promise<Response>
       await fetchPromise
+      await Promise.resolve() // let fetchAsBlob return
       const blobPromise = blobFn.mock.results[0].value as Promise<Blob>
       await blobPromise
       await Promise.resolve()
@@ -197,7 +199,8 @@ describe('downloadUtil', () => {
       expect(fetchMock).toHaveBeenCalledWith(testUrl)
       const fetchPromise = fetchMock.mock.results[0].value as Promise<Response>
       await fetchPromise
-      await Promise.resolve()
+      await Promise.resolve() // let fetchAsBlob throw
+      await Promise.resolve() // let .catch handler run
       expect(consoleSpy).toHaveBeenCalled()
       expect(createObjectURLSpy).not.toHaveBeenCalled()
       consoleSpy.mockRestore()
@@ -223,6 +226,7 @@ describe('downloadUtil', () => {
       expect(fetchMock).toHaveBeenCalledWith(testUrl)
       const fetchPromise = fetchMock.mock.results[0].value as Promise<Response>
       await fetchPromise
+      await Promise.resolve() // let fetchAsBlob return
       const blobPromise = blobFn.mock.results[0].value as Promise<Blob>
       await blobPromise
       await Promise.resolve()
@@ -253,6 +257,7 @@ describe('downloadUtil', () => {
 
       const fetchPromise = fetchMock.mock.results[0].value as Promise<Response>
       await fetchPromise
+      await Promise.resolve() // let fetchAsBlob return
       const blobPromise = blobFn.mock.results[0].value as Promise<Blob>
       await blobPromise
       await Promise.resolve()
@@ -278,10 +283,100 @@ describe('downloadUtil', () => {
 
       const fetchPromise = fetchMock.mock.results[0].value as Promise<Response>
       await fetchPromise
+      await Promise.resolve() // let fetchAsBlob return
       const blobPromise = blobFn.mock.results[0].value as Promise<Blob>
       await blobPromise
       await Promise.resolve()
       expect(mockLink.download).toBe('my-fallback.png')
+    })
+  })
+
+  describe('openFileInNewTab', () => {
+    let windowOpenSpy: ReturnType<typeof vi.spyOn>
+
+    beforeEach(() => {
+      vi.useFakeTimers()
+      windowOpenSpy = vi.spyOn(window, 'open').mockImplementation(() => null)
+    })
+
+    afterEach(() => {
+      vi.useRealTimers()
+    })
+
+    it('opens URL directly when not in cloud mode', async () => {
+      mockIsCloud = false
+      const testUrl = 'https://example.com/image.png'
+
+      await openFileInNewTab(testUrl)
+
+      expect(windowOpenSpy).toHaveBeenCalledWith(testUrl, '_blank')
+      expect(fetchMock).not.toHaveBeenCalled()
+    })
+
+    it('opens blank tab synchronously then navigates to blob URL in cloud mode', async () => {
+      mockIsCloud = true
+      const testUrl = 'https://storage.googleapis.com/bucket/image.png'
+      const blob = new Blob(['test'], { type: 'image/png' })
+      const mockTab = { location: { href: '' }, closed: false, close: vi.fn() }
+      windowOpenSpy.mockReturnValue(mockTab as unknown as Window)
+      fetchMock.mockResolvedValue({
+        ok: true,
+        blob: vi.fn().mockResolvedValue(blob)
+      } as unknown as Response)
+
+      await openFileInNewTab(testUrl)
+
+      expect(windowOpenSpy).toHaveBeenCalledWith('', '_blank')
+      expect(fetchMock).toHaveBeenCalledWith(testUrl)
+      expect(createObjectURLSpy).toHaveBeenCalledWith(blob)
+      expect(mockTab.location.href).toBe('blob:mock-url')
+    })
+
+    it('revokes blob URL after timeout in cloud mode', async () => {
+      mockIsCloud = true
+      const blob = new Blob(['test'], { type: 'image/png' })
+      const mockTab = { location: { href: '' }, closed: false, close: vi.fn() }
+      windowOpenSpy.mockReturnValue(mockTab as unknown as Window)
+      fetchMock.mockResolvedValue({
+        ok: true,
+        blob: vi.fn().mockResolvedValue(blob)
+      } as unknown as Response)
+
+      await openFileInNewTab('https://example.com/image.png')
+
+      expect(revokeObjectURLSpy).not.toHaveBeenCalled()
+      vi.advanceTimersByTime(60_000)
+      expect(revokeObjectURLSpy).toHaveBeenCalledWith('blob:mock-url')
+    })
+
+    it('closes blank tab and throws when cloud fetch fails', async () => {
+      mockIsCloud = true
+      const testUrl = 'https://storage.googleapis.com/bucket/missing.png'
+      const mockTab = { location: { href: '' }, closed: false, close: vi.fn() }
+      windowOpenSpy.mockReturnValue(mockTab as unknown as Window)
+      fetchMock.mockResolvedValue({
+        ok: false,
+        status: 404
+      } as unknown as Response)
+
+      await expect(openFileInNewTab(testUrl)).rejects.toThrow('Failed to fetch')
+      expect(mockTab.close).toHaveBeenCalled()
+    })
+
+    it('revokes blob URL immediately if tab was closed by user', async () => {
+      mockIsCloud = true
+      const blob = new Blob(['test'], { type: 'image/png' })
+      const mockTab = { location: { href: '' }, closed: true, close: vi.fn() }
+      windowOpenSpy.mockReturnValue(mockTab as unknown as Window)
+      fetchMock.mockResolvedValue({
+        ok: true,
+        blob: vi.fn().mockResolvedValue(blob)
+      } as unknown as Response)
+
+      await openFileInNewTab('https://example.com/image.png')
+
+      expect(revokeObjectURLSpy).toHaveBeenCalledWith('blob:mock-url')
+      expect(mockTab.location.href).toBe('')
     })
   })
 
