@@ -49,7 +49,7 @@ Include when applicable:
 
 ## Mock Data
 
-Use realistic ComfyUI schemas for mocks (node definitions, components).
+Use realistic Hanzo Studio schemas for mocks (node definitions, components).
 
 ## Running Storybook
 

@@ -239,7 +239,7 @@ const zSystemStats = z.object({
     os: z.string(),
     python_version: z.string(),
     embedded_python: z.boolean(),
-    comfyui_version: z.string(),
+    hanzo_studio_version: z.string(),
     pytorch_version: z.string(),
     required_frontend_version: z.string().optional(),
     argv: z.array(z.string()),
@@ -247,7 +247,7 @@ const zSystemStats = z.object({
     ram_free: z.number(),
     // Cloud-specific fields
     cloud_version: z.string().optional(),
-    comfyui_frontend_version: z.string().optional(),
+    hanzo_studio_frontend_version: z.string().optional(),
     workflow_templates_version: z.string().optional(),
     installed_templates_version: z.string().optional(),
     required_templates_version: z.string().optional()

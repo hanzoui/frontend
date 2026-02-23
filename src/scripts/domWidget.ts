@@ -102,7 +102,7 @@ export interface DOMWidgetOptions<
    * that fires before resize happens, but it is no longer supported. Now it
    * fires after resize happens.
    * The resize logic has been upstreamed to litegraph in
-   * https://github.com/Comfy-Org/ComfyUI_frontend/pull/2557
+   * https://github.com/hanzoui/frontend/pull/2557
    */
   beforeResize?: (this: BaseDOMWidget<V>, node: LGraphNode) => void
   afterResize?: (this: BaseDOMWidget<V>, node: LGraphNode) => void
@@ -377,7 +377,7 @@ LGraphNode.prototype.addDOMWidget = function <
   // Note: Before `LGraphNode.configure` is called, `this.id` is always `-1`.
   addWidget(this, widget as unknown as BaseDOMWidget<object | string>)
 
-  // Workaround for https://github.com/Comfy-Org/ComfyUI_frontend/issues/2493
+  // Workaround for https://github.com/hanzoui/frontend/issues/2493
   // Some custom nodes are explicitly expecting getter and setter of `value`
   // property to be on instance instead of prototype.
   Object.defineProperty(widget, 'value', {

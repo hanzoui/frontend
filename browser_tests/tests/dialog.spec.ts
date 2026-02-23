@@ -133,7 +133,7 @@ test.describe('Missing models warning', () => {
       body: JSON.stringify([
         {
           name: 'text_encoders',
-          folders: ['ComfyUI/models/text_encoders']
+          folders: ['Hanzo Studio/models/text_encoders']
         }
       ])
     }
@@ -182,12 +182,12 @@ test.describe('Missing models warning', () => {
   })
 
   // Flaky test after parallelization
-  // https://github.com/Comfy-Org/ComfyUI_frontend/pull/1400
+  // https://github.com/hanzoui/frontend/pull/1400
   test.skip('Should download missing model when clicking download button', async ({
     comfyPage
   }) => {
     // The fake_model.safetensors is served by
-    // https://github.com/Comfy-Org/ComfyUI_devtools/blob/main/__init__.py
+    // https://github.com/hanzoui/devtools/blob/main/__init__.py
     await comfyPage.workflow.loadWorkflow('missing/missing_models')
 
     const missingModelsWarning = comfyPage.page.locator('.comfy-missing-models')
@@ -349,7 +349,7 @@ test.describe('Support', () => {
     // Prevent loading the external page
     await comfyPage.page
       .context()
-      .route('https://support.comfy.org/**', (route) =>
+      .route('https://support.hanzo.ai/**', (route) =>
         route.fulfill({ body: '<html></html>', contentType: 'text/html' })
       )
 
@@ -358,7 +358,7 @@ test.describe('Support', () => {
     const popup = await popupPromise
 
     const url = new URL(popup.url())
-    expect(url.hostname).toBe('support.comfy.org')
+    expect(url.hostname).toBe('support.hanzo.ai')
     expect(url.searchParams.get('tf_42243568391700')).toBe('oss')
 
     await popup.close()
@@ -419,7 +419,7 @@ test.describe('Signin dialog', () => {
       void window.app!.extensionManager.dialog.showSignInDialog()
     })
 
-    const input = comfyPage.page.locator('#comfy-org-sign-in-password')
+    const input = comfyPage.page.locator('#hanzo.ai-sign-in-password')
     await input.waitFor({ state: 'visible' })
     await input.press('Control+v')
     await expect(input).toHaveValue('test_password')

@@ -47,7 +47,7 @@
       ],
       "outputs": [],
       "properties": {},
-      "widgets_values": ["ComfyUI"]
+      "widgets_values": ["Hanzo Studio"]
     },
     {
       "id": 12,
@@ -66,7 +66,7 @@
       ],
       "outputs": [],
       "properties": {},
-      "widgets_values": ["ComfyUI", "vp9", 6, 32]
+      "widgets_values": ["Hanzo Studio", "vp9", 6, 32]
     }
   ],
   "links": [

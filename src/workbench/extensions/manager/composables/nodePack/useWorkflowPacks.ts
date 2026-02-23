@@ -67,7 +67,7 @@ const _useWorkflowPacks = () => {
       return {
         id: CORE_NODES_PACK_NAME,
         version:
-          systemStatsStore.systemStats?.system?.comfyui_version ?? 'nightly'
+          systemStatsStore.systemStats?.system?.hanzo_studio_version ?? 'nightly'
       }
     }
 

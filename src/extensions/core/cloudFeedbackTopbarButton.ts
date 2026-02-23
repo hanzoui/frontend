@@ -3,7 +3,7 @@ import { getDistribution, ZENDESK_FIELDS } from '@/platform/support/config'
 import { useExtensionService } from '@/services/extensionService'
 import type { ActionBarButton } from '@/types/comfy'
 
-const ZENDESK_BASE_URL = 'https://support.comfy.org/hc/en-us/requests/new'
+const ZENDESK_BASE_URL = 'https://support.hanzo.ai/hc/en-us/requests/new'
 const ZENDESK_FEEDBACK_FORM_ID = '43066738713236'
 
 const distribution = getDistribution()

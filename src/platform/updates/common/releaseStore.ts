@@ -27,7 +27,7 @@ export const useReleaseStore = defineStore('release', () => {
     if (isCloud) {
       return systemStatsStore?.systemStats?.system?.cloud_version ?? ''
     }
-    return systemStatsStore?.systemStats?.system?.comfyui_version ?? ''
+    return systemStatsStore?.systemStats?.system?.hanzo_studio_version ?? ''
   })
 
   // Release data from settings

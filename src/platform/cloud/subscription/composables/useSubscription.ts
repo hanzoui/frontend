@@ -172,7 +172,7 @@ function useSubscriptionInternal() {
   }
 
   const handleLearnMore = () => {
-    window.open('https://docs.comfy.org', '_blank')
+    window.open('https://docs.hanzo.ai', '_blank')
   }
 
   const handleInvoiceHistory = async () => {

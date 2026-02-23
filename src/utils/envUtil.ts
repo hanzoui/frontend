@@ -1,4 +1,4 @@
-import type { ElectronAPI } from '@comfyorg/comfyui-electron-types'
+import type { ElectronAPI } from '@hanzoui/hanzo-studio-electron-types'
 
 import { isDesktop } from '@/platform/distribution/types'
 

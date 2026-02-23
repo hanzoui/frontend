@@ -9,7 +9,7 @@
           {{ t('auth.apiKey.description') }}
         </p>
         <a
-          href="https://docs.comfy.org/interface/user#logging-in-with-an-api-key"
+          href="https://docs.hanzo.ai/interface/user#logging-in-with-an-api-key"
           target="_blank"
           class="cursor-pointer text-blue-500"
         >
@@ -31,13 +31,13 @@
       <div class="flex flex-col gap-2">
         <label
           class="mb-2 text-base font-medium opacity-80"
-          for="comfy-org-api-key"
+          for="hanzo.ai-api-key"
         >
           {{ t('auth.apiKey.label') }}
         </label>
         <div class="flex flex-col gap-2">
           <InputText
-            pt:root:id="comfy-org-api-key"
+            pt:root:id="hanzo.ai-api-key"
             pt:root:autocomplete="off"
             class="h-10"
             name="apiKey"
@@ -56,7 +56,7 @@
             </a>
             <span class="mx-1">•</span>
             <a
-              href="https://docs.comfy.org/tutorials/api-nodes/overview#log-in-with-api-key-on-non-whitelisted-websites"
+              href="https://docs.hanzo.ai/tutorials/api-nodes/overview#log-in-with-api-key-on-non-whitelisted-websites"
               target="_blank"
               class="cursor-pointer text-blue-500"
             >

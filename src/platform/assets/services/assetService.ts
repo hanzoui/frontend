@@ -167,7 +167,7 @@ function getLocalizedErrorMessage(errorCode: string): string {
 const ASSETS_ENDPOINT = '/assets'
 const ASSETS_DOWNLOAD_ENDPOINT = '/assets/download'
 const ASSETS_EXPORT_ENDPOINT = '/assets/export'
-const EXPERIMENTAL_WARNING = `EXPERIMENTAL: If you are seeing this please make sure "Comfy.Assets.UseAssetAPI" is set to "false" in your ComfyUI Settings.\n`
+const EXPERIMENTAL_WARNING = `EXPERIMENTAL: If you are seeing this please make sure "Comfy.Assets.UseAssetAPI" is set to "false" in your Hanzo Studio Settings.\n`
 const DEFAULT_LIMIT = 500
 
 export const MODELS_TAG = 'models'
@@ -286,7 +286,7 @@ function createAssetService() {
   /**
    * Checks if a widget input should use the asset browser based on both input name and node comfyClass
    *
-   * @param nodeType - The ComfyUI node comfyClass (e.g., 'CheckpointLoaderSimple', 'LoraLoader')
+   * @param nodeType - The Hanzo Studio node comfyClass (e.g., 'CheckpointLoaderSimple', 'LoraLoader')
    * @param widgetName - The name of the widget to check (e.g., 'ckpt_name')
    * @returns true if this input should use asset browser
    */
@@ -312,7 +312,7 @@ function createAssetService() {
    * Checks if the asset browser should be used for a given node input.
    * Combines the cloud environment check, user setting, and eligibility check.
    *
-   * @param nodeType - The ComfyUI node comfyClass
+   * @param nodeType - The Hanzo Studio node comfyClass
    * @param widgetName - The name of the widget to check
    * @returns true if this input should use the asset browser
    */
@@ -327,7 +327,7 @@ function createAssetService() {
    * Gets assets for a specific node type by finding the matching category
    * and fetching all assets with that category tag
    *
-   * @param nodeType - The ComfyUI node type (e.g., 'CheckpointLoaderSimple')
+   * @param nodeType - The Hanzo Studio node type (e.g., 'CheckpointLoaderSimple')
    * @param options - Pagination options
    * @param options.limit - Maximum number of assets to return (default: 500)
    * @param options.offset - Number of assets to skip (default: 0)

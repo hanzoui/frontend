@@ -190,8 +190,8 @@ async function handleAddCreditCard() {
     if (!planSlug) return
     const response = await subscribe(
       planSlug,
-      'https://www.comfy.org/payment/success',
-      'https://www.comfy.org/payment/failed'
+      'https://hanzo.ai/payment/success',
+      'https://hanzo.ai/payment/failed'
     )
 
     if (!response) return
@@ -245,8 +245,8 @@ async function handleConfirmTransition() {
     if (!planSlug) return
     const response = await subscribe(
       planSlug,
-      'https://www.comfy.org/payment/success',
-      'https://www.comfy.org/payment/failed'
+      'https://hanzo.ai/payment/success',
+      'https://hanzo.ai/payment/failed'
     )
 
     if (!response) return

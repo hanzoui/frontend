@@ -23,8 +23,8 @@
 </template>
 
 <script setup lang="ts">
-import { isValidUrl } from '@comfyorg/shared-frontend-utils/formatUtil'
-import { checkUrlReachable } from '@comfyorg/shared-frontend-utils/networkUtil'
+import { isValidUrl } from '@hanzoui/shared-frontend-utils/formatUtil'
+import { checkUrlReachable } from '@hanzoui/shared-frontend-utils/networkUtil'
 import IconField from 'primevue/iconfield'
 import InputIcon from 'primevue/inputicon'
 import InputText from 'primevue/inputtext'

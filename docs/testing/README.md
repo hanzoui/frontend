@@ -1,6 +1,6 @@
-# ComfyUI Frontend Testing Guide
+# Hanzo Frontend Testing Guide
 
-This guide provides an overview of testing approaches used in the ComfyUI Frontend codebase. These guides are meant to document any particularities or nuances of writing tests in this codebase, rather than being a comprehensive guide to testing in general. By reading these guides first, you may save yourself some time when encountering issues.
+This guide provides an overview of testing approaches used in the Hanzo Frontend codebase. These guides are meant to document any particularities or nuances of writing tests in this codebase, rather than being a comprehensive guide to testing in general. By reading these guides first, you may save yourself some time when encountering issues.
 
 ## Testing Documentation
 
@@ -12,7 +12,7 @@ Documentation for unit tests is organized into three guides:
 
 ## Testing Structure
 
-The ComfyUI Frontend project uses **colocated tests** - test files are placed alongside their source files:
+The Hanzo Frontend project uses **colocated tests** - test files are placed alongside their source files:
 
 - **Component Tests**: Located directly alongside their components (e.g., `MyComponent.test.ts` next to `MyComponent.vue`)
 - **Unit Tests**: Located alongside their source files (e.g., `myUtil.test.ts` next to `myUtil.ts`)

@@ -126,13 +126,13 @@ const computedTooltip = computed(() => st(tooltip, tooltip) + tooltipSuffix)
   line-height: 1;
 }
 
-.comfyui-body-left .side-bar-button.side-bar-button-selected,
-.comfyui-body-left .side-bar-button.side-bar-button-selected:hover {
+.hanzo-studio-body-left .side-bar-button.side-bar-button-selected,
+.hanzo-studio-body-left .side-bar-button.side-bar-button-selected:hover {
   border-left: 4px solid var(--p-button-text-primary-color);
 }
 
-.comfyui-body-right .side-bar-button.side-bar-button-selected,
-.comfyui-body-right .side-bar-button.side-bar-button-selected:hover {
+.hanzo-studio-body-right .side-bar-button.side-bar-button-selected,
+.hanzo-studio-body-right .side-bar-button.side-bar-button-selected:hover {
   border-right: 4px solid var(--p-button-text-primary-color);
 }
 </style>

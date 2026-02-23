@@ -105,7 +105,7 @@ import { deserialiseAndCreate } from '@/utils/vintageClipboard'
 import { type ComfyApi, PromptExecutionError, api } from './api'
 import { defaultGraph } from './defaultGraph'
 import { importA1111 } from './pnginfo'
-import { $el, ComfyUI } from './ui'
+import { $el, Hanzo Studio } from './ui'
 import { ComfyAppMenu } from './ui/menu/index'
 import { clone } from './utils'
 import { type ComfyWidgetConstructor } from './widgets'
@@ -170,7 +170,7 @@ export class ComfyApp {
 
   vueAppReady: boolean
   api: ComfyApi
-  ui: ComfyUI
+  ui: Hanzo Studio
   extensionManager!: ExtensionManager
   private _nodeOutputs!: Record<string, NodeExecutionOutput>
   nodePreviewImages: Record<string, string[]>
@@ -258,7 +258,7 @@ export class ComfyApp {
 
   /**
    * @deprecated storageLocation is always 'server' since
-   * https://github.com/comfyanonymous/ComfyUI/commit/53c8a99e6c00b5e20425100f6680cd9ea2652218
+   * https://github.com/hanzoai/studio/commit/53c8a99e6c00b5e20425100f6680cd9ea2652218
    */
   get storageLocation() {
     return 'server'
@@ -303,13 +303,13 @@ export class ComfyApp {
 
   constructor() {
     this.vueAppReady = false
-    this.ui = new ComfyUI(this)
+    this.ui = new Hanzo Studio(this)
     this.api = api
     // Dummy placeholder elements before GraphCanvas is mounted.
-    this.bodyTop = $el('div.comfyui-body-top')
-    this.bodyLeft = $el('div.comfyui-body-left')
-    this.bodyRight = $el('div.comfyui-body-right')
-    this.bodyBottom = $el('div.comfyui-body-bottom')
+    this.bodyTop = $el('div.hanzo-studio-body-top')
+    this.bodyLeft = $el('div.hanzo-studio-body-left')
+    this.bodyRight = $el('div.hanzo-studio-body-right')
+    this.bodyBottom = $el('div.hanzo-studio-body-bottom')
     this.canvasContainer = $el('div.graph-canvas-container')
 
     this.menu = new ComfyAppMenu(this)
@@ -796,10 +796,10 @@ export class ComfyApp {
    * Set up the app on the page
    */
   async setup(canvasEl: HTMLCanvasElement) {
-    this.bodyTop = document.getElementById('comfyui-body-top')!
-    this.bodyLeft = document.getElementById('comfyui-body-left')!
-    this.bodyRight = document.getElementById('comfyui-body-right')!
-    this.bodyBottom = document.getElementById('comfyui-body-bottom')!
+    this.bodyTop = document.getElementById('hanzo-studio-body-top')!
+    this.bodyLeft = document.getElementById('hanzo-studio-body-left')!
+    this.bodyRight = document.getElementById('hanzo-studio-body-right')!
+    this.bodyBottom = document.getElementById('hanzo-studio-body-bottom')!
     this.canvasContainer = document.getElementById('graph-canvas-container')!
 
     this.canvasElRef.value = canvasEl
@@ -917,7 +917,7 @@ export class ComfyApp {
   }
 
   private resizeCanvas(canvas: HTMLCanvasElement) {
-    // Limit minimal scale to 1, see https://github.com/comfyanonymous/ComfyUI/pull/845
+    // Limit minimal scale to 1, see https://github.com/hanzoai/studio/pull/845
     const scale = Math.max(window.devicePixelRatio, 1)
 
     // Clear fixed width and height while calculating rect so it uses 100% instead
@@ -1125,7 +1125,7 @@ export class ComfyApp {
     // Only show the reroute migration warning if the workflow does not have native
     // reroutes. Merging reroute network has great complexity, and it is not supported
     // for now.
-    // See: https://github.com/Comfy-Org/ComfyUI_frontend/issues/3317
+    // See: https://github.com/hanzoui/frontend/issues/3317
     if (
       checkForRerouteMigration &&
       graphData.version === 0.4 &&
@@ -1580,7 +1580,7 @@ export class ComfyApp {
     }
 
     // Check workflow first - it should take priority over parameters
-    // when both are present (e.g., in ComfyUI-generated PNGs)
+    // when both are present (e.g., in Hanzo Studio-generated PNGs)
     if (workflow) {
       let workflowObj: ComfyWorkflowJSON | undefined = undefined
       try {

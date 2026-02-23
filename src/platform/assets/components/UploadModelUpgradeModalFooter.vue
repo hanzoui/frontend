@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-wrap justify-end gap-2 w-full">
     <a
-      href="https://blog.comfy.org/p/comfy-cloud-new-features-and-pricing"
+      href="https://blog.hanzo.ai/p/comfy-cloud-new-features-and-pricing"
       target="_blank"
       rel="noopener noreferrer"
       class="text-muted-foreground mr-auto underline flex items-center gap-2"

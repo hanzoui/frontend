@@ -55,7 +55,7 @@
 </template>
 
 <script setup lang="ts" generic="TFilter extends SearchFilter">
-import { cn } from '@comfyorg/tailwind-utils'
+import { cn } from '@hanzoui/tailwind-utils'
 import { watchDebounced } from '@vueuse/core'
 import InputIcon from 'primevue/inputicon'
 import InputText from 'primevue/inputtext'

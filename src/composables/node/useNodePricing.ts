@@ -1,6 +1,6 @@
 // JSONata-based pricing badge evaluation for API nodes.
 //
-// Pricing declarations are read from ComfyUI node definitions (price_badge field).
+// Pricing declarations are read from Hanzo Studio node definitions (price_badge field).
 // The Frontend evaluates these declarations locally using a JSONata engine.
 //
 // JSONata v2.x NOTE:

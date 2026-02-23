@@ -13,8 +13,8 @@
   >
     <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-black">
       <ComfyLogo
-        alt="ComfyUI Logo"
-        class="comfyui-logo h-[18px] w-[18px] text-white"
+        alt="Hanzo Studio Logo"
+        class="hanzo-studio-logo h-[18px] w-[18px] text-white"
         mode="fill"
       />
     </div>

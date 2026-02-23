@@ -195,40 +195,40 @@ export const useModelToNodeStore = defineStore('modelToNode', () => {
     )
     quickRegister('chatterbox/chatterbox_vc', 'FL_ChatterboxVC', '')
 
-    // Latent upscale models (ComfyUI core - nodes_hunyuan.py)
+    // Latent upscale models (Hanzo Studio core - nodes_hunyuan.py)
     quickRegister(
       'latent_upscale_models',
       'LatentUpscaleModelLoader',
       'model_name'
     )
 
-    // SAM/SAM2 segmentation models (comfyui-segment-anything-2, comfyui-impact-pack)
+    // SAM/SAM2 segmentation models (hanzo-studio-segment-anything-2, hanzo-studio-impact-pack)
     quickRegister('sam2', 'DownloadAndLoadSAM2Model', 'model')
     quickRegister('sams', 'SAMLoader', 'model_name')
 
-    // Ultralytics detection models (comfyui-impact-subpack)
+    // Ultralytics detection models (hanzo-studio-impact-subpack)
     // Note: ultralytics/bbox and ultralytics/segm fall back to this via hierarchical lookup
     quickRegister('ultralytics', 'UltralyticsDetectorProvider', 'model_name')
 
-    // DepthAnything models (comfyui-depthanythingv2)
+    // DepthAnything models (hanzo-studio-depthanythingv2)
     quickRegister(
       'depthanything',
       'DownloadAndLoadDepthAnythingV2Model',
       'model'
     )
 
-    // IP-Adapter models (comfyui_ipadapter_plus)
+    // IP-Adapter models (hanzo_studio_ipadapter_plus)
     quickRegister('ipadapter', 'IPAdapterModelLoader', 'ipadapter_file')
 
-    // Segformer clothing/fashion segmentation models (comfyui_layerstyle)
+    // Segformer clothing/fashion segmentation models (hanzo_studio_layerstyle)
     quickRegister('segformer_b2_clothes', 'LS_LoadSegformerModel', 'model_name')
     quickRegister('segformer_b3_clothes', 'LS_LoadSegformerModel', 'model_name')
     quickRegister('segformer_b3_fashion', 'LS_LoadSegformerModel', 'model_name')
 
-    // NLF pose estimation models (ComfyUI-WanVideoWrapper)
+    // NLF pose estimation models (Hanzo Studio-WanVideoWrapper)
     quickRegister('nlf', 'LoadNLFModel', 'nlf_model')
 
-    // FlashVSR video super-resolution (ComfyUI-FlashVSR_Ultra_Fast)
+    // FlashVSR video super-resolution (Hanzo Studio-FlashVSR_Ultra_Fast)
     // Empty key means the node auto-loads models without a widget selector
     quickRegister('FlashVSR', 'FlashVSRNode', '')
     quickRegister('FlashVSR-v1.1', 'FlashVSRNode', '')

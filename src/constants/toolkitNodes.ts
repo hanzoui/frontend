@@ -4,7 +4,7 @@
  * Used by telemetry to track toolkit node adoption and popularity.
  * Only novel nodes — basic nodes (LoadImage, SaveImage, etc.) are excluded.
  *
- * Source: https://www.notion.so/comfy-org/2fe6d73d365080d0a951d14cdf540778
+ * Source: https://www.notion.so/hanzo.ai/2fe6d73d365080d0a951d14cdf540778
  */
 
 /**

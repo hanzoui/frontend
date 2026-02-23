@@ -29,7 +29,7 @@
       <div class="mb-2 flex items-center justify-between">
         <label
           class="text-base font-medium opacity-80"
-          for="comfy-org-sign-in-password"
+          for="hanzo.ai-sign-in-password"
         >
           {{ t('auth.login.passwordLabel') }}
         </label>
@@ -44,7 +44,7 @@
         </span>
       </div>
       <Password
-        input-id="comfy-org-sign-in-password"
+        input-id="hanzo.ai-sign-in-password"
         pt:pc-input-text:root:autocomplete="current-password"
         name="password"
         :feedback="false"
@@ -101,7 +101,7 @@ const emit = defineEmits<{
   submit: [values: SignInData]
 }>()
 
-const emailInputId = 'comfy-org-sign-in-email'
+const emailInputId = 'hanzo.ai-sign-in-email'
 
 const onSubmit = useThrottleFn((event: FormSubmitEvent) => {
   if (event.valid) {

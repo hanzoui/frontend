@@ -89,7 +89,7 @@ class LegacyMenuCompat {
           console.warn(
             `%c[DEPRECATED]%c Monkey-patching ${methodName as string} is deprecated. (Extension: "${this.currentExtension}")\n` +
               `Please use the new context menu API instead.\n\n` +
-              `See: https://docs.comfy.org/custom-nodes/js/context-menu-migration`,
+              `See: https://docs.hanzo.ai/custom-nodes/js/context-menu-migration`,
             'color: orange; font-weight: bold',
             'color: inherit'
           )

@@ -115,7 +115,7 @@
 </template>
 
 <script setup lang="ts">
-import { cn } from '@comfyorg/tailwind-utils'
+import { cn } from '@hanzoui/tailwind-utils'
 import { storeToRefs } from 'pinia'
 import Splitter from 'primevue/splitter'
 import type { SplitterResizeStartEvent } from 'primevue/splitter'

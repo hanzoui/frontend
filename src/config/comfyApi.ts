@@ -4,11 +4,11 @@ import {
   remoteConfig
 } from '@/platform/remoteConfig/remoteConfig'
 
-const PROD_API_BASE_URL = 'https://api.comfy.org'
-const STAGING_API_BASE_URL = 'https://stagingapi.comfy.org'
+const PROD_API_BASE_URL = 'https://api.hanzo.ai'
+const STAGING_API_BASE_URL = 'https://stagingapi.hanzo.ai'
 
-const PROD_PLATFORM_BASE_URL = 'https://platform.comfy.org'
-const STAGING_PLATFORM_BASE_URL = 'https://stagingplatform.comfy.org'
+const PROD_PLATFORM_BASE_URL = 'https://platform.hanzo.ai'
+const STAGING_PLATFORM_BASE_URL = 'https://stagingplatform.hanzo.ai'
 
 const BUILD_TIME_API_BASE_URL = __USE_PROD_CONFIG__
   ? PROD_API_BASE_URL

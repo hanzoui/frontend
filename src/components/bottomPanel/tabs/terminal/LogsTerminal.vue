@@ -34,7 +34,7 @@ const terminalCreated = (
 ) => {
   // Auto-size terminal to fill container width.
   // minCols: 80 ensures minimum width for colab environments.
-  // See https://github.com/comfyanonymous/ComfyUI/issues/6396
+  // See https://github.com/hanzoai/studio/issues/6396
   useAutoSize({ root, autoRows: true, autoCols: true, minCols: 80 })
 
   const update = (entries: Array<LogEntry>) => {
@@ -66,7 +66,7 @@ const terminalCreated = (
       console.error('Error loading logs', err)
       // On older backends the endpoints won't exist
       errorMessage.value =
-        'Unable to load logs, please ensure you have updated your ComfyUI backend.'
+        'Unable to load logs, please ensure you have updated your Hanzo Studio backend.'
       return
     }
 

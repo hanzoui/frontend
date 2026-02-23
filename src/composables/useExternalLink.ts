@@ -5,7 +5,7 @@ import { electronAPI } from '@/utils/envUtil'
 import { i18n } from '@/i18n'
 
 /**
- * Composable for building docs.comfy.org URLs with automatic locale and platform detection
+ * Composable for building docs.hanzo.ai URLs with automatic locale and platform detection
  *
  * @example
  * ```ts
@@ -13,14 +13,14 @@ import { i18n } from '@/i18n'
  *
  * // Simple usage
  * const changelogUrl = buildDocsUrl('/changelog', { includeLocale: true })
- * // => 'https://docs.comfy.org/zh-CN/changelog' (if Chinese)
+ * // => 'https://docs.hanzo.ai/zh-CN/changelog' (if Chinese)
  *
  * // With platform detection
  * const desktopUrl = buildDocsUrl('/installation/desktop', {
  *   includeLocale: true,
  *   platform: true
  * })
- * // => 'https://docs.comfy.org/zh-CN/installation/desktop/macos' (if Chinese + macOS)
+ * // => 'https://docs.hanzo.ai/zh-CN/installation/desktop/macos' (if Chinese + macOS)
  * ```
  */
 export function useExternalLink() {
@@ -40,7 +40,7 @@ export function useExternalLink() {
   })
 
   /**
-   * Build a docs.comfy.org URL with optional locale and platform
+   * Build a docs.hanzo.ai URL with optional locale and platform
    *
    * @param path - The path after the domain (e.g., '/installation/desktop')
    * @param options - Options for building the URL
@@ -50,10 +50,10 @@ export function useExternalLink() {
    *
    * @example
    * ```ts
-   * buildDocsUrl('/changelog') // => 'https://docs.comfy.org/changelog'
-   * buildDocsUrl('/changelog', { includeLocale: true }) // => 'https://docs.comfy.org/zh-CN/changelog' (if Chinese)
+   * buildDocsUrl('/changelog') // => 'https://docs.hanzo.ai/changelog'
+   * buildDocsUrl('/changelog', { includeLocale: true }) // => 'https://docs.hanzo.ai/zh-CN/changelog' (if Chinese)
    * buildDocsUrl('/installation/desktop', { includeLocale: true, platform: true })
-   * // => 'https://docs.comfy.org/zh-CN/installation/desktop/macos' (if Chinese + macOS)
+   * // => 'https://docs.hanzo.ai/zh-CN/installation/desktop/macos' (if Chinese + macOS)
    * ```
    */
   const buildDocsUrl = (
@@ -65,7 +65,7 @@ export function useExternalLink() {
   ): string => {
     const { includeLocale = false, platform: includePlatform = false } = options
 
-    let url = 'https://docs.comfy.org'
+    let url = 'https://docs.hanzo.ai'
 
     if (includeLocale && isChinese.value) {
       url += '/zh-CN'
@@ -84,13 +84,13 @@ export function useExternalLink() {
 
   const staticUrls = {
     // Static external URLs
-    discord: 'https://www.comfy.org/discord',
-    github: 'https://github.com/comfyanonymous/ComfyUI',
-    githubIssues: 'https://github.com/comfyanonymous/ComfyUI/issues',
-    githubFrontend: 'https://github.com/Comfy-Org/ComfyUI_frontend',
-    githubElectron: 'https://github.com/Comfy-Org/electron',
-    forum: 'https://forum.comfy.org/',
-    comfyOrg: 'https://www.comfy.org/'
+    discord: 'https://hanzo.ai/discord',
+    github: 'https://github.com/hanzoai/studio',
+    githubIssues: 'https://github.com/hanzoai/studio/issues',
+    githubFrontend: 'https://github.com/hanzoui/frontend',
+    githubElectron: 'https://github.com/hanzoui/electron',
+    forum: 'https://forum.hanzo.ai/',
+    comfyOrg: 'https://hanzo.ai/'
   }
 
   /** Common doc paths for use with buildDocsUrl */

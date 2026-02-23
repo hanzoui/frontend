@@ -46,7 +46,7 @@
         variant="textonly"
         size="sm"
         as="a"
-        href="https://www.comfy.org/cloud"
+        href="https://hanzo.ai/cloud"
         target="_blank"
         rel="noopener noreferrer"
       >

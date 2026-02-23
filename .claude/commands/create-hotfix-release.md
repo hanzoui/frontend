@@ -1,6 +1,6 @@
 # Create Hotfix Release
 
-This command creates patch/hotfix releases for ComfyUI Frontend by backporting fixes to stable core branches. It handles both automated backports (preferred) and manual cherry-picking (fallback).
+This command creates patch/hotfix releases for Hanzo Frontend by backporting fixes to stable core branches. It handles both automated backports (preferred) and manual cherry-picking (fallback).
 
 **Process Overview:**
 
@@ -9,7 +9,7 @@ This command creates patch/hotfix releases for ComfyUI Frontend by backporting f
 3. **Manual cherry-picking** if automation failed
 4. **Create patch release** with version bump
 5. **Publish GitHub release** (manually uncheck "latest")
-6. **Update ComfyUI requirements.txt** via PR
+6. **Update Hanzo Studio requirements.txt** via PR
 
 <task>
 Create a hotfix release by backporting commits/PRs from main to a core branch: $ARGUMENTS
@@ -90,11 +90,11 @@ If no arguments provided, the command will guide you through identifying commits
 
 ### Step 2: Identify Target Core Branch
 
-1. Fetch the current ComfyUI requirements.txt from master branch:
+1. Fetch the current Hanzo Studio requirements.txt from master branch:
    ```bash
-   curl -s https://raw.githubusercontent.com/comfyanonymous/ComfyUI/master/requirements.txt | grep "comfyui-frontend-package"
+   curl -s https://raw.githubusercontent.com/hanzoai/studio/master/requirements.txt | grep "hanzo-studio-frontend-package"
    ```
-2. Extract the `comfyui-frontend-package` version (e.g., `comfyui-frontend-package==1.23.4`)
+2. Extract the `hanzo-studio-frontend-package` version (e.g., `hanzo-studio-frontend-package==1.23.4`)
 3. Parse version to get major.minor (e.g., `1.23.4` → `1.23`)
 4. Determine core branch: `core/<major>.<minor>` (e.g., `core/1.23`)
 5. Verify the core branch exists: `git ls-remote origin refs/heads/core/*`
@@ -239,7 +239,7 @@ For each commit:
    <!-- List dependency updates -->
    - Updated dependency from vX.X.X to vY.Y.Y (#PR_NUMBER)
 
-   **Full Changelog**: https://github.com/Comfy-Org/ComfyUI_frontend/compare/v${CURRENT_VERSION}...v${NEW_VERSION}
+   **Full Changelog**: https://github.com/hanzoui/frontend/compare/v${CURRENT_VERSION}...v${NEW_VERSION}
    EOF
    ```
 
@@ -271,7 +271,7 @@ For each commit:
 
 **CRITICAL**: The release workflow creates a DRAFT release. You must manually publish it:
 
-1. **Go to GitHub Releases:** https://github.com/Comfy-Org/ComfyUI_frontend/releases
+1. **Go to GitHub Releases:** https://github.com/hanzoui/frontend/releases
 2. **Find the DRAFT release** (e.g., "v1.23.5 Draft")
 3. **Click "Edit release"**
 4. **UNCHECK "Set as the latest release"** ⚠️ **CRITICAL**
@@ -280,20 +280,20 @@ For each commit:
 5. **Click "Publish release"**
 6. **CONFIRMATION REQUIRED**: Draft release published with "latest" unchecked?
 
-### Step 14: Create ComfyUI Requirements.txt Update PR
+### Step 14: Create Hanzo Studio Requirements.txt Update PR
 
-**IMPORTANT**: Create PR to update ComfyUI's requirements.txt via fork:
+**IMPORTANT**: Create PR to update Hanzo Studio's requirements.txt via fork:
 
 1. **Setup fork (if needed):**
 
    ```bash
    # Check if fork already exists
-   if gh repo view ComfyUI --json owner | jq -r '.owner.login' | grep -q "$(gh api user --jq .login)"; then
+   if gh repo view Hanzo Studio --json owner | jq -r '.owner.login' | grep -q "$(gh api user --jq .login)"; then
      echo "Fork already exists"
    else
-     # Fork the ComfyUI repository
-     gh repo fork comfyanonymous/ComfyUI --clone=false
-     echo "Created fork of ComfyUI"
+     # Fork the Hanzo Studio repository
+     gh repo fork hanzoai/studio --clone=false
+     echo "Created fork of Hanzo Studio"
    fi
    ```
 
@@ -302,11 +302,11 @@ For each commit:
    ```bash
    # Clone your fork (or use existing clone)
    GITHUB_USER=$(gh api user --jq .login)
-   if [ ! -d "ComfyUI-fork" ]; then
-     gh repo clone ${GITHUB_USER}/ComfyUI ComfyUI-fork
+   if [ ! -d "Hanzo Studio-fork" ]; then
+     gh repo clone ${GITHUB_USER}/Hanzo Studio Hanzo Studio-fork
    fi
 
-   cd ComfyUI-fork
+   cd Hanzo Studio-fork
    git checkout master
    git pull origin master
 
@@ -319,10 +319,10 @@ For each commit:
 
    ```bash
    # Update the version in requirements.txt
-   sed -i "s/comfyui-frontend-package==[0-9].*$/comfyui-frontend-package==${NEW_VERSION}/" requirements.txt
+   sed -i "s/hanzo-studio-frontend-package==[0-9].*$/hanzo-studio-frontend-package==${NEW_VERSION}/" requirements.txt
 
    # Verify the change
-   grep "comfyui-frontend-package" requirements.txt
+   grep "hanzo-studio-frontend-package" requirements.txt
 
    # Commit the change
    git add requirements.txt
@@ -334,19 +334,19 @@ For each commit:
    ```bash
    # Create PR using gh CLI from fork
    gh pr create \
-     --repo comfyanonymous/ComfyUI \
+     --repo hanzoai/studio \
      --title "Bump frontend to ${NEW_VERSION}" \
      --body "$(cat <<EOF
    Bump frontend to ${NEW_VERSION}
    ```
 
 \`\`\`
-python main.py --front-end-version Comfy-Org/ComfyUI_frontend@${NEW_VERSION}
+python main.py --front-end-version hanzoui/frontend@${NEW_VERSION}
 \`\`\`
 
-- Diff: [Comfy-Org/ComfyUI_frontend: v${OLD_VERSION}...v${NEW_VERSION}](https://github.com/Comfy-Org/ComfyUI_frontend/compare/v${OLD_VERSION}...v${NEW_VERSION})
-- PyPI Package: https://pypi.org/project/comfyui-frontend-package/${NEW_VERSION}/
-- npm Types: https://www.npmjs.com/package/@comfyorg/comfyui-frontend-types/v/${NEW_VERSION}
+- Diff: [hanzoui/frontend: v${OLD_VERSION}...v${NEW_VERSION}](https://github.com/hanzoui/frontend/compare/v${OLD_VERSION}...v${NEW_VERSION})
+- PyPI Package: https://pypi.org/project/hanzo-studio-frontend-package/${NEW_VERSION}/
+- npm Types: https://www.npmjs.com/package/@hanzoui/hanzo-studio-frontend-types/v/${NEW_VERSION}
 
 ## Changes
 
@@ -365,10 +365,10 @@ python main.py --front-end-version Comfy-Org/ComfyUI_frontend@${NEW_VERSION}
    cd ..
 
    # Keep fork directory for future updates
-   echo "Fork directory 'ComfyUI-fork' kept for future use"
+   echo "Fork directory 'Hanzo Studio-fork' kept for future use"
    ```
 
-6. **CONFIRMATION REQUIRED**: ComfyUI requirements.txt PR created from fork?
+6. **CONFIRMATION REQUIRED**: Hanzo Studio requirements.txt PR created from fork?
 
 ### Step 15: Post-Release Verification
 
@@ -378,26 +378,26 @@ python main.py --front-end-version Comfy-Org/ComfyUI_frontend@${NEW_VERSION}
    ```
 2. Check PyPI package:
    ```bash
-   pip index versions comfyui-frontend-package | grep 1.23.5
+   pip index versions hanzo-studio-frontend-package | grep 1.23.5
    ```
 3. Verify npm package:
    ```bash
-   pnpm view @comfyorg/comfyui-frontend-types@1.23.5
+   pnpm view @hanzoui/hanzo-studio-frontend-types@1.23.5
    ```
-4. Monitor ComfyUI requirements.txt PR for approval/merge
+4. Monitor Hanzo Studio requirements.txt PR for approval/merge
 5. Generate release summary with:
    - Version released
    - Commits included
    - Issues fixed
    - Distribution status
-   - ComfyUI integration status
+   - Hanzo Studio integration status
 6. **CONFIRMATION REQUIRED**: Hotfix release fully completed?
 
 ## Safety Checks
 
 Throughout the process:
 
-- Always verify core branch matches ComfyUI's requirements.txt
+- Always verify core branch matches Hanzo Studio's requirements.txt
 - For PRs: Ensure using correct commits (merge vs individual)
 - Check version numbers follow semantic versioning
 - **Critical**: "Release" label must be on version bump PR
@@ -419,7 +419,7 @@ If something goes wrong:
 - Core branch version will be behind main - this is expected
 - The "Release" label triggers the PyPI/npm publication
 - **CRITICAL**: Always uncheck "Set as latest release" for hotfix releases
-- **Must create ComfyUI requirements.txt PR** - Hotfix isn't complete without it
+- **Must create Hanzo Studio requirements.txt PR** - Hotfix isn't complete without it
 - PR numbers must include the `#` prefix
 - Mixed commits/PRs are supported but review carefully
 - Always wait for full test suite before proceeding
@@ -431,7 +431,7 @@ If something goes wrong:
 
 - Smart path detection - skip to version bump if backports already merged
 - Fallback to manual cherry-picking only when automation fails/has conflicts
-  **Complete Hotfix:** Includes GitHub release publishing + ComfyUI requirements.txt integration
+  **Complete Hotfix:** Includes GitHub release publishing + Hanzo Studio requirements.txt integration
 
 ## Workflow Paths
 
@@ -439,4 +439,4 @@ If something goes wrong:
 - **Path B:** Backport PRs need merging → Merge them → Skip to Step 10 (Version Bump)
 - **Path C:** No/failed backports → Manual cherry-picking (Steps 2-9) → Version Bump (Step 10)
 
-This process ensures a complete hotfix release with proper GitHub publishing, ComfyUI integration, and multiple safety checkpoints.
+This process ensures a complete hotfix release with proper GitHub publishing, Hanzo Studio integration, and multiple safety checkpoints.

@@ -85,7 +85,7 @@ Tags are respected by config:
 ## Test Data
 
 - Check `browser_tests/assets/` for test data and fixtures
-- Use realistic ComfyUI workflows for E2E tests
+- Use realistic Hanzo Studio workflows for E2E tests
 
 ## Running Tests
 

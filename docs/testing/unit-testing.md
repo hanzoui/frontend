@@ -1,6 +1,6 @@
 # Unit Testing Guide
 
-This guide covers patterns and examples for unit testing utilities, composables, and other non-component code in the ComfyUI Frontend codebase.
+This guide covers patterns and examples for unit testing utilities, composables, and other non-component code in the Hanzo Frontend codebase.
 
 ## Table of Contents
 
@@ -90,7 +90,7 @@ describe('LGraph', () => {
 
 ## Working with Workflow JSON Files
 
-Testing with ComfyUI workflow files:
+Testing with Hanzo Studio workflow files:
 
 ```typescript
 // Example from: tests-ui/tests/comfyWorkflow.test.ts
@@ -122,7 +122,7 @@ describe('workflow validation', () => {
 
 ## Mocking the API Object
 
-Mocking the ComfyUI API object:
+Mocking the Hanzo Studio API object:
 
 ```typescript
 // Example from: tests-ui/tests/composables/useServerLogs.test.ts

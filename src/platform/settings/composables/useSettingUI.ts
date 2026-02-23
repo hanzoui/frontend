@@ -87,7 +87,7 @@ export function useSettingUI(
     () => settingRoot.value.children ?? []
   )
 
-  // Core setting categories (built-in to ComfyUI) in display order
+  // Core setting categories (built-in to Hanzo Studio) in display order
   // 'Other' includes floating settings that don't have a specific category
   const CORE_CATEGORIES_ORDER = [
     'Comfy',

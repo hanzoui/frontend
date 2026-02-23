@@ -227,9 +227,9 @@ export interface paths {
         get?: never;
         put?: never;
         /**
-         * Verify a ComfyUI API key and return customer details
-         * @description Validates a ComfyUI API key and returns the associated customer information.
-         *     This endpoint is used by cloud.comfy.org to authenticate users via API keys
+         * Verify a Hanzo Studio API key and return customer details
+         * @description Validates a Hanzo Studio API key and returns the associated customer information.
+         *     This endpoint is used by cloud.hanzo.ai to authenticate users via API keys
          *     instead of Firebase tokens.
          */
         post: operations["VerifyApiKey"];
@@ -403,8 +403,8 @@ export interface paths {
         get?: never;
         put?: never;
         /**
-         * Receive artifacts (output files) from the ComfyUI GitHub Action
-         * @description Receive artifacts (output files) from the ComfyUI GitHub Action
+         * Receive artifacts (output files) from the Hanzo Studio GitHub Action
+         * @description Receive artifacts (output files) from the Hanzo Studio GitHub Action
          */
         post: {
             parameters: {
@@ -430,7 +430,7 @@ export interface paths {
                         bucket_name?: string;
                         /** @description A comma separated string that contains GCS path(s) to output files. eg. gs://bucket-name/output, gs://bucket-name/output2 */
                         output_files_gcs_paths?: string;
-                        /** @description The path to ComfyUI logs. eg. gs://bucket-name/logs */
+                        /** @description The path to Hanzo Studio logs. eg. gs://bucket-name/logs */
                         comfy_logs_gcs_path?: string;
                         /** @description The flags used in the comfy run */
                         comfy_run_flags?: string;
@@ -1083,8 +1083,8 @@ export interface paths {
             cookie?: never;
         };
         /**
-         * Retrieve a node by ComfyUI node name
-         * @description Returns the node that contains a ComfyUI node with the specified name
+         * Retrieve a node by Hanzo Studio node name
+         * @description Returns the node that contains a Hanzo Studio node with the specified name
          */
         get: operations["getNodeByComfyNodeName"];
         put?: never;
@@ -4340,10 +4340,10 @@ export interface components {
             supported_os?: string[];
             /** @description List of accelerators (e.g. CUDA, DirectML, ROCm) that this node supports */
             supported_accelerators?: string[];
-            /** @description Supported versions of ComfyUI */
-            supported_comfyui_version?: string;
-            /** @description Supported versions of ComfyUI frontend */
-            supported_comfyui_frontend_version?: string;
+            /** @description Supported versions of Hanzo Studio */
+            supported_hanzo_studio_version?: string;
+            /** @description Supported versions of Hanzo Studio frontend */
+            supported_hanzo_studio_frontend_version?: string;
             /** @description The latest version of the node. */
             latest_version?: components["schemas"]["NodeVersion"];
             /** @description The average rating of the node. */
@@ -4403,10 +4403,10 @@ export interface components {
             node_id?: string;
             /** @description The status of comfy node extraction process. */
             comfy_node_extract_status?: string;
-            /** @description Supported versions of ComfyUI */
-            supported_comfyui_version?: string;
-            /** @description Supported versions of ComfyUI frontend */
-            supported_comfyui_frontend_version?: string;
+            /** @description Supported versions of Hanzo Studio */
+            supported_hanzo_studio_version?: string;
+            /** @description Supported versions of Hanzo Studio frontend */
+            supported_hanzo_studio_frontend_version?: string;
             /** @description List of operating systems that this node supports */
             supported_os?: string[];
             /** @description List of accelerators (e.g. CUDA, DirectML, ROCm) that this node supports */
@@ -10159,7 +10159,7 @@ export interface components {
              * @description The project this release note belongs to
              * @enum {string}
              */
-            project: "comfyui" | "comfyui_frontend" | "desktop" | "cloud";
+            project: "comfyui" | "hanzo_studio_frontend" | "desktop" | "cloud";
             /** @description The version of the release */
             version: string;
             /**
@@ -12122,7 +12122,7 @@ export interface operations {
         requestBody: {
             content: {
                 "application/json": {
-                    /** @description The ComfyUI API key to verify (e.g., comfy_xxx...) */
+                    /** @description The Hanzo Studio API key to verify (e.g., comfy_xxx...) */
                     api_key: string;
                 };
             };
@@ -14122,7 +14122,7 @@ export interface operations {
                 /** @description node_id to use as filter */
                 node_id?: string[];
                 /** @description Comfy UI version */
-                comfyui_version?: string;
+                hanzo_studio_version?: string;
                 /** @description The platform requesting the nodes */
                 form_factor?: string;
             };
@@ -14181,7 +14181,7 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                /** @description The name of the ComfyUI node */
+                /** @description The name of the Hanzo Studio node */
                 comfyNodeName: string;
             };
             cookie?: never;
@@ -14197,7 +14197,7 @@ export interface operations {
                     "application/json": components["schemas"]["Node"];
                 };
             };
-            /** @description No node found containing the specified ComfyUI node name */
+            /** @description No node found containing the specified Hanzo Studio node name */
             404: {
                 headers: {
                     [name: string]: unknown;
@@ -14792,10 +14792,10 @@ export interface operations {
                     status?: components["schemas"]["NodeVersionStatus"];
                     /** @description The reason for the status change. */
                     status_reason?: string;
-                    /** @description Supported versions of ComfyUI frontend */
-                    supported_comfyui_frontend_version?: string;
-                    /** @description Supported versions of ComfyUI */
-                    supported_comfyui_version?: string;
+                    /** @description Supported versions of Hanzo Studio frontend */
+                    supported_hanzo_studio_frontend_version?: string;
+                    /** @description Supported versions of Hanzo Studio */
+                    supported_hanzo_studio_version?: string;
                     /** @description List of operating systems that this node supports */
                     supported_os?: string[];
                     /** @description List of accelerators (e.g. CUDA, DirectML, ROCm) that this node supports */
@@ -15462,7 +15462,7 @@ export interface operations {
         parameters: {
             query: {
                 /** @description The project to get release notes for */
-                project: "comfyui" | "comfyui_frontend" | "desktop" | "cloud";
+                project: "comfyui" | "hanzo_studio_frontend" | "desktop" | "cloud";
                 /** @description The current version to filter release notes */
                 current_version?: string;
                 /** @description The locale for the release notes */
@@ -15903,7 +15903,7 @@ export interface operations {
                 node_id?: string;
                 /** @description Filter by node version */
                 node_version?: string;
-                /** @description Filter by ComfyUI node name */
+                /** @description Filter by Hanzo Studio node name */
                 comfy_node_name?: string;
             };
             header?: never;

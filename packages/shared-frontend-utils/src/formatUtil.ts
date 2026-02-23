@@ -1,5 +1,5 @@
 import { default as DOMPurify } from 'dompurify'
-import type { operations } from '@comfyorg/registry-types'
+import type { operations } from '@hanzoui/registry-types'
 
 export function formatCamelCase(str: string): string {
   // Check if the string is camel case

@@ -5,7 +5,7 @@ import { ref } from 'vue'
 import type { components, operations } from '@/types/comfyRegistryTypes'
 import { isAbortError } from '@/utils/typeGuardUtil'
 
-const API_BASE_URL = 'https://api.comfy.org'
+const API_BASE_URL = 'https://api.hanzo.ai'
 
 const registryApiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -320,7 +320,7 @@ export const useComfyRegistryService = () => {
   }
 
   /**
-   * Get the node pack that contains a specific ComfyUI node by its name.
+   * Get the node pack that contains a specific Hanzo Studio node by its name.
    * This method queries the registry to find which pack provides the given node.
    *
    * When multiple packs contain a node with the same name, the API returns the best match based on:
@@ -328,7 +328,7 @@ export const useComfyRegistryService = () => {
    * 2. Search ranking - Lower search_ranking values are preferred
    * 3. Total installs - Higher installation counts are preferred as a tiebreaker
    *
-   * @param nodeName - The name of the ComfyUI node (e.g., 'KSampler', 'CLIPTextEncode')
+   * @param nodeName - The name of the Hanzo Studio node (e.g., 'KSampler', 'CLIPTextEncode')
    * @param signal - Optional AbortSignal for request cancellation
    * @returns The node pack containing the specified node, or null if not found or on error
    *
@@ -371,8 +371,8 @@ export const useComfyRegistryService = () => {
    * @example
    * ```typescript
    * const versions = await getBulkNodeVersions([
-   *   { node_id: 'ComfyUI-Manager', version: '1.0.0' },
-   *   { node_id: 'ComfyUI-Impact-Pack', version: '2.0.0' }
+   *   { node_id: 'Hanzo Manager', version: '1.0.0' },
+   *   { node_id: 'Hanzo Studio-Impact-Pack', version: '2.0.0' }
    * ])
    * if (versions) {
    *   versions.node_versions.forEach(result => {

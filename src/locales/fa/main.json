@@ -344,7 +344,7 @@
         "استفاده از مرورگر یا شبکه دیگر را امتحان کنید"
       ],
       "helpText": "نیاز به راهنمایی دارید؟ تماس با",
-      "message": "در اتصال به ComfyUI Cloud با مشکل مواجه شدیم. این مشکل ممکن است به دلیل کندی اتصال یا اختلال موقت سرویس باشد.",
+      "message": "در اتصال به Hanzo Studio Cloud با مشکل مواجه شدیم. این مشکل ممکن است به دلیل کندی اتصال یا اختلال موقت سرویس باشد.",
       "restart": "خروج و تلاش مجدد",
       "supportLink": "پشتیبانی",
       "technicalDetails": "جزئیات فنی",
@@ -373,11 +373,11 @@
     "skipToCloudApp": "رفتن به برنامه ابری",
     "start": {
       "desc": "بدون نیاز به تنظیمات اولیه. روی هر دستگاهی کار می‌کند.",
-      "download": "دانلود ComfyUI",
+      "download": "دانلود Hanzo Studio",
       "explain": "چندین خروجی را به طور همزمان تولید کنید. گردش‌کارها را به راحتی به اشتراک بگذارید.",
       "learnAboutButton": "درباره Cloud بیشتر بدانید",
       "title": "در چند ثانیه شروع به خلق کنید",
-      "wantToRun": "می‌خواهید ComfyUI را به صورت محلی اجرا کنید؟"
+      "wantToRun": "می‌خواهید Hanzo Studio را به صورت محلی اجرا کنید؟"
     },
     "survey": {
       "options": {
@@ -385,7 +385,7 @@
           "advanced": "کاربر پیشرفته (جریان‌کارهای سفارشی)",
           "basics": "آشنایی با مبانی",
           "expert": "کاربر خبره (به دیگران کمک می‌کنم)",
-          "new": "جدید در ComfyUI (تا کنون استفاده نکرده‌ام)",
+          "new": "جدید در Hanzo Studio (تا کنون استفاده نکرده‌ام)",
           "starting": "تازه شروع کرده‌ام (در حال دنبال کردن آموزش‌ها)"
         },
         "industry": {
@@ -417,16 +417,16 @@
       },
       "placeholder": "جای‌نگهدار سوالات نظرسنجی",
       "questions": {
-        "familiarity": "تا چه حد با ComfyUI آشنایی دارید؟",
+        "familiarity": "تا چه حد با Hanzo Studio آشنایی دارید؟",
         "industry": "صنعت اصلی شما چیست؟",
         "making": "قصد دارید چه چیزی بسازید؟",
-        "purpose": "هدف اصلی شما از استفاده از ComfyUI چیست؟"
+        "purpose": "هدف اصلی شما از استفاده از Hanzo Studio چیست؟"
       },
       "steps": {
-        "familiarity": "تا چه حد با ComfyUI آشنایی دارید؟",
+        "familiarity": "تا چه حد با Hanzo Studio آشنایی دارید؟",
         "industry": "صنعت اصلی شما چیست؟",
         "making": "قصد دارید چه چیزی بسازید؟",
-        "purpose": "هدف اصلی شما از استفاده از ComfyUI چیست؟"
+        "purpose": "هدف اصلی شما از استفاده از Hanzo Studio چیست؟"
       },
       "title": "نظرسنجی ابری"
     }
@@ -435,15 +435,15 @@
   "cloudPrivateBeta_title": "کلود در حال حاضر در نسخه بتای خصوصی است",
   "cloudSorryContactSupport_title": "متاسفیم، با پشتیبانی تماس بگیرید",
   "cloudStart_desc": "بدون نیاز به تنظیمات. روی هر دستگاهی کار می‌کند.",
-  "cloudStart_download": "دانلود ComfyUI",
+  "cloudStart_download": "دانلود Hanzo Studio",
   "cloudStart_explain": "چندین خروجی را همزمان تولید کنید. workflowها را به راحتی به اشتراک بگذارید.",
   "cloudStart_learnAboutButton": "درباره Cloud بیشتر بدانید",
   "cloudStart_title": "در چند ثانیه شروع به خلق کنید",
-  "cloudStart_wantToRun": "مایلید ComfyUI را به صورت محلی اجرا کنید؟",
-  "cloudSurvey_steps_familiarity": "تا چه اندازه با ComfyUI آشنایی دارید؟",
+  "cloudStart_wantToRun": "مایلید Hanzo Studio را به صورت محلی اجرا کنید؟",
+  "cloudSurvey_steps_familiarity": "تا چه اندازه با Hanzo Studio آشنایی دارید؟",
   "cloudSurvey_steps_industry": "صنعت اصلی شما چیست؟",
   "cloudSurvey_steps_making": "برنامه دارید چه چیزی بسازید؟",
-  "cloudSurvey_steps_purpose": "عمدتاً قصد دارید از ComfyUI برای چه کاری استفاده کنید؟",
+  "cloudSurvey_steps_purpose": "عمدتاً قصد دارید از Hanzo Studio برای چه کاری استفاده کنید؟",
   "cloudWaitlist_contactLink": "اینجا",
   "cloudWaitlist_questionsText": "سؤالی دارید؟ با ما تماس بگیرید",
   "color": {
@@ -699,12 +699,12 @@
     "initialising": "در حال راه‌اندازی..."
   },
   "desktopUpdate": {
-    "description": "ComfyUI Desktop در حال نصب وابستگی‌های جدید است. این فرایند ممکن است چند دقیقه طول بکشد.",
+    "description": "Hanzo Desktop در حال نصب وابستگی‌های جدید است. این فرایند ممکن است چند دقیقه طول بکشد.",
     "errorCheckingUpdate": "خطا در بررسی به‌روزرسانی‌ها",
     "errorInstallingUpdate": "خطا در نصب به‌روزرسانی",
     "noUpdateFound": "هیچ به‌روزرسانی یافت نشد",
     "terminalDefaultMessage": "هر خروجی کنسول از به‌روزرسانی در اینجا نمایش داده می‌شود.",
-    "title": "در حال به‌روزرسانی ComfyUI Desktop",
+    "title": "در حال به‌روزرسانی Hanzo Desktop",
     "updateAvailableMessage": "یک به‌روزرسانی موجود است. آیا می‌خواهید اکنون راه‌اندازی مجدد و به‌روزرسانی کنید؟",
     "updateFoundTitle": "به‌روزرسانی یافت شد (نسخه {version})"
   },
@@ -714,7 +714,7 @@
     "message": "امکان یافتن git وجود ندارد. یک نسخه فعال از git برای عملکرد عادی مورد نیاز است.",
     "skip": "رد کردن",
     "title": "دانلود git",
-    "warning": "اگر مطمئن هستید که به نصب git نیازی ندارید یا اشتباهی رخ داده است، می‌توانید روی رد کردن کلیک کنید تا این بررسی نادیده گرفته شود. اجرای ComfyUI بدون نسخه فعال git در حال حاضر پشتیبانی نمی‌شود."
+    "warning": "اگر مطمئن هستید که به نصب git نیازی ندارید یا اشتباهی رخ داده است، می‌توانید روی رد کردن کلیک کنید تا این بررسی نادیده گرفته شود. اجرای Hanzo Studio بدون نسخه فعال git در حال حاضر پشتیبانی نمی‌شود."
   },
   "electronFileDownload": {
     "cancel": "لغو دانلود",
@@ -943,7 +943,7 @@
     "loading": "در حال بارگذاری",
     "loadingPanel": "در حال بارگذاری پنل {panel}...",
     "login": "ورود",
-    "logoAlt": "لوگوی ComfyUI",
+    "logoAlt": "لوگوی Hanzo Studio",
     "logs": "گزارش‌ها",
     "manageExtensions": "مدیریت افزونه‌ها",
     "markdown": "markdown",
@@ -1080,7 +1080,7 @@
     "use": "استفاده",
     "user": "کاربر",
     "versionMismatchWarning": "هشدار ناسازگاری نسخه",
-    "versionMismatchWarningMessage": "{warning}: {detail} برای راهنمای به‌روزرسانی به https://docs.comfy.org/installation/update_comfyui#common-update-issues مراجعه کنید.",
+    "versionMismatchWarningMessage": "{warning}: {detail} برای راهنمای به‌روزرسانی به https://docs.hanzo.ai/installation/update_comfyui#common-update-issues مراجعه کنید.",
     "videoFailedToLoad": "بارگذاری ویدیو ناموفق بود",
     "videoPreview": "پیش‌نمایش ویدیو - برای جابجایی بین ویدیوها از کلیدهای جهت‌دار استفاده کنید",
     "viewImageOfTotal": "مشاهده تصویر {index} از {total}",
@@ -1129,12 +1129,12 @@
     "recentReleases": "نسخه‌های اخیر",
     "reinstall": "نصب مجدد",
     "updateAvailable": "به‌روزرسانی",
-    "updateComfyUI": "به‌روزرسانی ComfyUI",
-    "updateComfyUIFailed": "به‌روزرسانی ComfyUI ناموفق بود. لطفاً دوباره تلاش کنید.",
-    "updateComfyUIStarted": "به‌روزرسانی آغاز شد",
-    "updateComfyUIStartedDetail": "به‌روزرسانی ComfyUI در صف قرار گرفت. لطفاً منتظر بمانید...",
-    "updateComfyUISuccess": "به‌روزرسانی کامل شد",
-    "updateComfyUISuccessDetail": "ComfyUI به‌روزرسانی شد. در حال راه‌اندازی مجدد...",
+    "updateHanzo Studio": "به‌روزرسانی Hanzo Studio",
+    "updateHanzo StudioFailed": "به‌روزرسانی Hanzo Studio ناموفق بود. لطفاً دوباره تلاش کنید.",
+    "updateHanzo StudioStarted": "به‌روزرسانی آغاز شد",
+    "updateHanzo StudioStartedDetail": "به‌روزرسانی Hanzo Studio در صف قرار گرفت. لطفاً منتظر بمانید...",
+    "updateHanzo StudioSuccess": "به‌روزرسانی کامل شد",
+    "updateHanzo StudioSuccessDetail": "Hanzo Studio به‌روزرسانی شد. در حال راه‌اندازی مجدد...",
     "whatsNew": "چه خبر جدیدی است؟"
   },
   "icon": {
@@ -1165,14 +1165,14 @@
     "title": "وارد کردن ناموفق بود"
   },
   "install": {
-    "appDataLocationTooltip": "پوشه داده‌های برنامه ComfyUI. شامل:\n- لاگ‌ها\n- تنظیمات سرور",
-    "appPathLocationTooltip": "پوشه دارایی‌های برنامه ComfyUI. شامل کد و دارایی‌های ComfyUI",
+    "appDataLocationTooltip": "پوشه داده‌های برنامه Hanzo Studio. شامل:\n- لاگ‌ها\n- تنظیمات سرور",
+    "appPathLocationTooltip": "پوشه دارایی‌های برنامه Hanzo Studio. شامل کد و دارایی‌های Hanzo Studio",
     "cannotWrite": "امکان نوشتن در مسیر انتخاب‌شده وجود ندارد",
     "chooseInstallationLocation": "انتخاب محل نصب",
     "customNodes": "nodeهای سفارشی",
-    "customNodesDescription": "نصب مجدد nodeهای سفارشی از نصب‌های قبلی ComfyUI.",
+    "customNodesDescription": "نصب مجدد nodeهای سفارشی از نصب‌های قبلی Hanzo Studio.",
     "desktopAppSettings": "تنظیمات برنامه دسکتاپ",
-    "desktopAppSettingsDescription": "نحوه عملکرد ComfyUI روی دسکتاپ خود را پیکربندی کنید. می‌توانید این تنظیمات را بعداً تغییر دهید.",
+    "desktopAppSettingsDescription": "نحوه عملکرد Hanzo Studio روی دسکتاپ خود را پیکربندی کنید. می‌توانید این تنظیمات را بعداً تغییر دهید.",
     "desktopSettings": "تنظیمات دسکتاپ",
     "failedToSelectDirectory": "انتخاب پوشه ناموفق بود",
     "gpu": "GPU",
@@ -1182,7 +1182,7 @@
       "appleMetalDescription": "از GPU مک شما برای سرعت بیشتر و تجربه بهتر استفاده می‌کند.",
       "cpuDescription": "حالت CPU برای سازگاری زمانی که شتاب GPU در دسترس نیست.",
       "cpuSubtitle": "حالت CPU",
-      "manualDescription": "پیکربندی ComfyUI به صورت دستی برای تنظیمات پیشرفته یا سخت‌افزارهای پشتیبانی‌نشده",
+      "manualDescription": "پیکربندی Hanzo Studio به صورت دستی برای تنظیمات پیشرفته یا سخت‌افزارهای پشتیبانی‌نشده",
       "manualSubtitle": "پیکربندی دستی",
       "nvidiaDescription": "از GPU انویدیا خود با شتاب CUDA برای بهترین عملکرد استفاده کنید.",
       "nvidiaSubtitle": "NVIDIA CUDA",
@@ -1193,7 +1193,7 @@
       "cpuMode": "حالت CPU",
       "cpuModeDescription": "حالت CPU فقط برای توسعه‌دهندگان و موارد خاص نادر است.",
       "cpuModeDescription2": "اگر کاملاً مطمئن نیستید که به این حالت نیاز دارید، این گزینه را نادیده بگیرید و GPU خود را انتخاب کنید.",
-      "customComfyNeedsPython": "ComfyUI تا زمانی که پایتون نصب نشود کار نخواهد کرد",
+      "customComfyNeedsPython": "Hanzo Studio تا زمانی که پایتون نصب نشود کار نخواهد کرد",
       "customInstallRequirements": "نصب تمام پیش‌نیازها و وابستگی‌ها (مثلاً torch سفارشی)",
       "customManualVenv": "پیکربندی دستی venv پایتون",
       "customMayNotWork": "این حالت کاملاً پشتیبانی‌نشده است و ممکن است به‌درستی کار نکند",
@@ -1204,28 +1204,28 @@
       "selectGpu": "انتخاب GPU",
       "selectGpuDescription": "نوع GPU خود را انتخاب کنید"
     },
-    "helpImprove": "لطفاً به بهبود ComfyUI کمک کنید",
-    "insideAppInstallDir": "این پوشه داخل بسته برنامه دسکتاپ ComfyUI قرار دارد و هنگام به‌روزرسانی حذف خواهد شد. پوشه‌ای خارج از پوشه نصب مانند Documents/ComfyUI انتخاب کنید.",
-    "insideUpdaterCache": "این پوشه داخل کش به‌روزرسانی‌کننده ComfyUI است که در هر به‌روزرسانی پاک می‌شود. محل دیگری را برای داده‌های خود انتخاب کنید.",
+    "helpImprove": "لطفاً به بهبود Hanzo Studio کمک کنید",
+    "insideAppInstallDir": "این پوشه داخل بسته برنامه دسکتاپ Hanzo Studio قرار دارد و هنگام به‌روزرسانی حذف خواهد شد. پوشه‌ای خارج از پوشه نصب مانند Documents/Hanzo Studio انتخاب کنید.",
+    "insideUpdaterCache": "این پوشه داخل کش به‌روزرسانی‌کننده Hanzo Studio است که در هر به‌روزرسانی پاک می‌شود. محل دیگری را برای داده‌های خود انتخاب کنید.",
     "installLocation": "محل نصب",
-    "installLocationDescription": "پوشه‌ای را برای داده‌های کاربری ComfyUI انتخاب کنید. محیط پایتون در محل انتخاب‌شده نصب خواهد شد.",
-    "installLocationTooltip": "پوشه داده‌های کاربری ComfyUI. شامل:\n- محیط پایتون\n- مدل‌ها\n- nodeهای سفارشی\n",
+    "installLocationDescription": "پوشه‌ای را برای داده‌های کاربری Hanzo Studio انتخاب کنید. محیط پایتون در محل انتخاب‌شده نصب خواهد شد.",
+    "installLocationTooltip": "پوشه داده‌های کاربری Hanzo Studio. شامل:\n- محیط پایتون\n- مدل‌ها\n- nodeهای سفارشی\n",
     "insufficientFreeSpace": "فضای کافی وجود ندارد - حداقل فضای آزاد",
-    "isOneDrive": "OneDrive پشتیبانی نمی‌شود. لطفاً ComfyUI را در محل دیگری نصب کنید.",
+    "isOneDrive": "OneDrive پشتیبانی نمی‌شود. لطفاً Hanzo Studio را در محل دیگری نصب کنید.",
     "locationPicker": {
       "chooseDownloadServers": "انتخاب دستی سرورهای دانلود",
       "downloadServersDescription": "سرورهای آینه‌ای خاصی را برای دانلود Python، بسته‌های PyPI و PyTorch بر اساس موقعیت مکانی خود انتخاب کنید.",
-      "migrateDescription": "مدل‌ها، nodeهای سفارشی و تنظیمات خود را از نصب قبلی ComfyUI کپی یا لینک کنید.",
+      "migrateDescription": "مدل‌ها، nodeهای سفارشی و تنظیمات خود را از نصب قبلی Hanzo Studio کپی یا لینک کنید.",
       "migrateFromExisting": "انتقال از نصب موجود",
-      "migrationPathPlaceholder": "انتخاب نصب موجود ComfyUI (اختیاری)",
-      "pathPlaceholder": "/Users/username/Documents/ComfyUI",
-      "subtitle": "یک پوشه برای فایل‌های ComfyUI انتخاب کنید. پایتون نیز به طور خودکار در آنجا نصب خواهد شد.",
-      "title": "انتخاب محل نصب ComfyUI"
+      "migrationPathPlaceholder": "انتخاب نصب موجود Hanzo Studio (اختیاری)",
+      "pathPlaceholder": "/Users/username/Documents/Hanzo Studio",
+      "subtitle": "یک پوشه برای فایل‌های Hanzo Studio انتخاب کنید. پایتون نیز به طور خودکار در آنجا نصب خواهد شد.",
+      "title": "انتخاب محل نصب Hanzo Studio"
     },
     "manualConfiguration": {
       "createVenv": "باید یک محیط مجازی (virtual environment) در مسیر زیر ایجاد کنید",
       "requirements": "پیش‌نیازها",
-      "restartWhenFinished": "پس از اتمام پیکربندی محیط مجازی، لطفاً ComfyUI را مجدداً راه‌اندازی کنید.",
+      "restartWhenFinished": "پس از اتمام پیکربندی محیط مجازی، لطفاً Hanzo Studio را مجدداً راه‌اندازی کنید.",
       "title": "پیکربندی دستی",
       "virtualEnvironmentPath": "مسیر محیط مجازی"
     },
@@ -1234,9 +1234,9 @@
     "migrateFromExistingInstallation": "انتقال از نصب موجود",
     "migration": "انتقال",
     "migrationOptional": "انتقال اختیاری است. اگر نصب قبلی ندارید، می‌توانید این مرحله را رد کنید.",
-    "migrationSourcePathDescription": "اگر نصب قبلی ComfyUI دارید، می‌توانیم فایل‌های کاربری و مدل‌های شما را به نصب جدید کپی یا لینک کنیم. نصب قبلی شما تحت تأثیر قرار نخواهد گرفت.",
+    "migrationSourcePathDescription": "اگر نصب قبلی Hanzo Studio دارید، می‌توانیم فایل‌های کاربری و مدل‌های شما را به نصب جدید کپی یا لینک کنیم. نصب قبلی شما تحت تأثیر قرار نخواهد گرفت.",
     "moreInfo": "برای اطلاعات بیشتر، لطفاً",
-    "nonDefaultDrive": "لطفاً ComfyUI را روی درایو سیستم خود نصب کنید (مثلاً C:\\). درایوهایی با فایل‌سیستم متفاوت ممکن است مشکلات غیرقابل پیش‌بینی ایجاد کنند. مدل‌ها و سایر فایل‌ها را می‌توانید پس از نصب در درایوهای دیگر ذخیره کنید.",
+    "nonDefaultDrive": "لطفاً Hanzo Studio را روی درایو سیستم خود نصب کنید (مثلاً C:\\). درایوهایی با فایل‌سیستم متفاوت ممکن است مشکلات غیرقابل پیش‌بینی ایجاد کنند. مدل‌ها و سایر فایل‌ها را می‌توانید پس از نصب در درایوهای دیگر ذخیره کنید.",
     "parentMissing": "مسیر وجود ندارد - ابتدا پوشه والد را ایجاد کنید",
     "pathExists": "پوشه از قبل وجود دارد - لطفاً مطمئن شوید که از تمام داده‌ها نسخه پشتیبان تهیه کرده‌اید",
     "pathValidationFailed": "اعتبارسنجی مسیر ناموفق بود",
@@ -1244,7 +1244,7 @@
     "selectItemsToMigrate": "انتخاب موارد برای انتقال",
     "settings": {
       "allowMetrics": "جمع‌آوری داده‌های استفاده",
-      "allowMetricsDescription": "با ارسال داده‌های ناشناس استفاده، به بهبود ComfyUI کمک کنید. هیچ اطلاعات شخصی یا محتوای workflow جمع‌آوری نمی‌شود.",
+      "allowMetricsDescription": "با ارسال داده‌های ناشناس استفاده، به بهبود Hanzo Studio کمک کنید. هیچ اطلاعات شخصی یا محتوای workflow جمع‌آوری نمی‌شود.",
       "autoUpdate": "به‌روزرسانی خودکار",
       "autoUpdateDescription": "به‌روزرسانی‌ها را به‌صورت خودکار دانلود کنید. قبل از نصب به‌روزرسانی‌ها به شما اطلاع داده خواهد شد.",
       "checkingMirrors": "در حال بررسی دسترسی شبکه به آینه‌های پایتون...",
@@ -1364,8 +1364,8 @@
   },
   "loadWorkflowWarning": {
     "coreNodesFromVersion": "nodeهای اصلی از نسخه {version}:",
-    "outdatedVersion": "این workflow با نسخه جدیدتری از ComfyUI ({version}) ایجاد شده است. برخی nodeها ممکن است به درستی کار نکنند.",
-    "outdatedVersionGeneric": "این workflow با نسخه جدیدتری از ComfyUI ایجاد شده است. برخی nodeها ممکن است به درستی کار نکنند."
+    "outdatedVersion": "این workflow با نسخه جدیدتری از Hanzo Studio ({version}) ایجاد شده است. برخی nodeها ممکن است به درستی کار نکنند.",
+    "outdatedVersionGeneric": "این workflow با نسخه جدیدتری از Hanzo Studio ایجاد شده است. برخی nodeها ممکن است به درستی کار نکنند."
   },
   "maintenance": {
     "None": "هیچ‌کدام",
@@ -1387,12 +1387,12 @@
     "terminalDefaultMessage": "هنگام اجرای دستور عیب‌یابی، هر خروجی در اینجا نمایش داده می‌شود.",
     "title": "نگهداری",
     "unsafeMigration": {
-      "action": "از وظیفه نگهداری «Base path» در زیر برای انتقال ComfyUI به محل امن استفاده کنید.",
-      "appInstallDir": "مسیر پایه شما داخل بسته نرم‌افزاری برنامه ComfyUI Desktop قرار دارد. این پوشه ممکن است هنگام به‌روزرسانی حذف یا بازنویسی شود. پوشه‌ای خارج از محل نصب مانند Documents/ComfyUI را انتخاب کنید.",
-      "generic": "مسیر فعلی ComfyUI شما در مکانی قرار دارد که ممکن است هنگام به‌روزرسانی حذف یا تغییر کند. برای جلوگیری از از دست رفتن داده‌ها، آن را به پوشه‌ای امن منتقل کنید.",
+      "action": "از وظیفه نگهداری «Base path» در زیر برای انتقال Hanzo Studio به محل امن استفاده کنید.",
+      "appInstallDir": "مسیر پایه شما داخل بسته نرم‌افزاری برنامه Hanzo Desktop قرار دارد. این پوشه ممکن است هنگام به‌روزرسانی حذف یا بازنویسی شود. پوشه‌ای خارج از محل نصب مانند Documents/Hanzo Studio را انتخاب کنید.",
+      "generic": "مسیر فعلی Hanzo Studio شما در مکانی قرار دارد که ممکن است هنگام به‌روزرسانی حذف یا تغییر کند. برای جلوگیری از از دست رفتن داده‌ها، آن را به پوشه‌ای امن منتقل کنید.",
       "oneDrive": "مسیر پایه شما روی OneDrive قرار دارد که می‌تواند باعث مشکلات همگام‌سازی و از دست رفتن تصادفی داده‌ها شود. پوشه‌ای محلی که توسط OneDrive مدیریت نمی‌شود انتخاب کنید.",
       "title": "محل نصب ناامن شناسایی شد",
-      "updaterCache": "مسیر پایه شما داخل کش به‌روزرسانی‌کننده ComfyUI قرار دارد که در هر به‌روزرسانی پاک می‌شود. محل دیگری را برای داده‌های خود انتخاب کنید."
+      "updaterCache": "مسیر پایه شما داخل کش به‌روزرسانی‌کننده Hanzo Studio قرار دارد که در هر به‌روزرسانی پاک می‌شود. محل دیگری را برای داده‌های خود انتخاب کنید."
     }
   },
   "manager": {
@@ -1407,7 +1407,7 @@
       "conflictMessages": {
         "accelerator": "GPU/شتاب‌دهنده پشتیبانی نمی‌شود (موجود: {current}، مورد نیاز: {required})",
         "banned": "این بسته به دلایل امنیتی مسدود شده است",
-        "comfyui_version": "عدم تطابق نسخه ComfyUI (فعلی: {current}، مورد نیاز: {required})",
+        "hanzo_studio_version": "عدم تطابق نسخه Hanzo Studio (فعلی: {current}، مورد نیاز: {required})",
         "frontend_version": "عدم تطابق نسخه فرانت‌اند (فعلی: {current}، مورد نیاز: {required})",
         "generic": "مشکل سازگاری (فعلی: {current}، مورد نیاز: {required})",
         "import_failed": "وارد کردن ناموفق بود",
@@ -1415,11 +1415,11 @@
         "pending": "بررسی امنیتی در انتظار است - امکان تأیید سازگاری وجود ندارد"
       },
       "conflicts": "تضادها",
-      "description": "تضادهایی بین برخی از افزونه‌های شما و نسخه جدید ComfyUI شناسایی شده است. با به‌روزرسانی، ممکن است workflowهایی که به این افزونه‌ها وابسته‌اند دچار مشکل شوند.",
+      "description": "تضادهایی بین برخی از افزونه‌های شما و نسخه جدید Hanzo Studio شناسایی شده است. با به‌روزرسانی، ممکن است workflowهایی که به این افزونه‌ها وابسته‌اند دچار مشکل شوند.",
       "enableAnyway": "فعال‌سازی به هر حال",
       "extensionAtRisk": "افزونه در معرض خطر",
       "importFailedExtensions": "افزونه‌های وارد نشده",
-      "info": "در صورت ادامه به‌روزرسانی، افزونه‌های دارای تضاد به طور خودکار غیرفعال خواهند شد. شما می‌توانید هر زمان آن‌ها را در مدیریت ComfyUI بررسی و مدیریت کنید.",
+      "info": "در صورت ادامه به‌روزرسانی، افزونه‌های دارای تضاد به طور خودکار غیرفعال خواهند شد. شما می‌توانید هر زمان آن‌ها را در مدیریت Hanzo Studio بررسی و مدیریت کنید.",
       "installAnyway": "نصب به هر حال",
       "title": "مشکلات بسته نود شناسایی شد!",
       "understood": "متوجه شدم",
@@ -1478,9 +1478,9 @@
     "installingDependencies": "در حال نصب وابستگی‌ها...",
     "lastUpdated": "آخرین به‌روزرسانی",
     "latestVersion": "آخرین نسخه",
-    "legacyManagerSearchTip": "دنبال ComfyUI-Manager هستید؟ می‌توانید رابط کاربری مدیر قدیمی را با اجرای ComfyUI و استفاده از پرچم --enable-manager-legacy-ui فعال کنید.",
+    "legacyManagerSearchTip": "دنبال Hanzo Manager هستید؟ می‌توانید رابط کاربری مدیر قدیمی را با اجرای Hanzo Studio و استفاده از پرچم --enable-manager-legacy-ui فعال کنید.",
     "legacyManagerUI": "استفاده از رابط کاربری قدیمی",
-    "legacyManagerUIDescription": "برای استفاده از رابط کاربری قدیمی مدیریت، ComfyUI را با --enable-manager-legacy-ui اجرا کنید.",
+    "legacyManagerUIDescription": "برای استفاده از رابط کاربری قدیمی مدیریت، Hanzo Studio را با --enable-manager-legacy-ui اجرا کنید.",
     "legacyMenuNotAvailable": "منوی مدیریت قدیمی در دسترس نیست، به منوی جدید مدیریت منتقل می‌شود.",
     "license": "مجوز",
     "loadingVersions": "در حال بارگذاری نسخه‌ها...",
@@ -1506,7 +1506,7 @@
     "notAvailable": "در دسترس نیست",
     "packsSelected": "بسته انتخاب شد",
     "repository": "مخزن",
-    "restartToApplyChanges": "برای اعمال تغییرات، لطفاً ComfyUI را مجدداً راه‌اندازی کنید",
+    "restartToApplyChanges": "برای اعمال تغییرات، لطفاً Hanzo Studio را مجدداً راه‌اندازی کنید",
     "restartingBackend": "در حال راه‌اندازی مجدد backend برای اعمال تغییرات...",
     "searchPlaceholder": "جستجو",
     "selectVersion": "انتخاب نسخه",
@@ -1686,7 +1686,7 @@
     "toggleBottomPanel": "نمایش/مخفی‌سازی پنل پایین"
   },
   "menuLabels": {
-    "About ComfyUI": "درباره ComfyUI",
+    "About Hanzo Studio": "درباره Hanzo Studio",
     "Assets": "دارایی‌ها",
     "Bottom Panel": "پنل پایین",
     "Browse Templates": "مرور قالب‌ها",
@@ -1700,10 +1700,10 @@
     "Clipspace": "Clipspace",
     "Close Current Workflow": "بستن Workflow فعلی",
     "Collapse/Expand Selected Nodes": "جمع/باز کردن Nodeهای انتخاب‌شده",
-    "Comfy-Org Discord": "Comfy-Org Discord",
-    "ComfyUI Docs": "مستندات ComfyUI",
-    "ComfyUI Forum": "انجمن ComfyUI",
-    "ComfyUI Issues": "مشکلات ComfyUI",
+    "hanzoui Discord": "hanzoui Discord",
+    "Hanzo Studio Docs": "مستندات Hanzo Studio",
+    "Hanzo Studio Forum": "انجمن Hanzo Studio",
+    "Hanzo Studio Issues": "مشکلات Hanzo Studio",
     "Contact Support": "تماس با پشتیبانی",
     "Convert Selection to Subgraph": "تبدیل انتخاب به Subgraph",
     "Convert selected nodes to group node": "تبدیل Nodeهای انتخاب‌شده به group node",
@@ -1842,7 +1842,7 @@
   "nightly": {
     "badge": {
       "label": "نسخه پیش‌نمایش",
-      "tooltip": "شما در حال استفاده از نسخه شبانه ComfyUI هستید. لطفاً با استفاده از دکمه بازخورد، نظرات خود را درباره این قابلیت‌ها به اشتراک بگذارید."
+      "tooltip": "شما در حال استفاده از نسخه شبانه Hanzo Studio هستید. لطفاً با استفاده از دکمه بازخورد، نظرات خود را درباره این قابلیت‌ها به اشتراک بگذارید."
     }
   },
   "nodeCategories": {
@@ -2267,7 +2267,7 @@
     },
     "disable-smart-memory": {
       "name": "غیرفعال‌سازی مدیریت هوشمند حافظه",
-      "tooltip": "ComfyUI را مجبور می‌کند به طور تهاجمی به RAM معمولی منتقل کند به جای نگه داشتن مدل‌ها در VRAM در صورت امکان."
+      "tooltip": "Hanzo Studio را مجبور می‌کند به طور تهاجمی به RAM معمولی منتقل کند به جای نگه داشتن مدل‌ها در VRAM در صورت امکان."
     },
     "disable-xformers": {
       "name": "غیرفعال‌سازی بهینه‌سازی xFormers"
@@ -2283,7 +2283,7 @@
     },
     "enable-manager-legacy-ui": {
       "name": "استفاده از رابط کاربری قدیمی Manager",
-      "tooltip": "از رابط کاربری قدیمی ComfyUI-Manager به جای رابط کاربری جدید استفاده می‌کند."
+      "tooltip": "از رابط کاربری قدیمی Hanzo Manager به جای رابط کاربری جدید استفاده می‌کند."
     },
     "fast": {
       "name": "فعال‌سازی برخی بهینه‌سازی‌های آزمایش‌نشده و احتمالاً کاهش‌دهنده کیفیت."
@@ -2351,21 +2351,21 @@
   "serverStart": {
     "copyAllTooltip": "کپی همه",
     "copySelectionTooltip": "کپی انتخاب",
-    "errorMessage": "امکان راه‌اندازی ComfyUI Desktop وجود ندارد",
+    "errorMessage": "امکان راه‌اندازی Hanzo Desktop وجود ندارد",
     "installation": {
-      "title": "در حال نصب ComfyUI"
+      "title": "در حال نصب Hanzo Studio"
     },
     "openLogs": "باز کردن گزارش‌ها",
     "process": {
-      "error": "امکان راه‌اندازی ComfyUI Desktop وجود ندارد",
+      "error": "امکان راه‌اندازی Hanzo Desktop وجود ندارد",
       "initial-state": "در حال بارگذاری...",
       "python-setup": "در حال آماده‌سازی محیط Python...",
       "ready": "در حال بارگذاری رابط کاربری",
-      "starting-server": "در حال راه‌اندازی سرور ComfyUI..."
+      "starting-server": "در حال راه‌اندازی سرور Hanzo Studio..."
     },
     "reportIssue": "گزارش مشکل",
     "showTerminal": "نمایش ترمینال",
-    "title": "در حال شروع ComfyUI",
+    "title": "در حال شروع Hanzo Studio",
     "troubleshoot": "عیب‌یابی"
   },
   "settingsCategories": {
@@ -2808,7 +2808,7 @@
       "Area Composition": "ترکیب ناحیه",
       "Audio": "صوت",
       "Basics": "مبانی",
-      "ComfyUI Examples": "نمونه‌های ComfyUI",
+      "Hanzo Studio Examples": "نمونه‌های Hanzo Studio",
       "ControlNet": "ControlNet",
       "Custom Nodes": "گره‌های سفارشی",
       "Extensions": "افزونه‌ها",
@@ -2978,7 +2978,7 @@
   },
   "welcome": {
     "getStarted": "شروع کنید",
-    "title": "به ComfyUI خوش آمدید"
+    "title": "به Hanzo Studio خوش آمدید"
   },
   "whatsNewPopup": {
     "later": "بعداً",

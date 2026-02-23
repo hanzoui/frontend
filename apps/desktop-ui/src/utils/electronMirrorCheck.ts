@@ -1,4 +1,4 @@
-import { isValidUrl } from '@comfyorg/shared-frontend-utils/formatUtil'
+import { isValidUrl } from '@hanzoui/shared-frontend-utils/formatUtil'
 
 import { electronAPI } from './envUtil'
 

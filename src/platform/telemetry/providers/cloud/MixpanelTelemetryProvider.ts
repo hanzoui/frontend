@@ -119,7 +119,7 @@ export class MixpanelTelemetryProvider implements TelemetryProvider {
             this.mixpanel.init(token, {
               debug: import.meta.env.DEV,
               track_pageview: true,
-              api_host: 'https://mp.comfy.org',
+              api_host: 'https://mp.hanzo.ai',
               cross_subdomain_cookie: true,
               persistence: 'cookie',
               loaded: () => {

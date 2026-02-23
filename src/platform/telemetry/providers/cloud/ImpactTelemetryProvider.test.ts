@@ -111,7 +111,7 @@ describe('ImpactTelemetryProvider', () => {
     })
     const provider = new ImpactTelemetryProvider()
     provider.trackPageView('pricing', {
-      path: 'https://cloud.comfy.org/pricing?im_ref=impact-123'
+      path: 'https://cloud.hanzo.ai/pricing?im_ref=impact-123'
     })
 
     await flushAsyncWork()
@@ -164,10 +164,10 @@ describe('ImpactTelemetryProvider', () => {
     })
     const provider = new ImpactTelemetryProvider()
     provider.trackPageView('home', {
-      path: 'https://cloud.comfy.org/?im_ref=1'
+      path: 'https://cloud.hanzo.ai/?im_ref=1'
     })
     provider.trackPageView('pricing', {
-      path: 'https://cloud.comfy.org/pricing?im_ref=2'
+      path: 'https://cloud.hanzo.ai/pricing?im_ref=2'
     })
 
     await flushAsyncWork()
@@ -208,7 +208,7 @@ describe('ImpactTelemetryProvider', () => {
 
     const provider = new ImpactTelemetryProvider()
     provider.trackPageView('home', {
-      path: 'https://cloud.comfy.org/?im_ref=impact-123'
+      path: 'https://cloud.hanzo.ai/?im_ref=impact-123'
     })
 
     await flushAsyncWork()
@@ -244,7 +244,7 @@ describe('ImpactTelemetryProvider', () => {
 
     const provider = new ImpactTelemetryProvider()
     provider.trackPageView('home', {
-      path: 'https://cloud.comfy.org/?im_ref=impact-123'
+      path: 'https://cloud.hanzo.ai/?im_ref=impact-123'
     })
 
     await flushAsyncWork()

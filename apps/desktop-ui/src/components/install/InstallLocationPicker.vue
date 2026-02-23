@@ -104,9 +104,9 @@
 </template>
 
 <script setup lang="ts">
-import { TorchMirrorUrl } from '@comfyorg/comfyui-electron-types'
-import type { TorchDeviceType } from '@comfyorg/comfyui-electron-types'
-import { isInChina } from '@comfyorg/shared-frontend-utils/networkUtil'
+import { TorchMirrorUrl } from '@hanzoui/hanzo-studio-electron-types'
+import type { TorchDeviceType } from '@hanzoui/hanzo-studio-electron-types'
+import { isInChina } from '@hanzoui/shared-frontend-utils/networkUtil'
 import Accordion from 'primevue/accordion'
 import AccordionContent from 'primevue/accordioncontent'
 import AccordionHeader from 'primevue/accordionheader'

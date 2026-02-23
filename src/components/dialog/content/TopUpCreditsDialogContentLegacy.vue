@@ -116,7 +116,7 @@
       }}
       <span>{{ $t('credits.topUp.needMore') }}</span>
       <a
-        href="https://www.comfy.org/cloud/enterprise"
+        href="https://hanzo.ai/cloud/enterprise"
         target="_blank"
         class="ml-1 text-inherit"
         >{{ $t('credits.topUp.contactUs') }}</a

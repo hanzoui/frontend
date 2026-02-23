@@ -36,7 +36,7 @@ if (isCloud) {
   await initTelemetry()
 }
 
-const ComfyUIPreset = definePreset(Aura, {
+const Hanzo StudioPreset = definePreset(Aura, {
   semantic: {
     // @ts-expect-error fixme ts strict error
     primary: Aura['primitive'].blue
@@ -71,7 +71,7 @@ app
   .use(router)
   .use(PrimeVue, {
     theme: {
-      preset: ComfyUIPreset,
+      preset: Hanzo StudioPreset,
       options: {
         prefix: 'p',
         cssLayer: {

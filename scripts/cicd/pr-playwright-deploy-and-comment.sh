@@ -73,7 +73,7 @@ deploy_report() {
     
     # Project name with dots converted to dashes for Cloudflare
     sanitized_browser="${browser//./-}"
-    project="comfyui-playwright-${sanitized_browser}"
+    project="hanzo-studio-playwright-${sanitized_browser}"
     
     echo "Deploying $browser to project $project on branch $branch..." >&2
     

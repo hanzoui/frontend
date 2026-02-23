@@ -1,5 +1,5 @@
-# Automated bi-weekly workflow to bump ComfyUI frontend RC releases
-name: 'Release: Bi-weekly ComfyUI'
+# Automated bi-weekly workflow to bump Hanzo Studio frontend RC releases
+name: 'Release: Bi-weekly Hanzo Studio'
 
 on:
   # Schedule for Monday at 12:00 PM PST (20:00 UTC)
@@ -9,10 +9,10 @@ on:
   # Allow manual triggering (bypasses bi-weekly check)
   workflow_dispatch:
     inputs:
-      comfyui_fork:
-        description: 'ComfyUI fork to use for PR (e.g., Comfy-Org/ComfyUI)'
+      hanzo_studio_fork:
+        description: 'Hanzo Studio fork to use for PR (e.g., hanzoai/studio)'
         required: false
-        default: 'Comfy-Org/ComfyUI'
+        default: 'hanzoai/studio'
         type: string
 
 jobs:
@@ -60,16 +60,16 @@ jobs:
       latest_patch_tag: ${{ steps.resolve.outputs.latest_patch_tag }}
 
     steps:
-      - name: Checkout ComfyUI_frontend
+      - name: Checkout Hanzo Studio_frontend
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
           path: frontend
 
-      - name: Checkout ComfyUI (sparse)
+      - name: Checkout Hanzo Studio (sparse)
         uses: actions/checkout@v6
         with:
-          repository: Comfy-Org/ComfyUI
+          repository: hanzoai/studio
           sparse-checkout: |
             requirements.txt
           path: comfyui
@@ -95,7 +95,7 @@ jobs:
           set -euo pipefail
 
           # Run the resolver script
-          if ! RESULT=$(pnpm exec tsx scripts/cicd/resolve-comfyui-release.ts ../comfyui .); then
+          if ! RESULT=$(pnpm exec tsx scripts/cicd/resolve-hanzo-studio-release.ts ../comfyui .); then
             echo "Failed to resolve release information"
             exit 1
           fi
@@ -144,7 +144,7 @@ jobs:
 
           # Trigger the release-version-bump workflow
           if ! gh workflow run release-version-bump.yaml \
-            --repo Comfy-Org/ComfyUI_frontend \
+            --repo hanzoui/frontend \
             --ref main \
             --field version_type=patch \
             --field branch=${{ needs.resolve-version.outputs.target_branch }}; then
@@ -160,18 +160,18 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "- Branch: ${{ needs.resolve-version.outputs.target_branch }}" >> $GITHUB_STEP_SUMMARY
           echo "- Target version: ${{ needs.resolve-version.outputs.target_version }}" >> $GITHUB_STEP_SUMMARY
-          echo "- [View workflow runs](https://github.com/Comfy-Org/ComfyUI_frontend/actions/workflows/release-version-bump.yaml)" >> $GITHUB_STEP_SUMMARY
+          echo "- [View workflow runs](https://github.com/hanzoui/frontend/actions/workflows/release-version-bump.yaml)" >> $GITHUB_STEP_SUMMARY
 
-  create-comfyui-pr:
+  create-hanzo-studio-pr:
     needs: [check-release-week, resolve-version, trigger-release-if-needed]
     if: always() && needs.resolve-version.result == 'success' && (needs.check-release-week.outputs.is_release_week == 'true' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout ComfyUI fork
+      - name: Checkout Hanzo Studio fork
         uses: actions/checkout@v6
         with:
-          repository: ${{ inputs.comfyui_fork || 'Comfy-Org/ComfyUI' }}
+          repository: ${{ inputs.hanzo_studio_fork || 'hanzoai/studio' }}
           token: ${{ secrets.PR_GH_TOKEN }}
           path: comfyui
 
@@ -184,7 +184,7 @@ jobs:
           # Note: This only affects the local checkout, NOT the fork's master branch
           # We only push the automation branch, leaving the fork's master untouched
           echo "Fetching upstream master..."
-          if ! git fetch https://github.com/Comfy-Org/ComfyUI.git master; then
+          if ! git fetch https://github.com/hanzoai/studio.git master; then
             echo "Failed to fetch upstream master"
             exit 1
           fi
@@ -203,20 +203,20 @@ jobs:
           set -euo pipefail
 
           TARGET_VERSION="${{ needs.resolve-version.outputs.target_version }}"
-          echo "Updating comfyui-frontend-package to ${TARGET_VERSION}"
+          echo "Updating hanzo-studio-frontend-package to ${TARGET_VERSION}"
 
-          # Update the comfyui-frontend-package version (POSIX-compatible)
-          sed -i.bak "s/comfyui-frontend-package==[0-9.][0-9.]*/comfyui-frontend-package==${TARGET_VERSION}/" requirements.txt
+          # Update the hanzo-studio-frontend-package version (POSIX-compatible)
+          sed -i.bak "s/hanzo-studio-frontend-package==[0-9.][0-9.]*/hanzo-studio-frontend-package==${TARGET_VERSION}/" requirements.txt
           rm requirements.txt.bak
 
           # Verify the change was made
-          if ! grep -q "comfyui-frontend-package==${TARGET_VERSION}" requirements.txt; then
+          if ! grep -q "hanzo-studio-frontend-package==${TARGET_VERSION}" requirements.txt; then
             echo "Failed to update requirements.txt"
             exit 1
           fi
 
           echo "Updated requirements.txt:"
-          grep comfyui-frontend-package requirements.txt
+          grep hanzo-studio-frontend-package requirements.txt
 
       - name: Build PR description
         id: pr-body
@@ -227,18 +227,18 @@ jobs:
           Test quickly:
 
           ```bash
-          python main.py --front-end-version Comfy-Org/ComfyUI_frontend@${{ needs.resolve-version.outputs.target_version }}
+          python main.py --front-end-version hanzoui/frontend@${{ needs.resolve-version.outputs.target_version }}
           ```
 
           - Diff: [v${{ needs.resolve-version.outputs.current_version }}...v${{ needs.resolve-version.outputs.target_version }}](${{ needs.resolve-version.outputs.diff_url }})
-          - PyPI: https://pypi.org/project/comfyui-frontend-package/${{ needs.resolve-version.outputs.target_version }}/
-          - npm: https://www.npmjs.com/package/@comfyorg/comfyui-frontend-types/v/${{ needs.resolve-version.outputs.target_version }}
+          - PyPI: https://pypi.org/project/hanzo-studio-frontend-package/${{ needs.resolve-version.outputs.target_version }}/
+          - npm: https://www.npmjs.com/package/@hanzoui/hanzo-studio-frontend-types/v/${{ needs.resolve-version.outputs.target_version }}
           EOF
           )
 
           # Add release PR note if release was triggered
           if [ "${{ needs.resolve-version.outputs.needs_release }}" = "true" ]; then
-            RELEASE_NOTE="⚠️ **Release PR must be merged first** - check [release workflow runs](https://github.com/Comfy-Org/ComfyUI_frontend/actions/workflows/release-version-bump.yaml)"
+            RELEASE_NOTE="⚠️ **Release PR must be merged first** - check [release workflow runs](https://github.com/hanzoui/frontend/actions/workflows/release-version-bump.yaml)"
             BODY=$''"${RELEASE_NOTE}"$'\n\n'"${BODY}"
           fi
 
@@ -246,30 +246,30 @@ jobs:
           printf '%s\n' "$BODY" > pr-body.txt
           cat pr-body.txt
 
-      - name: Create PR to ComfyUI
+      - name: Create PR to Hanzo Studio
         working-directory: comfyui
         env:
           GH_TOKEN: ${{ secrets.PR_GH_TOKEN }}
-          COMFYUI_FORK: ${{ inputs.comfyui_fork || 'Comfy-Org/ComfyUI' }}
+          COMFYUI_FORK: ${{ inputs.hanzo_studio_fork || 'hanzoai/studio' }}
         run: |
           set -euo pipefail
 
           # Extract fork owner from repository name
           FORK_OWNER=$(echo "$COMFYUI_FORK" | cut -d'/' -f1)
 
-          echo "Creating PR from ${COMFYUI_FORK} to Comfy-Org/ComfyUI"
+          echo "Creating PR from ${COMFYUI_FORK} to hanzoai/studio"
 
           # Configure git
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           # Create/update branch (reuse same branch name each release cycle)
-          BRANCH="automation/comfyui-frontend-bump"
+          BRANCH="automation/hanzo-studio-frontend-bump"
           git checkout -B "$BRANCH"
           git add requirements.txt
 
           if ! git diff --cached --quiet; then
-            git commit -m "Bump comfyui-frontend-package to ${{ needs.resolve-version.outputs.target_version }}"
+            git commit -m "Bump hanzo-studio-frontend-package to ${{ needs.resolve-version.outputs.target_version }}"
           else
             echo "No changes to commit"
             exit 0
@@ -288,16 +288,16 @@ jobs:
 
           # Try to create PR, ignore error if it already exists
           if ! gh pr create \
-            --repo Comfy-Org/ComfyUI \
+            --repo hanzoai/studio \
             --head "${FORK_OWNER}:${BRANCH}" \
             --base master \
-            --title "Bump comfyui-frontend-package to ${{ needs.resolve-version.outputs.target_version }}" \
+            --title "Bump hanzo-studio-frontend-package to ${{ needs.resolve-version.outputs.target_version }}" \
             --body "$PR_BODY" \
             --draft 2>&1; then
 
             # Check if PR already exists
             set +e
-            EXISTING_PR=$(gh pr list --repo Comfy-Org/ComfyUI --head "${FORK_OWNER}:${BRANCH}" --json number --jq '.[0].number' 2>&1)
+            EXISTING_PR=$(gh pr list --repo hanzoai/studio --head "${FORK_OWNER}:${BRANCH}" --json number --jq '.[0].number' 2>&1)
             PR_LIST_EXIT=$?
             set -e
 
@@ -316,9 +316,9 @@ jobs:
 
       - name: Summary
         run: |
-          echo "## ComfyUI PR Created" >> $GITHUB_STEP_SUMMARY
+          echo "## Hanzo Studio PR Created" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Draft PR created in Comfy-Org/ComfyUI" >> $GITHUB_STEP_SUMMARY
+          echo "Draft PR created in hanzoai/studio" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### PR Body:" >> $GITHUB_STEP_SUMMARY
           cat pr-body.txt >> $GITHUB_STEP_SUMMARY

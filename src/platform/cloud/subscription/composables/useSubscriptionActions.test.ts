@@ -107,7 +107,7 @@ describe('useSubscriptionActions', () => {
       handleLearnMoreClick()
 
       expect(mockOpen).toHaveBeenCalledWith(
-        'https://docs.comfy.org/get_started/cloud',
+        'https://docs.hanzo.ai/get_started/cloud',
         '_blank'
       )
     })

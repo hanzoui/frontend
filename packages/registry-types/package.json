@@ -1,5 +1,5 @@
 {
-  "name": "@comfyorg/registry-types",
+  "name": "@hanzoui/registry-types",
   "version": "1.0.0",
   "description": "Comfy Registry API TypeScript types",
   "type": "module",

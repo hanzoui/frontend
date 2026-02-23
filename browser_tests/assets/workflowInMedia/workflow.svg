@@ -288,7 +288,7 @@
         "outputs": [],
         "properties": {},
         "widgets_values": [
-          "ComfyUI",
+          "Hanzo Studio",
           6,
           false,
           98,
@@ -467,7 +467,7 @@
     },
     "10": {
       "inputs": {
-        "filename_prefix": "ComfyUI",
+        "filename_prefix": "Hanzo Studio",
         "fps": 6,
         "lossless": false,
         "quality": 98,

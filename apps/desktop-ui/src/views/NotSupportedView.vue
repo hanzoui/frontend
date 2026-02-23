@@ -63,13 +63,13 @@ import BaseViewTemplate from '@/views/templates/BaseViewTemplate.vue'
 
 const openDocs = () => {
   window.open(
-    'https://github.com/Comfy-Org/desktop#currently-supported-platforms',
+    'https://github.com/hanzoui/desktop#currently-supported-platforms',
     '_blank'
   )
 }
 
 const reportIssue = () => {
-  window.open('https://forum.comfy.org/c/v1-feedback/', '_blank')
+  window.open('https://forum.hanzo.ai/c/v1-feedback/', '_blank')
 }
 
 const router = useRouter()

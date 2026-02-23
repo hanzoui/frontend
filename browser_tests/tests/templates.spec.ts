@@ -37,7 +37,7 @@ test.describe('Templates', { tag: ['@slow', '@workflow'] }, () => {
   })
 
   // TODO: Re-enable this test once issue resolved
-  // https://github.com/Comfy-Org/ComfyUI_frontend/issues/3992
+  // https://github.com/hanzoui/frontend/issues/3992
   test.skip('should have all required thumbnail media for each template', async ({
     comfyPage
   }) => {

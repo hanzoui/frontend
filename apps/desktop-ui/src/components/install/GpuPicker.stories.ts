@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import type {
   ElectronAPI,
   TorchDeviceType
-} from '@comfyorg/comfyui-electron-types'
+} from '@hanzoui/hanzo-studio-electron-types'
 import { ref } from 'vue'
 
 import GpuPicker from './GpuPicker.vue'

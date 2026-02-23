@@ -122,7 +122,7 @@
         <i18n-t keypath="subscription.preview.termsAgreement" tag="span">
           <template #terms>
             <a
-              href="https://www.comfy.org/terms"
+              href="https://hanzo.ai/terms"
               target="_blank"
               rel="noopener noreferrer"
               class="underline hover:text-base-foreground"
@@ -132,7 +132,7 @@
           </template>
           <template #privacy>
             <a
-              href="https://www.comfy.org/privacy"
+              href="https://hanzo.ai/privacy"
               target="_blank"
               rel="noopener noreferrer"
               class="underline hover:text-base-foreground"

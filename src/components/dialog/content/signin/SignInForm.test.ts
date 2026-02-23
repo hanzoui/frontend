@@ -130,7 +130,7 @@ describe('SignInForm', () => {
 
       // Should focus email input
       expect(document.getElementById).toHaveBeenCalledWith(
-        'comfy-org-sign-in-email'
+        'hanzo.ai-sign-in-email'
       )
       expect(mockFocus).toHaveBeenCalled()
 
@@ -236,7 +236,7 @@ describe('SignInForm', () => {
       const wrapper = mountComponent()
       const emailInput = wrapper.findComponent(InputText)
 
-      expect(emailInput.attributes('id')).toBe('comfy-org-sign-in-email')
+      expect(emailInput.attributes('id')).toBe('hanzo.ai-sign-in-email')
       expect(emailInput.attributes('autocomplete')).toBe('email')
       expect(emailInput.attributes('name')).toBe('email')
       expect(emailInput.attributes('type')).toBe('text')
@@ -247,7 +247,7 @@ describe('SignInForm', () => {
       const passwordInput = wrapper.findComponent(Password)
 
       // Check props instead of attributes for Password component
-      expect(passwordInput.props('inputId')).toBe('comfy-org-sign-in-password')
+      expect(passwordInput.props('inputId')).toBe('hanzo.ai-sign-in-password')
       // Password component passes name as prop, not attribute
       expect(passwordInput.props('name')).toBe('password')
       expect(passwordInput.props('feedback')).toBe(false)
@@ -282,7 +282,7 @@ describe('SignInForm', () => {
 
       // Should focus email input
       expect(document.getElementById).toHaveBeenCalledWith(
-        'comfy-org-sign-in-email'
+        'hanzo.ai-sign-in-email'
       )
       expect(mockFocus).toHaveBeenCalled()
     })

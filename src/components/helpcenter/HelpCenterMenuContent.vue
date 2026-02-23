@@ -373,15 +373,15 @@ const menuItems = computed<MenuItem[]>(() => {
       }
     })
   }
-  // Update ComfyUI - only for non-desktop, non-cloud with new manager UI
+  // Update Hanzo Studio - only for non-desktop, non-cloud with new manager UI
   if (!isDesktop && !isCloud && isNewManagerUI.value) {
     items.push({
       key: 'update-comfyui',
       type: 'item',
       icon: 'icon-[lucide--download]',
-      label: t('helpCenter.updateComfyUI'),
+      label: t('helpCenter.updateHanzo Studio'),
       action: () => {
-        onUpdateComfyUI()
+        onUpdateHanzo Studio()
         emit('close')
       }
     })
@@ -562,24 +562,24 @@ const onReinstall = (): void => {
   }
 }
 
-const onUpdateComfyUI = async (): Promise<void> => {
-  const { updateComfyUI, rebootComfyUI, error } = useComfyManagerService()
+const onUpdateHanzo Studio = async (): Promise<void> => {
+  const { updateHanzo Studio, rebootHanzo Studio, error } = useComfyManagerService()
 
   toast.add({
     severity: 'info',
-    summary: t('helpCenter.updateComfyUIStarted'),
-    detail: t('helpCenter.updateComfyUIStartedDetail'),
+    summary: t('helpCenter.updateHanzo StudioStarted'),
+    detail: t('helpCenter.updateHanzo StudioStartedDetail'),
     life: 3000
   })
 
   try {
-    const result = await updateComfyUI({ is_stable: true })
+    const result = await updateHanzo Studio({ is_stable: true })
 
     if (result === null || error.value) {
       toast.add({
         severity: 'error',
         summary: t('g.error'),
-        detail: error.value || t('helpCenter.updateComfyUIFailed'),
+        detail: error.value || t('helpCenter.updateHanzo StudioFailed'),
         life: 5000
       })
       return
@@ -587,12 +587,12 @@ const onUpdateComfyUI = async (): Promise<void> => {
 
     toast.add({
       severity: 'success',
-      summary: t('helpCenter.updateComfyUISuccess'),
-      detail: t('helpCenter.updateComfyUISuccessDetail'),
+      summary: t('helpCenter.updateHanzo StudioSuccess'),
+      detail: t('helpCenter.updateHanzo StudioSuccessDetail'),
       life: 3000
     })
 
-    await rebootComfyUI()
+    await rebootHanzo Studio()
   } catch (err) {
     toast.add({
       severity: 'error',

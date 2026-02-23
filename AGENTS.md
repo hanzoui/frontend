@@ -56,7 +56,7 @@ The project uses **Nx** for build orchestration and task management
 2. Run relevant tests
 3. Run `pnpm typecheck`, `pnpm lint`, `pnpm format`
 4. Check if README updates are needed
-5. Suggest docs.comfy.org updates for user-facing changes
+5. Suggest docs.hanzo.ai updates for user-facing changes
 
 ## Git Conventions
 
@@ -221,9 +221,9 @@ See @docs/testing/\*.md for detailed patterns.
 - shadcn/vue: <https://www.shadcn-vue.com/>
 - Reka UI: <https://reka-ui.com/>
 - PrimeVue: <https://primevue.org>
-- ComfyUI: <https://docs.comfy.org>
+- Hanzo Studio: <https://docs.hanzo.ai>
 - Electron: <https://www.electronjs.org/docs/latest/>
-- Wiki: <https://deepwiki.com/Comfy-Org/ComfyUI_frontend/1-overview>
+- Wiki: <https://deepwiki.com/hanzoui/frontend/1-overview>
 - Nx: <https://nx.dev/docs/reference/nx-commands>
 - [Practical Test Pyramid](https://martinfowler.com/articles/practical-test-pyramid.html)
 
@@ -270,7 +270,7 @@ A particular type of complexity is over-engineering, where developers have made 
 
 ## GitHub Integration
 
-When referencing Comfy-Org repos:
+When referencing hanzoui repos:
 
 1. Check for local copy
 2. Use GitHub API for branches/PRs/metadata

@@ -1,13 +1,13 @@
-# comfyui_frontend pypi package
+# hanzo_studio_frontend pypi package
 
 This is the pypi package structure for the comfyui frontend.
 
-During build process, the compiled assets are copied into the `${PROJECT_ROOT}/comfyui_frontend_package/comfyui_frontend_package/static` directory.
+During build process, the compiled assets are copied into the `${PROJECT_ROOT}/hanzo_studio_frontend_package/hanzo_studio_frontend_package/static` directory.
 
 The package can be installed with the following command:
 
 ```bash
-pip install comfyui-frontend-package
+pip install hanzo-studio-frontend-package
 ```
 
-Ref: <https://pypi.org/project/comfyui-frontend-package/>
+Ref: <https://pypi.org/project/hanzo-studio-frontend-package/>
