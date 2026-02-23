@@ -1,3 +1,4 @@
+# Secrets: Hanzo KMS (kms.hanzo.ai) — auth via Hanzo IAM
 # Setting test expectation screenshots for Playwright
 name: 'PR: Update Playwright Expectations'
 
@@ -169,11 +170,18 @@ jobs:
     needs: [setup, update-snapshots-sharded]
     runs-on: ubuntu-latest
     steps:
+      - name: Fetch secrets from Hanzo KMS
+        id: kms
+        uses: hanzoui/.github/actions/kms-secrets@main
+        with:
+          kms_client_id: ${{ secrets.KMS_CLIENT_ID }}
+          kms_client_secret: ${{ secrets.KMS_CLIENT_SECRET }}
+          secrets: 'PR_GH_TOKEN'
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
           ref: ${{ needs.setup.outputs.branch }}
-          token: ${{ secrets.PR_GH_TOKEN }}
+          token: ${{ steps.kms.outputs.PR_GH_TOKEN }}
 
       # Download all changed snapshot files from shards
       - name: Download snapshot artifacts

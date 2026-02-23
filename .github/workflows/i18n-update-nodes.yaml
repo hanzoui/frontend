@@ -1,3 +1,4 @@
+# Secrets: Hanzo KMS (kms.hanzo.ai) — auth via Hanzo IAM
 name: i18n Update Nodes
 
 on:
@@ -13,6 +14,13 @@ jobs:
   update-locales:
     runs-on: ubuntu-latest
     steps:
+      - name: Fetch secrets from Hanzo KMS
+        id: kms
+        uses: hanzoui/.github/actions/kms-secrets@main
+        with:
+          kms_client_id: ${{ secrets.KMS_CLIENT_ID }}
+          kms_client_secret: ${{ secrets.KMS_CLIENT_SECRET }}
+          secrets: 'OPENAI_API_KEY,PR_GH_TOKEN'
       - name: Checkout repository
         uses: actions/checkout@v6
       # Setup playwright environment
@@ -38,11 +46,11 @@ jobs:
       - name: Update translations
         run: pnpm locale
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_KEY: ${{ steps.kms.outputs.OPENAI_API_KEY }}
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
         with:
-          token: ${{ secrets.PR_GH_TOKEN }}
+          token: ${{ steps.kms.outputs.PR_GH_TOKEN }}
           commit-message: 'Update locales for node definitions'
           title: 'Update locales for node definitions'
           body: |

@@ -1,3 +1,4 @@
+# Secrets: Hanzo KMS (kms.hanzo.ai) — auth via Hanzo IAM
 # Description: When upstream electron API is updated, click dispatch to update the TypeScript type definitions in this repo
 name: 'Api: Update Electron API Types'
 
@@ -12,6 +13,13 @@ jobs:
       pull-requests: write
 
     steps:
+      - name: Fetch secrets from Hanzo KMS
+        id: kms
+        uses: hanzoui/.github/actions/kms-secrets@main
+        with:
+          kms_client_id: ${{ secrets.KMS_CLIENT_ID }}
+          kms_client_secret: ${{ secrets.KMS_CLIENT_SECRET }}
+          secrets: 'PR_GH_TOKEN'
       - name: Checkout repository
         uses: actions/checkout@v6
 
@@ -38,7 +46,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
         with:
-          token: ${{ secrets.PR_GH_TOKEN }}
+          token: ${{ steps.kms.outputs.PR_GH_TOKEN }}
           commit-message: '[chore] Update electron-types to ${{ steps.get-version.outputs.NEW_VERSION }}'
           title: '[chore] Update electron-types to ${{ steps.get-version.outputs.NEW_VERSION }}'
           body: |

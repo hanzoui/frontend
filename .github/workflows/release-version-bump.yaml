@@ -1,3 +1,4 @@
+# Secrets: Hanzo KMS (kms.hanzo.ai) — auth via Hanzo IAM
 # Description: Manual workflow to increment package version with semantic versioning support
 name: 'Release: Version Bump'
 
@@ -36,6 +37,13 @@ jobs:
       pull-requests: write
 
     steps:
+      - name: Fetch secrets from Hanzo KMS
+        id: kms
+        uses: hanzoui/.github/actions/kms-secrets@main
+        with:
+          kms_client_id: ${{ secrets.KMS_CLIENT_ID }}
+          kms_client_secret: ${{ secrets.KMS_CLIENT_SECRET }}
+          secrets: 'PR_GH_TOKEN'
       - name: Prepare inputs
         id: prepared-inputs
         shell: bash
@@ -182,7 +190,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
         with:
-          token: ${{ secrets.PR_GH_TOKEN }}
+          token: ${{ steps.kms.outputs.PR_GH_TOKEN }}
           commit-message: '[release] Increment version to ${{ steps.bump-version.outputs.NEW_VERSION }}'
           title: ${{ steps.bump-version.outputs.NEW_VERSION }}
           body: |

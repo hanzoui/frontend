@@ -1,3 +1,4 @@
+# Secrets: Hanzo KMS (kms.hanzo.ai) — auth via Hanzo IAM
 # Description: Generates and updates translations for core Hanzo Studio components using OpenAI
 name: 'i18n: Update Core'
 
@@ -15,10 +16,17 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || (github.event.pull_request.head.repo.full_name == github.repository && startsWith(github.head_ref, 'version-bump-'))
     runs-on: ubuntu-latest
     steps:
+      - name: Fetch secrets from Hanzo KMS
+        id: kms
+        uses: hanzoui/.github/actions/kms-secrets@main
+        with:
+          kms_client_id: ${{ secrets.KMS_CLIENT_ID }}
+          kms_client_secret: ${{ secrets.KMS_CLIENT_SECRET }}
+          secrets: 'OPENAI_API_KEY,PR_GH_TOKEN'
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
-          token: ${{ secrets.PR_GH_TOKEN }}
+          token: ${{ steps.kms.outputs.PR_GH_TOKEN }}
 
       # Setup playwright environment
       - name: Setup Hanzo Frontend
@@ -45,7 +53,7 @@ jobs:
       - name: Update translations
         run: pnpm locale && pnpm format
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_KEY: ${{ steps.kms.outputs.OPENAI_API_KEY }}
       - name: Commit updated locales
         run: |
           git config --global user.name 'github-actions'

@@ -94,7 +94,7 @@ jobs:
           echo '🔍 Checking production dependency licenses...'
 
           # Use license-checker-rseidelsohn (actively maintained fork, handles monorepos)
-          # Exclude internal @comfyorg packages from license check
+          # Exclude internal @hanzoui packages from license check
           # Run in if condition to capture exit code
           if npx license-checker-rseidelsohn@4 \
             --production \

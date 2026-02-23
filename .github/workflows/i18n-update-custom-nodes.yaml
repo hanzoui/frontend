@@ -1,3 +1,4 @@
+# Secrets: Hanzo KMS (kms.hanzo.ai) — auth via Hanzo IAM
 name: i18n Update Custom Nodes
 
 on:
@@ -21,6 +22,13 @@ jobs:
   update-locales:
     runs-on: ubuntu-latest
     steps:
+      - name: Fetch secrets from Hanzo KMS
+        id: kms
+        uses: hanzoui/.github/actions/kms-secrets@main
+        with:
+          kms_client_id: ${{ secrets.KMS_CLIENT_ID }}
+          kms_client_secret: ${{ secrets.KMS_CLIENT_SECRET }}
+          secrets: 'OPENAI_API_KEY,PR_GH_TOKEN,PR_SSH_PRIVATE_KEY'
       - name: Checkout repository
         uses: actions/checkout@v6
 
@@ -69,7 +77,7 @@ jobs:
       - name: Update translations
         run: pnpm locale
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_API_KEY: ${{ steps.kms.outputs.OPENAI_API_KEY }}
       - name: Diff base vs updated i18n
         run: pnpm exec tsx scripts/diff-i18n diff
       - name: Update i18n in custom node repository
@@ -97,7 +105,7 @@ jobs:
             -F default_workflow_permissions="write" \
             -F enabled=true
         env:
-          GH_TOKEN: ${{ secrets.PR_GH_TOKEN }}
+          GH_TOKEN: ${{ steps.kms.outputs.PR_GH_TOKEN }}
 
       - name: Commit changes
         working-directory: Hanzo Studio/custom_nodes/${{ inputs.repository }}
@@ -116,7 +124,7 @@ jobs:
         uses: shimataro/ssh-key-action@d4fffb50872869abe2d9a9098a6d9c5aa7d16be4 # v2.7.0
         with:
           # PR private key from action server
-          key: ${{ secrets.PR_SSH_PRIVATE_KEY }}
+          key: ${{ steps.kms.outputs.PR_SSH_PRIVATE_KEY }}
           # github public key to confirm it's github server
           known_hosts: github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==
 
@@ -133,4 +141,4 @@ jobs:
           # Create PR using gh cli
           gh pr create --title "Update locales for ${{ inputs.repository }}" --repo ${{ inputs.owner }}/${{ inputs.repository }} --head ${{ inputs.fork_owner }}:update-locales --body "Update locales for ${{ inputs.repository }}"
         env:
-          GH_TOKEN: ${{ secrets.PR_GH_TOKEN }}
+          GH_TOKEN: ${{ steps.kms.outputs.PR_GH_TOKEN }}
