@@ -1,3 +1,4 @@
+# Secrets: Hanzo KMS (kms.hanzo.ai) — auth via Hanzo IAM
 name: PR Backport
 
 on:
@@ -34,6 +35,13 @@ jobs:
       issues: write
 
     steps:
+      - name: Fetch secrets from Hanzo KMS
+        id: kms
+        uses: hanzoui/.github/actions/kms-secrets@main
+        with:
+          kms_client_id: ${{ secrets.KMS_CLIENT_ID }}
+          kms_client_secret: ${{ secrets.KMS_CLIENT_SECRET }}
+          secrets: 'PR_GH_TOKEN'
       - name: Validate inputs for manual triggers
         if: github.event_name == 'workflow_dispatch'
         run: |
@@ -321,7 +329,7 @@ jobs:
       - name: Create PR for each successful backport
         if: steps.filter-targets.outputs.skip != 'true' && steps.backport.outputs.success
         env:
-          GH_TOKEN: ${{ secrets.PR_GH_TOKEN }}
+          GH_TOKEN: ${{ steps.kms.outputs.PR_GH_TOKEN }}
           PR_NUMBER: ${{ github.event_name == 'workflow_dispatch' && inputs.pr_number || github.event.pull_request.number }}
         run: |
           # Get PR data for manual triggers

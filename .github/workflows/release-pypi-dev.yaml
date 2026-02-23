@@ -1,3 +1,4 @@
+# Secrets: Hanzo KMS (kms.hanzo.ai) — auth via Hanzo IAM
 name: Release PyPI Dev
 
 on:
@@ -14,6 +15,13 @@ jobs:
     outputs:
       version: ${{ steps.current_version.outputs.version }}
     steps:
+      - name: Fetch secrets from Hanzo KMS
+        id: kms
+        uses: hanzoui/.github/actions/kms-secrets@main
+        with:
+          kms_client_id: ${{ secrets.KMS_CLIENT_ID }}
+          kms_client_secret: ${{ secrets.KMS_CLIENT_SECRET }}
+          secrets: 'ALGOLIA_API_KEY,ALGOLIA_APP_ID,SENTRY_DSN'
       - name: Checkout code
         uses: actions/checkout@v6
       - name: Install pnpm
@@ -30,9 +38,9 @@ jobs:
         run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
       - name: Build project
         env:
-          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
-          ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
-          ALGOLIA_API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
+          SENTRY_DSN: ${{ steps.kms.outputs.SENTRY_DSN }}
+          ALGOLIA_APP_ID: ${{ steps.kms.outputs.ALGOLIA_APP_ID }}
+          ALGOLIA_API_KEY: ${{ steps.kms.outputs.ALGOLIA_API_KEY }}
           ENABLE_MINIFY: 'true'
           USE_PROD_CONFIG: 'true'
         run: |
@@ -51,6 +59,13 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Fetch secrets from Hanzo KMS
+        id: kms
+        uses: hanzoui/.github/actions/kms-secrets@main
+        with:
+          kms_client_id: ${{ secrets.KMS_CLIENT_ID }}
+          kms_client_secret: ${{ secrets.KMS_CLIENT_SECRET }}
+          secrets: 'PYPI_TOKEN'
       - name: Checkout code
         uses: actions/checkout@v6
       - name: Download dist artifact
@@ -75,5 +90,5 @@ jobs:
       - name: Publish pypi package
         uses: pypa/gh-action-pypi-publish@ed0c53931b1dc9bd32cbe73a98c7f6766f8a527e # v1.13.0
         with:
-          password: ${{ secrets.PYPI_TOKEN }}
+          password: ${{ steps.kms.outputs.PYPI_TOKEN }}
           packages-dir: hanzo_studio_frontend_package/dist

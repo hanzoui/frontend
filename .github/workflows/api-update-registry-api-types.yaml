@@ -1,3 +1,4 @@
+# Secrets: Hanzo KMS (kms.hanzo.ai) — auth via Hanzo IAM
 # Description: When upstream comfy-api is updated, click dispatch to update the TypeScript type definitions in this repo
 name: 'Api: Update Registry API Types'
 
@@ -16,6 +17,13 @@ jobs:
       contents: write
       pull-requests: write
     steps:
+      - name: Fetch secrets from Hanzo KMS
+        id: kms
+        uses: hanzoui/.github/actions/kms-secrets@main
+        with:
+          kms_client_id: ${{ secrets.KMS_CLIENT_ID }}
+          kms_client_secret: ${{ secrets.KMS_CLIENT_SECRET }}
+          secrets: 'COMFY_API_PAT,PR_GH_TOKEN'
       - name: Checkout repository
         uses: actions/checkout@v6
 
@@ -38,7 +46,7 @@ jobs:
         with:
           repository: hanzoui/comfy-api
           path: comfy-api
-          token: ${{ secrets.COMFY_API_PAT }}
+          token: ${{ steps.kms.outputs.COMFY_API_PAT }}
           clean: true
 
       - name: Get API commit information
@@ -89,7 +97,7 @@ jobs:
         if: steps.check-changes.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
         with:
-          token: ${{ secrets.PR_GH_TOKEN }}
+          token: ${{ steps.kms.outputs.PR_GH_TOKEN }}
           commit-message: '[chore] Update Comfy Registry API types from comfy-api@${{ steps.api-info.outputs.commit }}'
           title: '[chore] Update Comfy Registry API types from comfy-api@${{ steps.api-info.outputs.commit }}'
           body: |

@@ -1,3 +1,4 @@
+# Secrets: Hanzo KMS (kms.hanzo.ai) — auth via Hanzo IAM
 # Automated bi-weekly workflow to bump Hanzo Studio frontend RC releases
 name: 'Release: Bi-weekly Hanzo Studio'
 
@@ -134,9 +135,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Fetch secrets from Hanzo KMS
+        id: kms
+        uses: hanzoui/.github/actions/kms-secrets@main
+        with:
+          kms_client_id: ${{ secrets.KMS_CLIENT_ID }}
+          kms_client_secret: ${{ secrets.KMS_CLIENT_SECRET }}
+          secrets: 'PR_GH_TOKEN'
       - name: Trigger release workflow
         env:
-          GH_TOKEN: ${{ secrets.PR_GH_TOKEN }}
+          GH_TOKEN: ${{ steps.kms.outputs.PR_GH_TOKEN }}
         run: |
           set -euo pipefail
 
@@ -168,11 +176,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Fetch secrets from Hanzo KMS
+        id: kms
+        uses: hanzoui/.github/actions/kms-secrets@main
+        with:
+          kms_client_id: ${{ secrets.KMS_CLIENT_ID }}
+          kms_client_secret: ${{ secrets.KMS_CLIENT_SECRET }}
+          secrets: 'PR_GH_TOKEN'
       - name: Checkout Hanzo Studio fork
         uses: actions/checkout@v6
         with:
           repository: ${{ inputs.hanzo_studio_fork || 'hanzoai/studio' }}
-          token: ${{ secrets.PR_GH_TOKEN }}
+          token: ${{ steps.kms.outputs.PR_GH_TOKEN }}
           path: comfyui
 
       - name: Sync with upstream
@@ -249,7 +264,7 @@ jobs:
       - name: Create PR to Hanzo Studio
         working-directory: comfyui
         env:
-          GH_TOKEN: ${{ secrets.PR_GH_TOKEN }}
+          GH_TOKEN: ${{ steps.kms.outputs.PR_GH_TOKEN }}
           COMFYUI_FORK: ${{ inputs.hanzo_studio_fork || 'hanzoai/studio' }}
         run: |
           set -euo pipefail

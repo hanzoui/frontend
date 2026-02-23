@@ -1,3 +1,4 @@
+# Secrets: Hanzo KMS (kms.hanzo.ai) — auth via Hanzo IAM
 # Description: Automated weekly documentation accuracy check and update via Claude
 name: 'Weekly Documentation Check'
 
@@ -21,6 +22,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
+      - name: Fetch secrets from Hanzo KMS
+        id: kms
+        uses: hanzoui/.github/actions/kms-secrets@main
+        with:
+          kms_client_id: ${{ secrets.KMS_CLIENT_ID }}
+          kms_client_secret: ${{ secrets.KMS_CLIENT_SECRET }}
+          secrets: 'ANTHROPIC_API_KEY,PR_GH_TOKEN'
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
@@ -85,7 +93,7 @@ jobs:
                - ## Review Notes section with any important context
             3. Be specific about which files were updated and why
             4. If no changes were needed, write a brief message stating documentation is up to date
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          anthropic_api_key: ${{ steps.kms.outputs.ANTHROPIC_API_KEY }}
           claude_args: "--max-turns 256 --allowedTools 'Bash(git status),Bash(git diff),Bash(git log),Bash(pnpm:*),Bash(npm:*),Bash(node:*),Bash(tsc:*),Bash(echo:*),Read,Write,Edit,Glob,Grep'"
         continue-on-error: false
         env:
@@ -132,7 +140,7 @@ jobs:
         if: steps.check_changes.outputs.has_changes == 'true'
         uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
         with:
-          token: ${{ secrets.PR_GH_TOKEN }}
+          token: ${{ steps.kms.outputs.PR_GH_TOKEN }}
           commit-message: 'docs: weekly documentation accuracy update'
           branch: docs/weekly-update
           delete-branch: true

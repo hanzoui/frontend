@@ -1,3 +1,4 @@
+# Secrets: Hanzo KMS (kms.hanzo.ai) — auth via Hanzo IAM
 # Description: Deploys Storybook previews from forked PRs (forks can't access deployment secrets)
 name: 'CI: Tests Storybook (Deploy for Forks)'
 
@@ -19,6 +20,13 @@ jobs:
       pull-requests: write
       actions: read
     steps:
+      - name: Fetch secrets from Hanzo KMS
+        id: kms
+        uses: hanzoui/.github/actions/kms-secrets@main
+        with:
+          kms_client_id: ${{ secrets.KMS_CLIENT_ID }}
+          kms_client_secret: ${{ secrets.KMS_CLIENT_SECRET }}
+          secrets: 'CLOUDFLARE_ACCOUNT_ID,CLOUDFLARE_API_TOKEN'
       - name: Log workflow trigger info
         run: |
           echo "Repository: ${{ github.repository }}"
@@ -74,8 +82,8 @@ jobs:
       - name: Handle Storybook Completion
         if: steps.pr.outputs.result != 'null' && github.event.action == 'completed'
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ steps.kms.outputs.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ steps.kms.outputs.CLOUDFLARE_ACCOUNT_ID }}
           GITHUB_TOKEN: ${{ github.token }}
           WORKFLOW_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
           WORKFLOW_URL: ${{ github.event.workflow_run.html_url }}
