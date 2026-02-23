@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/vue'
 import { useEventListener, useResizeObserver } from '@vueuse/core'
 import _ from 'es-toolkit/compat'
 import type { ToastMessageOptions } from 'primevue/toast'
@@ -801,6 +802,45 @@ export class ComfyApp {
     this.addApiUpdateHandlers()
 
     const graph = new LGraph()
+
+    // Duplicate link diagnostics: detect and report to Sentry when duplicate
+    // links are created at runtime or found in persisted data.
+    graph.enableDuplicateLinkDiagnostics(__SENTRY_ENABLED__)
+    if (__SENTRY_ENABLED__) {
+      const sentKeys = new Map<string, number>()
+      graph.events.addEventListener('diagnostic:duplicate-link', (e) => {
+        const d = e.detail
+        const key = `${d.origin_id}:${d.origin_slot}:${d.target_id}:${d.target_slot}`
+        const now = Date.now()
+        const lastSent = sentKeys.get(key)
+        if (lastSent && now - lastSent < 60_000) return
+
+        sentKeys.set(key, now)
+        Sentry.captureMessage('Duplicate link detected in graph', {
+          level: 'warning',
+          tags: {
+            source: d.source,
+            graph_id: d.graphId,
+            origin_type: d.origin_type,
+            target_type: d.target_type,
+            link_type: d.link_type
+          },
+          extra: {
+            existingLinkId: d.existingLinkId,
+            newLinkId: d.newLinkId,
+            origin_id: d.origin_id,
+            origin_slot: d.origin_slot,
+            target_id: d.target_id,
+            target_slot: d.target_slot,
+            origin_type: d.origin_type,
+            target_type: d.target_type,
+            link_type: d.link_type,
+            extensions: useExtensionStore().extensions.map((e) => e.name),
+            stack: d.stack
+          }
+        })
+      })
+    }
 
     // Register the subgraph - adds type wrapper for Litegraph's `createNode` factory
     graph.events.addEventListener('subgraph-created', (e) => {
