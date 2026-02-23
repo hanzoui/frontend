@@ -1,28 +1,40 @@
 <template>
-  <div class="queue-button-group flex">
+  <div class="queue-button-group flex h-8 rounded-lg bg-secondary-background">
     <BatchCountEdit />
     <SplitButton
       v-tooltip.bottom="{
         value: queueButtonTooltip,
         showDelay: 600
       }"
-      class="comfyui-queue-button"
+      class="comfyui-queue-button h-full"
       :label="queueButtonLabel"
       :severity="queueButtonSeverity"
       size="small"
       :model="queueModeMenuItems"
-      :pt="{
-        pcButton: {
-          root: {
-            class: 'rounded-l-none'
-          }
-        }
-      }"
+      :pt="splitButtonPt"
       data-testid="queue-button"
       @click="queuePrompt"
     >
       <template #icon>
         <i :class="iconClass" />
+      </template>
+      <template #dropdownicon>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="8"
+          height="5"
+          viewBox="0 0 8 5"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M0.650391 0.649902L3.65039 3.6499L6.65039 0.649902"
+            stroke="#8A8A8A"
+            stroke-width="1.3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
       </template>
       <template #item="{ item }">
         <Button
@@ -142,6 +154,41 @@ const queueButtonLabel = computed(() =>
 const queueButtonSeverity = computed(() =>
   isStopInstantAction.value ? 'danger' : 'primary'
 )
+
+const splitButtonPt = computed(() => ({
+  root: {
+    class: 'h-full rounded-r-lg'
+  },
+  pcButton: {
+    root: {
+      class: [
+        'h-full gap-1.5 rounded-lg text-white hover:text-white font-light',
+        !isStopInstantAction.value &&
+          'bg-primary-background border-primary-background hover:bg-primary-background hover:border-primary-background'
+      ],
+      style: {
+        padding: '0.5rem 1rem'
+      }
+    },
+    icon: {
+      class: 'text-white'
+    },
+    label: {
+      class: 'text-white font-light'
+    }
+  },
+  pcDropdown: {
+    root: {
+      class:
+        'h-full rounded-r-lg bg-secondary-background border-secondary-background text-muted-foreground hover:bg-secondary-background hover:border-secondary-background',
+      style: {
+        width: '1.5rem',
+        minWidth: '1.5rem',
+        padding: '0'
+      }
+    }
+  }
+}))
 
 const iconClass = computed(() => {
   if (isStopInstantAction.value) {
