@@ -11,8 +11,8 @@ import {
   isRecommendedWidget,
   promoteWidget,
   pruneDisconnected
-} from '@/core/graph/subgraph/proxyWidgetUtils'
-import type { WidgetItem } from '@/core/graph/subgraph/proxyWidgetUtils'
+} from '@/core/graph/subgraph/promotionUtils'
+import type { WidgetItem } from '@/core/graph/subgraph/promotionUtils'
 import type { LGraphNode } from '@/lib/litegraph/src/litegraph'
 import { SubgraphNode } from '@/lib/litegraph/src/subgraph/SubgraphNode'
 import { useCanvasStore } from '@/renderer/core/canvas/canvasStore'

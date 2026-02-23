@@ -14,7 +14,7 @@ import {
   useWidgetValueStore
 } from '@/stores/widgetValueStore'
 
-import type { PromotedWidgetView } from './promotedWidgetTypes'
+import type { PromotedWidgetView as IPromotedWidgetView } from './promotedWidgetTypes'
 
 export type { PromotedWidgetView } from './promotedWidgetTypes'
 export { isPromotedWidgetView } from './promotedWidgetTypes'
@@ -51,16 +51,11 @@ export function createPromotedWidgetView(
   nodeId: string,
   widgetName: string,
   displayName?: string
-): PromotedWidgetView {
-  return new PromotedWidgetViewImpl(
-    subgraphNode,
-    nodeId,
-    widgetName,
-    displayName
-  )
+): IPromotedWidgetView {
+  return new PromotedWidgetView(subgraphNode, nodeId, widgetName, displayName)
 }
 
-class PromotedWidgetViewImpl implements PromotedWidgetView {
+class PromotedWidgetView implements IPromotedWidgetView {
   [symbol: symbol]: boolean
 
   readonly sourceNodeId: string

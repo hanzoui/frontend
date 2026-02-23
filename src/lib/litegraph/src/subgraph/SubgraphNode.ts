@@ -34,7 +34,7 @@ import {
   isPromotedWidgetView
 } from '@/core/graph/subgraph/promotedWidgetView'
 import type { PromotedWidgetView } from '@/core/graph/subgraph/promotedWidgetView'
-import { parseProxyWidgets } from '@/core/schemas/proxyWidget'
+import { parseProxyWidgets } from '@/core/schemas/promotionSchema'
 import { useDomWidgetStore } from '@/stores/domWidgetStore'
 import { usePromotionStore } from '@/stores/promotionStore'
 
