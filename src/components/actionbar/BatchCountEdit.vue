@@ -16,13 +16,13 @@
       show-buttons
       :pt="{
         incrementButton: {
-          class: 'w-6',
+          class: 'w-6 rounded-tr-none',
           onmousedown: () => {
             handleClick(true)
           }
         },
         decrementButton: {
-          class: 'w-6',
+          class: 'w-6 rounded-br-none',
           onmousedown: () => {
             handleClick(false)
           }
@@ -62,10 +62,3 @@ const handleClick = (increment: boolean) => {
   batchCount.value = newCount
 }
 </script>
-
-<style scoped>
-:deep(.p-inputtext) {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-</style>
