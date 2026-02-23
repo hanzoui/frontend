@@ -22,7 +22,10 @@ import { MapProxyHandler } from './MapProxyHandler'
 import { Reroute } from './Reroute'
 import type { RerouteId } from './Reroute'
 import { CustomEventTarget } from './infrastructure/CustomEventTarget'
-import type { LGraphEventMap } from './infrastructure/LGraphEventMap'
+import type {
+  DuplicateLinkSource,
+  LGraphEventMap
+} from './infrastructure/LGraphEventMap'
 import type { SubgraphEventMap } from './infrastructure/SubgraphEventMap'
 import type {
   DefaultConnectionColors,
@@ -161,6 +164,11 @@ export class LGraph
   static STATUS_STOPPED = 1
   static STATUS_RUNNING = 2
 
+  /** Generates a unique string key for a link's connection tuple. */
+  static _linkTupleKey(link: LLink): string {
+    return `${link.origin_id}\0${link.origin_slot}\0${link.target_id}\0${link.target_slot}`
+  }
+
   /** List of LGraph properties that are manually handled by {@link LGraph.configure}. */
   static readonly ConfigureProperties = new Set([
     'nodes',
@@ -247,6 +255,8 @@ export class LGraph
   nodes_actioning: (string | boolean)[] = []
   nodes_executedAction: string[] = []
   extra: LGraphExtra = {}
+
+  private _dupLinkIndex?: Map<string, LinkId>
 
   /** @deprecated Deserialising a workflow sets this unused property. */
   version?: number
@@ -1586,10 +1596,139 @@ export class LGraph
     const link = this._links.get(link_id)
     if (!link) return
 
+    this._removeLinkFromDupIndex(link)
+
     const node = this.getNodeById(link.target_id)
     node?.disconnectInput(link.target_slot, false)
 
     link.disconnect(this)
+  }
+
+  /**
+   * Removes duplicate links that share the same connection tuple
+   * (origin_id, origin_slot, target_id, target_slot). Keeps the link
+   * referenced by input.link and removes orphaned duplicates from
+   * output.links and the graph's _links map.
+   */
+  _removeDuplicateLinks(): void {
+    const seen = new Map<string, LinkId>()
+    const toRemove: LinkId[] = []
+
+    for (const [id, link] of this._links) {
+      const key = LGraph._linkTupleKey(link)
+      if (seen.has(key)) {
+        const existingId = seen.get(key)!
+        // Keep the link that the input side references
+        const node = this.getNodeById(link.target_id)
+        const input = node?.inputs?.[link.target_slot]
+        if (input?.link === id) {
+          toRemove.push(existingId)
+          seen.set(key, id)
+        } else {
+          toRemove.push(id)
+        }
+
+        this._emitDuplicateLinkDiagnostic(
+          link,
+          existingId,
+          id,
+          '_removeDuplicateLinks'
+        )
+      } else {
+        seen.set(key, id)
+      }
+    }
+
+    for (const id of toRemove) {
+      const link = this._links.get(id)
+      if (!link) continue
+
+      this._removeLinkFromDupIndex(link)
+
+      // Remove from origin node's output.links array
+      const originNode = this.getNodeById(link.origin_id)
+      if (originNode) {
+        const output = originNode.outputs?.[link.origin_slot]
+        if (output?.links) {
+          const idx = output.links.indexOf(id)
+          if (idx !== -1) output.links.splice(idx, 1)
+        }
+      }
+
+      this._links.delete(id)
+    }
+  }
+
+  /**
+   * Enables or disables runtime detection of duplicate link creation.
+   * When enabled, builds an O(1) lookup index of existing link tuples
+   * and emits `diagnostic:duplicate-link` events when duplicates are detected.
+   */
+  enableDuplicateLinkDiagnostics(enabled: boolean): void {
+    if (!enabled) {
+      this._dupLinkIndex = undefined
+      return
+    }
+
+    const index = new Map<string, LinkId>()
+    for (const [id, link] of this._links) {
+      index.set(LGraph._linkTupleKey(link), id)
+    }
+    this._dupLinkIndex = index
+  }
+
+  /**
+   * Checks if a newly created link duplicates an existing connection tuple.
+   * Only active when diagnostics are enabled via {@link enableDuplicateLinkDiagnostics}.
+   * Called from the 3 link-creation sites: connectSlots, SubgraphInput.connect, SubgraphOutput.connect.
+   */
+  _checkDuplicateLink(link: LLink, source: DuplicateLinkSource): void {
+    const idx = this._dupLinkIndex
+    if (!idx) return
+
+    const key = LGraph._linkTupleKey(link)
+    const existing = idx.get(key)
+    if (existing != null && existing !== link.id) {
+      this._emitDuplicateLinkDiagnostic(link, existing, link.id, source, true)
+    }
+    idx.set(key, link.id)
+  }
+
+  /**
+   * Removes a link from the duplicate detection index.
+   * Called when links are disconnected/removed to keep the index accurate.
+   */
+  _removeLinkFromDupIndex(link: LLink): void {
+    const idx = this._dupLinkIndex
+    if (!idx) return
+
+    const key = LGraph._linkTupleKey(link)
+    if (idx.get(key) === link.id) idx.delete(key)
+  }
+
+  private _emitDuplicateLinkDiagnostic(
+    link: LLink,
+    existingLinkId: LinkId,
+    newLinkId: LinkId,
+    source: DuplicateLinkSource,
+    captureStack = false
+  ): void {
+    const originNode = this.getNodeById(link.origin_id)
+    const targetNode = this.getNodeById(link.target_id)
+    this.rootGraph.events.dispatch('diagnostic:duplicate-link', {
+      source,
+      existingLinkId,
+      newLinkId,
+      origin_id: link.origin_id,
+      origin_slot: link.origin_slot,
+      target_id: link.target_id,
+      target_slot: link.target_slot,
+      origin_type: originNode?.type ?? undefined,
+      target_type: targetNode?.type ?? undefined,
+      link_type: link.type != null ? String(link.type) : undefined,
+      graphId: this.id,
+      stack: captureStack ? new Error().stack : undefined
+    })
   }
 
   /**
@@ -2528,6 +2667,12 @@ export class LGraph
           layoutMutations.deleteReroute(reroute.id)
         }
       }
+
+      // Remove duplicate links: links in output.links that share the same
+      // (origin_id, origin_slot, target_id, target_slot) tuple.
+      // This repairs corrupted data where extra link objects were created
+      // without proper cleanup of the previous connection.
+      this._removeDuplicateLinks()
 
       // groups
       this._groups.length = 0

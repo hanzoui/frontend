@@ -1,12 +1,39 @@
 import type { LGraph } from '@/lib/litegraph/src/LGraph'
-import type { LLink, ResolvedConnection } from '@/lib/litegraph/src/LLink'
+import type {
+  LLink,
+  LinkId,
+  ResolvedConnection
+} from '@/lib/litegraph/src/LLink'
+import type { NodeId } from '@/lib/litegraph/src/LGraphNode'
 import type { ReadOnlyRect } from '@/lib/litegraph/src/interfaces'
 import type { Subgraph } from '@/lib/litegraph/src/subgraph/Subgraph'
+import type { UUID } from '@/lib/litegraph/src/utils/uuid'
 import type {
   ExportedSubgraph,
   ISerialisedGraph,
   SerialisableGraph
 } from '@/lib/litegraph/src/types/serialisation'
+
+export type DuplicateLinkSource =
+  | 'LGraphNode.connectSlots'
+  | 'SubgraphInput.connect'
+  | 'SubgraphOutput.connect'
+  | '_removeDuplicateLinks'
+
+export interface DuplicateLinkDetail {
+  source: DuplicateLinkSource
+  existingLinkId: LinkId
+  newLinkId: LinkId
+  origin_id: NodeId
+  origin_slot: number
+  target_id: NodeId
+  target_slot: number
+  origin_type?: string
+  target_type?: string
+  link_type?: string
+  graphId: UUID
+  stack?: string
+}
 
 export interface LGraphEventMap {
   configuring: {
@@ -48,4 +75,6 @@ export interface LGraphEventMap {
     subgraph: Subgraph
     closingGraph: LGraph | Subgraph
   }
+
+  'diagnostic:duplicate-link': DuplicateLinkDetail
 }

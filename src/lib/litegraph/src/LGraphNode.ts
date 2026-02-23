@@ -2937,6 +2937,7 @@ export class LGraphNode
 
     // connect in output
     output.links ??= []
+    graph._checkDuplicateLink(link, 'LGraphNode.connectSlots')
     output.links.push(link.id)
     // connect in input
     const targetInput = inputNode.inputs[inputIndex]

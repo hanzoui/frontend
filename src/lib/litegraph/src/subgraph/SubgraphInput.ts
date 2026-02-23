@@ -106,6 +106,7 @@ export class SubgraphInput extends SubgraphSlot {
 
     // Add to graph links list
     subgraph._links.set(link.id, link)
+    subgraph._checkDuplicateLink(link, 'SubgraphInput.connect')
 
     // Set link ID in each slot
     this.linkIds.push(link.id)

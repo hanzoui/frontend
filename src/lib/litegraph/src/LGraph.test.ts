@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import type { Subgraph } from '@/lib/litegraph/src/litegraph'
 import {
@@ -485,6 +485,141 @@ describe('ensureGlobalIdUniqueness', () => {
   })
 })
 
+describe('_removeDuplicateLinks', () => {
+  class TestNode extends LGraphNode {
+    constructor(title?: string) {
+      super(title ?? 'TestNode')
+      this.addInput('input_0', 'number')
+      this.addOutput('output_0', 'number')
+    }
+  }
+
+  function registerTestNodes() {
+    LiteGraph.registerNodeType('test/DupTestNode', TestNode)
+  }
+
+  it('removes orphaned duplicate links from _links and output.links', () => {
+    registerTestNodes()
+    const graph = new LGraph()
+
+    const source = LiteGraph.createNode('test/DupTestNode', 'Source')!
+    const target = LiteGraph.createNode('test/DupTestNode', 'Target')!
+    graph.add(source)
+    graph.add(target)
+
+    source.connect(0, target, 0)
+    expect(graph._links.size).toBe(1)
+
+    const existingLink = graph._links.values().next().value!
+    for (let i = 0; i < 3; i++) {
+      const dupLink = new LLink(
+        ++graph.state.lastLinkId,
+        existingLink.type,
+        existingLink.origin_id,
+        existingLink.origin_slot,
+        existingLink.target_id,
+        existingLink.target_slot
+      )
+      graph._links.set(dupLink.id, dupLink)
+      source.outputs[0].links!.push(dupLink.id)
+    }
+
+    expect(graph._links.size).toBe(4)
+    expect(source.outputs[0].links).toHaveLength(4)
+
+    graph._removeDuplicateLinks()
+
+    expect(graph._links.size).toBe(1)
+    expect(source.outputs[0].links).toHaveLength(1)
+    expect(target.inputs[0].link).toBe(source.outputs[0].links![0])
+  })
+
+  it('keeps the link referenced by input.link', () => {
+    registerTestNodes()
+    const graph = new LGraph()
+
+    const source = LiteGraph.createNode('test/DupTestNode', 'Source')!
+    const target = LiteGraph.createNode('test/DupTestNode', 'Target')!
+    graph.add(source)
+    graph.add(target)
+
+    source.connect(0, target, 0)
+    const keptLinkId = target.inputs[0].link!
+
+    const dupLink = new LLink(
+      ++graph.state.lastLinkId,
+      'number',
+      source.id,
+      0,
+      target.id,
+      0
+    )
+    graph._links.set(dupLink.id, dupLink)
+    source.outputs[0].links!.push(dupLink.id)
+
+    graph._removeDuplicateLinks()
+
+    expect(graph._links.size).toBe(1)
+    expect(target.inputs[0].link).toBe(keptLinkId)
+    expect(graph._links.has(keptLinkId)).toBe(true)
+    expect(graph._links.has(dupLink.id)).toBe(false)
+  })
+
+  it('is a no-op when no duplicates exist', () => {
+    registerTestNodes()
+    const graph = new LGraph()
+
+    const source = LiteGraph.createNode('test/DupTestNode', 'Source')!
+    const target = LiteGraph.createNode('test/DupTestNode', 'Target')!
+    graph.add(source)
+    graph.add(target)
+
+    source.connect(0, target, 0)
+    const linksBefore = graph._links.size
+
+    graph._removeDuplicateLinks()
+
+    expect(graph._links.size).toBe(linksBefore)
+  })
+
+  it('cleans up duplicate links in subgraph during configure', () => {
+    const subgraphData = createTestSubgraphData()
+    const rootGraph = new LGraph()
+    const subgraph = rootGraph.createSubgraph(subgraphData)
+
+    const source = new LGraphNode('Source')
+    source.addOutput('out', 'number')
+    const target = new LGraphNode('Target')
+    target.addInput('in', 'number')
+    subgraph.add(source)
+    subgraph.add(target)
+
+    source.connect(0, target, 0)
+    expect(subgraph._links.size).toBe(1)
+
+    const existingLink = subgraph._links.values().next().value!
+    for (let i = 0; i < 3; i++) {
+      const dup = new LLink(
+        ++subgraph.state.lastLinkId,
+        existingLink.type,
+        existingLink.origin_id,
+        existingLink.origin_slot,
+        existingLink.target_id,
+        existingLink.target_slot
+      )
+      subgraph._links.set(dup.id, dup)
+      source.outputs[0].links!.push(dup.id)
+    }
+    expect(subgraph._links.size).toBe(4)
+
+    // Serialize and reconfigure - should clean up during configure
+    const serialized = subgraph.asSerialisable()
+    subgraph.configure(serialized as never)
+
+    expect(subgraph._links.size).toBe(1)
+  })
+})
+
 describe('Subgraph Unpacking', () => {
   class TestNode extends LGraphNode {
     constructor(title?: string) {
@@ -589,5 +724,203 @@ describe('Subgraph Unpacking', () => {
     const unpackedTarget = rootGraph.nodes.find((n) => n.title === 'Target')!
     expect(unpackedTarget.inputs[0].link).not.toBeNull()
     expect(unpackedTarget.inputs[1].link).toBeNull()
+  })
+})
+
+describe('Duplicate Link Diagnostics', () => {
+  class TestNode extends LGraphNode {
+    constructor(title?: string) {
+      super(title ?? 'TestNode')
+      this.addInput('input_0', 'number')
+      this.addOutput('output_0', 'number')
+    }
+  }
+
+  function registerTestNodes() {
+    LiteGraph.registerNodeType('test/DiagTestNode', TestNode)
+  }
+
+  it('emits diagnostic event when _removeDuplicateLinks finds duplicates', () => {
+    registerTestNodes()
+    const graph = new LGraph()
+    const listener = vi.fn()
+    graph.events.addEventListener('diagnostic:duplicate-link', listener)
+
+    const source = LiteGraph.createNode('test/DiagTestNode', 'Source')!
+    const target = LiteGraph.createNode('test/DiagTestNode', 'Target')!
+    graph.add(source)
+    graph.add(target)
+
+    source.connect(0, target, 0)
+
+    const existingLink = graph._links.values().next().value!
+    const dupLink = new LLink(
+      ++graph.state.lastLinkId,
+      existingLink.type,
+      existingLink.origin_id,
+      existingLink.origin_slot,
+      existingLink.target_id,
+      existingLink.target_slot
+    )
+    graph._links.set(dupLink.id, dupLink)
+    source.outputs[0].links!.push(dupLink.id)
+
+    graph._removeDuplicateLinks()
+
+    expect(listener).toHaveBeenCalledTimes(1)
+    const detail = listener.mock.calls[0][0].detail
+    expect(detail.source).toBe('_removeDuplicateLinks')
+    expect(detail.origin_id).toBe(source.id)
+    expect(detail.target_id).toBe(target.id)
+    expect(detail.origin_type).toBe('test/DiagTestNode')
+    expect(detail.target_type).toBe('test/DiagTestNode')
+    expect(detail.link_type).toBe('number')
+  })
+
+  it('emits diagnostic event at runtime when diagnostics are enabled', () => {
+    registerTestNodes()
+    const graph = new LGraph()
+
+    const source = LiteGraph.createNode('test/DiagTestNode', 'Source')!
+    const target = LiteGraph.createNode('test/DiagTestNode', 'Target')!
+    graph.add(source)
+    graph.add(target)
+
+    source.connect(0, target, 0)
+
+    graph.enableDuplicateLinkDiagnostics(true)
+
+    const listener = vi.fn()
+    graph.events.addEventListener('diagnostic:duplicate-link', listener)
+
+    // Manually inject a duplicate link to simulate the bug
+    const existingLink = graph._links.values().next().value!
+    const dupLink = new LLink(
+      ++graph.state.lastLinkId,
+      existingLink.type,
+      existingLink.origin_id,
+      existingLink.origin_slot,
+      existingLink.target_id,
+      existingLink.target_slot
+    )
+    graph._links.set(dupLink.id, dupLink)
+    graph._checkDuplicateLink(dupLink, 'LGraphNode.connectSlots')
+
+    expect(listener).toHaveBeenCalledTimes(1)
+    const detail = listener.mock.calls[0][0].detail
+    expect(detail.source).toBe('LGraphNode.connectSlots')
+    expect(detail.existingLinkId).toBe(existingLink.id)
+    expect(detail.newLinkId).toBe(dupLink.id)
+    expect(detail.origin_type).toBe('test/DiagTestNode')
+    expect(detail.target_type).toBe('test/DiagTestNode')
+    expect(detail.link_type).toBe('number')
+    expect(detail.stack).toBeDefined()
+  })
+
+  it('does not emit diagnostic event when diagnostics are disabled', () => {
+    registerTestNodes()
+    const graph = new LGraph()
+
+    const source = LiteGraph.createNode('test/DiagTestNode', 'Source')!
+    const target = LiteGraph.createNode('test/DiagTestNode', 'Target')!
+    graph.add(source)
+    graph.add(target)
+
+    source.connect(0, target, 0)
+
+    const listener = vi.fn()
+    graph.events.addEventListener('diagnostic:duplicate-link', listener)
+
+    const existingLink = graph._links.values().next().value!
+    const dupLink = new LLink(
+      ++graph.state.lastLinkId,
+      existingLink.type,
+      existingLink.origin_id,
+      existingLink.origin_slot,
+      existingLink.target_id,
+      existingLink.target_slot
+    )
+    graph._links.set(dupLink.id, dupLink)
+    graph._checkDuplicateLink(dupLink, 'LGraphNode.connectSlots')
+
+    expect(listener).not.toHaveBeenCalled()
+  })
+
+  it('does not emit when no duplicate exists', () => {
+    registerTestNodes()
+    const graph = new LGraph()
+
+    const source = LiteGraph.createNode('test/DiagTestNode', 'Source')!
+    const target = LiteGraph.createNode('test/DiagTestNode', 'Target')!
+    graph.add(source)
+    graph.add(target)
+
+    graph.enableDuplicateLinkDiagnostics(true)
+
+    const listener = vi.fn()
+    graph.events.addEventListener('diagnostic:duplicate-link', listener)
+
+    source.connect(0, target, 0)
+
+    expect(listener).not.toHaveBeenCalled()
+  })
+
+  it('clears the index when diagnostics are disabled', () => {
+    registerTestNodes()
+    const graph = new LGraph()
+
+    const source = LiteGraph.createNode('test/DiagTestNode', 'Source')!
+    const target = LiteGraph.createNode('test/DiagTestNode', 'Target')!
+    graph.add(source)
+    graph.add(target)
+
+    source.connect(0, target, 0)
+
+    graph.enableDuplicateLinkDiagnostics(true)
+    graph.enableDuplicateLinkDiagnostics(false)
+
+    const listener = vi.fn()
+    graph.events.addEventListener('diagnostic:duplicate-link', listener)
+
+    const existingLink = graph._links.values().next().value!
+    const dupLink = new LLink(
+      ++graph.state.lastLinkId,
+      existingLink.type,
+      existingLink.origin_id,
+      existingLink.origin_slot,
+      existingLink.target_id,
+      existingLink.target_slot
+    )
+    graph._links.set(dupLink.id, dupLink)
+    graph._checkDuplicateLink(dupLink, 'LGraphNode.connectSlots')
+
+    expect(listener).not.toHaveBeenCalled()
+  })
+
+  it('removes link from dup index when removeLink is called', () => {
+    registerTestNodes()
+    const graph = new LGraph()
+
+    const source = LiteGraph.createNode('test/DiagTestNode', 'Source')!
+    const target = LiteGraph.createNode('test/DiagTestNode', 'Target')!
+    graph.add(source)
+    graph.add(target)
+
+    source.connect(0, target, 0)
+    graph.enableDuplicateLinkDiagnostics(true)
+
+    const linkId = graph._links.keys().next().value!
+    graph.removeLink(linkId)
+
+    // Re-create same connection — should NOT trigger duplicate diagnostic
+    source.connect(0, target, 0)
+
+    const listener = vi.fn()
+    graph.events.addEventListener('diagnostic:duplicate-link', listener)
+
+    const newLink = graph._links.values().next().value!
+    graph._checkDuplicateLink(newLink, 'LGraphNode.connectSlots')
+
+    expect(listener).not.toHaveBeenCalled()
   })
 })
