@@ -1,5 +1,6 @@
 <template>
   <div class="queue-button-group flex">
+    <BatchCountEdit />
     <SplitButton
       v-tooltip.bottom="{
         value: queueButtonTooltip,
@@ -10,6 +11,13 @@
       :severity="queueButtonSeverity"
       size="small"
       :model="queueModeMenuItems"
+      :pt="{
+        pcButton: {
+          root: {
+            class: 'rounded-l-none'
+          }
+        }
+      }"
       data-testid="queue-button"
       @click="queuePrompt"
     >
@@ -31,7 +39,6 @@
         </Button>
       </template>
     </SplitButton>
-    <BatchCountEdit />
   </div>
 </template>
 
@@ -201,10 +208,3 @@ const queuePrompt = async (e: Event) => {
   })
 }
 </script>
-
-<style scoped>
-.comfyui-queue-button :deep(.p-splitbutton-dropdown) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-</style>

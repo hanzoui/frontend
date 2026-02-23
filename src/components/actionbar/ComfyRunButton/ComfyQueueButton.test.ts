@@ -1,7 +1,7 @@
 import { createTestingPinia } from '@pinia/testing'
 import { mount } from '@vue/test-utils'
 import { describe, expect, it, vi } from 'vitest'
-import { defineComponent, nextTick } from 'vue'
+import { nextTick } from 'vue'
 import { createI18n } from 'vue-i18n'
 
 import type {
@@ -41,8 +41,7 @@ vi.mock('@/stores/workspaceStore', () => ({
   })
 }))
 
-const SplitButtonStub = defineComponent({
-  name: 'SplitButton',
+const SplitButtonStub = {
   props: {
     label: {
       type: String,
@@ -62,7 +61,11 @@ const SplitButtonStub = defineComponent({
       <slot name="icon" />
     </button>
   `
-})
+}
+
+const BatchCountEditStub = {
+  template: '<div data-testid="batch-count-edit" />'
+}
 
 const i18n = createI18n({
   legacy: false,
@@ -108,13 +111,21 @@ function createWrapper() {
       },
       stubs: {
         SplitButton: SplitButtonStub,
-        BatchCountEdit: true
+        BatchCountEdit: BatchCountEditStub
       }
     }
   })
 }
 
 describe('ComfyQueueButton', () => {
+  it('renders the batch count control before the run split button', () => {
+    const wrapper = createWrapper()
+    const controls = wrapper.get('.queue-button-group').element.children
+
+    expect(controls[0]?.getAttribute('data-testid')).toBe('batch-count-edit')
+    expect(controls[1]?.getAttribute('data-testid')).toBe('queue-button')
+  })
+
   it('keeps the run instant presentation while idle even with active jobs', async () => {
     const wrapper = createWrapper()
     const queueSettingsStore = useQueueSettingsStore()
