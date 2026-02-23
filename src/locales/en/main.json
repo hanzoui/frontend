@@ -69,6 +69,7 @@
     "icon": "Icon",
     "color": "Color",
     "error": "Error",
+    "enter": "Enter",
     "enterSubgraph": "Enter Subgraph",
     "resizeFromBottomRight": "Resize from bottom-right corner",
     "resizeFromTopRight": "Resize from top-right corner",
@@ -2529,6 +2530,14 @@
     "showGroups": "Show Frames/Groups",
     "renderBypassState": "Render Bypass State",
     "renderErrorState": "Render Error State"
+  },
+  "nightlySurvey": {
+    "title": "Help Us Improve",
+    "description": "You've been using this feature. Would you take a moment to share your feedback?",
+    "accept": "Sure, I'll help!",
+    "notNow": "Not Now",
+    "dontAskAgain": "Don't Ask Again",
+    "loadError": "Failed to load survey. Please try again later."
   },
   "cloudOnboarding": {
     "skipToCloudApp": "Skip to the cloud app",
