@@ -192,19 +192,23 @@ const processedWidgets = computed((): ProcessedWidget[] => {
     // Get value from store (falls back to undefined if not registered)
     const value = widgetState?.value as WidgetValue
 
-    // Build options from store state, with slot-linked override for disabled
+    // Build options from store state, with slot-linked override for disabled.
+    // Promoted widgets inside a subgraph are always linked to SubgraphInput,
+    // but should remain interactive — skip the disabled override for them.
     const storeOptions = widgetState?.options ?? {}
-    const widgetOptions = slotMetadata?.linked
-      ? { ...storeOptions, disabled: true }
-      : storeOptions
+    const isPromotedOnOwningNode =
+      widgetState?.promoted && String(widgetState?.nodeId) === String(nodeId)
+    const widgetOptions =
+      slotMetadata?.linked && !isPromotedOnOwningNode
+        ? { ...storeOptions, disabled: true }
+        : storeOptions
 
     // Derive border style from store metadata
-    const borderStyle =
-      widgetState?.promoted && String(widgetState?.nodeId) === String(nodeId)
-        ? 'ring ring-component-node-widget-promoted'
-        : widget.options?.advanced
-          ? 'ring ring-component-node-widget-advanced'
-          : undefined
+    const borderStyle = isPromotedOnOwningNode
+      ? 'ring ring-component-node-widget-promoted'
+      : widget.options?.advanced
+        ? 'ring ring-component-node-widget-advanced'
+        : undefined
 
     const simplified: SimplifiedWidget = {
       name: widget.name,

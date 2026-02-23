@@ -22,14 +22,12 @@ function createMockWidget(
 function mountComponent(
   widget: SimplifiedWidget<string>,
   modelValue: string,
-  readonly = false,
   placeholder?: string
 ) {
   return mount(WidgetTextarea, {
     props: {
       widget,
       modelValue,
-      readonly,
       placeholder
     }
   })
@@ -179,15 +177,36 @@ describe('WidgetTextarea Value Binding', () => {
 
     it('uses provided placeholder when specified', () => {
       const widget = createMockWidget('test')
-      const wrapper = mountComponent(
-        widget,
-        'test',
-        false,
-        'Custom placeholder'
-      )
+      const wrapper = mountComponent(widget, 'test', 'Custom placeholder')
 
       const textarea = wrapper.find('textarea')
       expect(textarea.attributes('placeholder')).toBe('Custom placeholder')
+    })
+  })
+
+  describe('Read-Only Behavior', () => {
+    it('is readonly when options.read_only is true', () => {
+      const widget = createMockWidget('test', { read_only: true })
+      const wrapper = mountComponent(widget, 'test')
+      expect(wrapper.find('textarea').attributes('readonly')).toBeDefined()
+    })
+
+    it('is readonly when options.disabled is true', () => {
+      const widget = createMockWidget('test', { disabled: true })
+      const wrapper = mountComponent(widget, 'test')
+      expect(wrapper.find('textarea').attributes('readonly')).toBeDefined()
+    })
+
+    it('is editable when neither read_only nor disabled is set', () => {
+      const widget = createMockWidget('test', {})
+      const wrapper = mountComponent(widget, 'test')
+      expect(wrapper.find('textarea').attributes('readonly')).toBeUndefined()
+    })
+
+    it('is editable when disabled is explicitly false', () => {
+      const widget = createMockWidget('test', { disabled: false })
+      const wrapper = mountComponent(widget, 'test')
+      expect(wrapper.find('textarea').attributes('readonly')).toBeUndefined()
     })
   })
 
